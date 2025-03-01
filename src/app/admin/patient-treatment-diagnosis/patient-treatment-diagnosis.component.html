@@ -1,0 +1,24 @@
+<div class="container">
+    <h2 class="page-title">Diagnosis History</h2>
+  
+    <div class="diagnosis-card" *ngFor="let record of diagnosisHistory">
+      <div class="card-header">
+        <h3>{{ record.diagnosis }}</h3>
+        <span class="doctor-name">Attended by: Dr. {{ record.staff.fullname }}</span>
+      </div>
+  
+      <div class="card-body">
+        <p><strong>Diagnosis Date:</strong> {{ record.diagnosis_date | date: 'MMM d, yyyy' }}</p>
+        <p><strong>Next Appointment:</strong> {{ record.next_appointment | date: 'MMM d, yyyy' }}</p>
+        <p><strong>Doctor:</strong> {{ record.staff.jobTitle }} ({{ record.staff.specialization }})</p>
+        <p><strong>Experience:</strong> {{ record.staff.experience }} years</p>
+        <p><strong>Contact:</strong> {{ record.staff.phone_no }}</p>
+        <p><strong>Doctor's Address:</strong> {{ record.staff.address }}</p>
+      </div>
+  
+      <div class="card-footer">
+        <button class="btn">View Full Diagnosis Report</button>
+      </div>
+    </div>
+  </div>
+  

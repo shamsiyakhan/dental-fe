@@ -1,0 +1,25 @@
+<div class="container">
+    <h2 class="page-title">Patient Treatment Details</h2>
+  
+    <div class="treatment-card" *ngFor="let treatment of treatments">
+      <div class="card-header">
+        <h3>{{ treatment.treatment_name }}</h3>
+        <span class="status" [ngClass]="{
+          'in-progress': treatment.treatment_status === 'In Progress',
+          'completed': treatment.treatment_status === 'Completed'
+        }">{{ treatment.treatment_status }}</span>
+      </div>
+  
+      <div class="card-body">
+        <p><strong>Patient History:</strong> {{ treatment.patient_history }}</p>
+        <p><strong>Findings:</strong> {{ treatment.findings }}</p>
+        <p><strong>Start Date:</strong> {{ treatment.start_date | date: 'MMM d, yyyy' }}</p>
+        <p><strong>Department:</strong> {{ treatment.department.dept_name }}</p>
+      </div>
+  
+      <div class="card-footer">
+        <button class="btn" (click)="getDiagnosisInfo(treatment.treatmentId)">Get Diagnosis Information</button>
+      </div>
+    </div>
+  </div>
+  
