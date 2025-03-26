@@ -26,7 +26,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  back(){
+    this.router.navigate(['auth/signup'])
+  }
   onSubmit(){
     this.http.post(this.api.url+'/login',this.loginForm.value).subscribe((data:any)=>{
       console.log(data)

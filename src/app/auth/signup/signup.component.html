@@ -1,0 +1,49 @@
+<div class="wrapper row">
+
+    <div class="left col-7">
+        <form class="sign" action="">
+            <span class="logo">Sign Up to <span style="color:#007DC6;"> DentalCare+</span></span>
+            <!-- First name -->
+            <div class="input">
+                <label for="firstName">First name</label>
+                <input class="input-text" type="text" id="firstName" placeholder="First name">
+            </div>
+            <!-- User Email -->
+            <div class="input">
+                <label for="userName">User Email</label>
+                <input class="input-text" type="text" id="userName" placeholder="User Email">
+            </div>
+            <!-- Password -->
+            <div class="row" style="margin: 0px 2px;">
+                <div class="input in1 col-5">
+                    <label for="password">Password</label>
+                    <input class="input-text" type="password" id="password" placeholder="Password">
+                </div>
+                <!-- Confirm password -->
+                <div class="input in1 col-5">
+                    <label for="confirm">Confirm password</label>
+                    <input class="input-text" type="password" id="confirm" placeholder="Confirm password">
+                </div>
+            </div>
+            
+               <div class="policy">
+                <!-- <i class="fa-regular fa-square"></i> -->
+                 <input type="checkbox">
+                <span>I agree to the Terms of Use & Privacy Policy</span> 
+
+            </div>
+
+            <!-- button -->
+            <div class="button1" style="margin-left: 16px;">
+                <button class="button" type="submit">Sign Up</button>
+                <span style="margin-left: 24px;color: #007DC6;">I already have an account. <b style="cursor: pointer;" (click)="back()">Login</b></span>
+            </div>
+
+        </form>
+    </div>
+
+    <div class="righ col-5" style="background-color: blue;">
+        <img class="img" src="assets/sign.webp" alt="">
+    </div>
+
+</div>
