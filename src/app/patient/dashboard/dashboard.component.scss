@@ -1,0 +1,155 @@
+.dashboard {
+    width: 100%;
+    background-color: #F9FAFB;
+    display: flex;
+    flex-direction: row;
+    gap: 45px;
+    height: 100vh;
+  
+  }
+  
+  .bellicon {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    border-radius: 19px;
+    left: 95%;
+    position: relative;
+    top: 20px;
+    width: 2%;
+    justify-content: center;
+  }
+  
+  .bellicon i {
+    font-size: 20px;
+    color: black;
+  }
+  
+  
+  
+  
+  .divider {
+    border: none;
+    height: 2px;
+    background-color: #ccc;
+    position: absolute;
+    top: 16%;
+    width: 100%;
+  
+  }
+  
+  .text1 {
+    color: black;
+    margin: 10px 15px;
+    font-size: 2rem;
+    font-weight: 600;
+  }
+  
+  .proleft {
+    width: 59%;
+    height: 30vh;
+    background-color: white;
+    position: relative;
+    top: 85px;
+    display: flex;
+    justify-content: flex-start;
+    border-radius: 15px;
+  
+  }
+  
+  .profile-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 55px -250px;
+  
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+  
+    .images {
+      width: 30%;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  
+    .details {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .name {
+      font-size: 18px;
+      font-weight: 600;
+      color: #007bff;
+    }
+  
+    .extra {
+      font-size: 14px;
+      /*    color: #666; */
+    }
+  }
+  
+  .profile-list2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center; // Center align text
+    gap: 20px; // Spacing between each date-time block
+    position: absolute;
+    top: 25%;
+    left: 85%;
+  
+  }
+  
+  .profile1 {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .time {
+    font-size: 16px;
+    color: #666;
+    font-weight: bold;
+  }
+  
+  .date {
+    font-size: 14px;
+    color: #888;
+  }
+  
+  
+  .doctor-profile {
+    width: 30%;
+    padding: 20px;
+    background-color: #e8f0f8;
+    border-radius: 12px;
+    text-align: center;
+    height: 30vh;
+    position: relative;
+    top: 85px;
+  }
+  
+  .logo {
+    width: 80px;
+    /* Profile image size */
+    height: 80px;
+    border-radius: 50%;
+    /* Circular image */
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  
+  .name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+  }
+  
+  .extra {
+    font-size: 14px;
+    color: #666;
+  }

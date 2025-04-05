@@ -19,6 +19,11 @@ const routes: Routes = [
   {
     path:"omdr",
     loadChildren:()=> import('./omdr-department/omdr-department.module').then(r => r.OmdrDepartmentModule)
+  },
+  {
+    path:"patient",
+    loadChildren: () => import('./patient/patient.module').then(r => r.PatientModule)
+
   }
 ];
 

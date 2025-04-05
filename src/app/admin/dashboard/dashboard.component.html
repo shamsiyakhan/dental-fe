@@ -1,59 +1,143 @@
-<div class="dashboard">
-    <div class="bellicon">
-        <i class="far fa-bell new"></i>
-    </div>
+<div class="mainContainer">
+    <div class="activity row">
+        <div class="col-8">
+            <div style="width: 90%; background-color: white; border-radius: 10px;padding: 20px; position: relative;display: flex; flex-direction: column;">
+                <span style="color:#007DC6 ; font-size: 2.5rem; font-weight: 600; margin-bottom: 20px;">Department Appointments</span>
+                <div class="range-dropdown">
+                    <select (change)="onRangeChange($event)">
+                      <option value="today">Today</option>
+                      <option value="1week">1 Week</option>
+                      <option value="1month">1 Month</option>
+                      <option value="1year">1 Year</option>
+                    </select>
+                  </div>
+                  
+                <canvas baseChart
+                        [datasets]="pieChartData"
+                        [labels]="pieChartLabels"
+                        [type]="pieChartType">
+                </canvas>
+              </div>
+        </div>
 
-    <div class="proleft">
-        <span class="text1">Upcoming Appointments</span>
-        <hr class="divider">
-        <div class="profile-list">
-            <div class="profile">
-                <img src="assets/img3.png" alt="" class="images">
-                <div class="details">
-                    <span class="name">Sonia Singh</span>
-                    <span class="extra">Cavity Filling</span>
-                </div>
-            </div>
+        <div class="col-4">
+            <div class="departmentList">
+                <div class="departmentInfo">
+                    <span style="color: #007DC6; font-weight: 600; font-size: 1.9rem;">Departmental List With Hod</span>
+                    <div class="department">
 
-            <div class="profile">
-                <img src="assets/img2.png" alt="" class="images">
-                <div class="details">
-                    <span class="name">Carl Rogers</span>
-                    <span class="extra">Tooth Extraction</span>
-                </div>
-            </div>
+                        <span>Prosthodontics and Crown & Bridge</span>
+                        <div class="hod">
+                            <img src="assets/img1.png" alt="">
+                            <div class="hodInfo">
+                                <span class="hodName">Dr. Shamsiya Khan</span>
+                                <span class="hodSpecialization">Cardilogist</span>
+                            </div>
+                        </div>
+                        
 
-            <div class="profile">
-                <img src="assets/img1.png" alt="" class="images">
-                <div class="details">
-                    <span class="name">Hania Khan</span>
-                    <span class="extra">Dental Implants</span>
+                    </div>
+
+                    <div class="department">
+                        <span>Periodontology</span>
+                        <div class="hod">
+                            <img src="assets/img2.png" alt="">
+                            <div class="hodInfo">
+                                <span class="hodName">Dr. Fareeha Choglay</span>
+                                <span class="hodSpecialization">Cardilogist</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="department">
+                        <span>Conservative Dentistry & Endodontics</span>
+                        <div class="hod">
+                            <img src="assets/img3.png" alt="">
+                            <div class="hodInfo">
+                                <span class="hodName">Dr. Shayban Khan</span>
+                                <span class="hodSpecialization">Cardilogist</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="department">
+                        <span>Oral & Maxillofacial Surgery</span>
+                        <div class="hod">
+                            <img src="assets/img2.png" alt="">
+                            <div class="hodInfo">
+                                <span class="hodName">Dr. John Doe</span>
+                                <span class="hodSpecialization">Cardilogist</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="department">
+                        <span>Orthodontics & Dentofacial Orthopedics</span>
+                        <div class="hod">
+                            <img src="assets/img1.png" alt="">
+                            <div class="hodInfo">
+                                <span class="hodName">Dr. John Doe</span>
+                                <span class="hodSpecialization">Cardilogist</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="department">
+                        <span>Paedodontics & Preventive Dentistry</span>
+                        <div class="hod">
+                            <img src="assets/img3.png" alt="">
+                            <div class="hodInfo">
+                                <span class="hodName">Dr. John Doe</span>
+                                <span class="hodSpecialization">Cardilogist</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="department">
+                        <span>Oral Medicine & Radiology</span>
+                        <div class="hod">
+                            <img src="assets/img1.png" alt="">
+                            <div class="hodInfo">
+                                <span class="hodName">Dr. John Doe</span>
+                                <span class="hodSpecialization">Cardilogist</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="department">
+                        <span>Oral Pathology & Microbiology</span>
+                        <div class="hod">
+                            <img src="assets/img2.png" alt="">
+                            <div class="hodInfo">
+                                <span class="hodName">Dr. John Doe</span>
+                                <span class="hodSpecialization">Cardilogist</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="department">
+                        <span>Public Health Dentistry</span>
+                        <div class="hod">
+                            <img src="assets/img3.png" alt="">
+                            <div class="hodInfo">
+                                <span class="hodName">Dr. John Doe</span>
+                                <span class="hodSpecialization">Cardilogist</span>
+                            </div>
+                        </div>  
+                    </div>
+                   
+                   
+                   
+                    
+                    
+                    
+                    
+                    
+                    
                 </div>
             </div>
         </div>
-
-
-        <div class="profile-list2">
-            <div class="profile1">
-                <span class="date">7th Mar, 2025</span>
-                <span class="time">9:00 am</span>
-            </div>
-            <div class="profile1">
-                <span class="date">7th Mar, 2025</span>
-                <span class="time">9:00 am</span>
-            </div>
-            <div class="profile1">
-                <span class="date">7th Mar, 2025</span>
-                <span class="time">9:00 am</span>
-            </div>
-        </div>
-
     </div>
-
-    <div class="doctor-profile">
-        <img class="logo" src="assets/logo.png" alt="">
-        <h2 class="name">Dr. Dave Affleck</h2>
-        <p class="info">Orthodontist</p>
-    </div>
-
+ 
 </div>
+
