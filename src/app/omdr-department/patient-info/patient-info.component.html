@@ -1,0 +1,63 @@
+<div class="mainContainer">
+
+    <div class="patientContainer">
+        <div class="heading">
+            Patient Information
+            <button class="selectedButton" style="width: 20%;" (click)="registerComplaint()">Register Chief Complaint</button>
+        </div>
+
+
+
+        <div class="patientInfoTabs">
+           <div class="redirects">
+            <button [ngClass]="isTreatment ? 'selectedButton' : 'unselectedButton'" (click)="changetab()">Treatments</button>
+            <button [ngClass]="isTreatment ? 'unselectedButton' : 'selectedButton'" (click)="changetab()">Cheif Complaint</button>
+           </div>
+
+
+           <div class="treatments" *ngIf="isTreatment">
+            <div class="treatment" *ngIf="treatments.length > 0; else noTreatment">
+                <div *ngFor="let treatment of treatments">
+                  <div class="treatmentInfo">
+                    <span class="treatmentName">{{treatment.treatment}}</span>
+                    <span class="treatmentDate">{{treatment.date}}</span>
+                  </div>
+                  <div class="treatmentStatus">
+                    <span class="status">{{treatment.status}}</span>
+                  </div>
+                </div>
+              </div>
+              
+              <ng-template #noTreatment>
+                <div class="noTreatmentMessage">No treatments for this patient added yet.</div>
+              </ng-template>
+              
+
+           </div>
+
+
+           <div class="chiefComplaint" *ngIf="!isTreatment">
+            <div style="margin-top: 20px;"></div>
+            <div style="width: 100%; height: 100%;" *ngIf="chiefComplaint.length > 0; else noComplaint">
+                <div  class="complaint" *ngFor="let complaint of chiefComplaint">
+                  
+                    <span class="complaintName">{{complaint.issue_reported}}</span>
+                    <span class="complaintDate">{{complaint.reporting_date  | date:'dd-MM-yyyy'}}</span>
+                  
+             
+                    <span class="status">{{complaint.payment_status}}</span>
+                    <i style="color: white; background-color: #005485; padding: 10px; border-radius: 50px; cursor: pointer;" class="fa-solid fa-arrow-right"></i>
+                  
+                </div>
+              </div>
+              
+              <ng-template #noComplaint>
+                <div class="noComplaintMessage">No chief complaints for this patient added yet.</div>
+              </ng-template>
+
+           </div>
+        </div>
+    </div>
+
+    
+</div>

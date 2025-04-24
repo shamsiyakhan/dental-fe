@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SignupComponent } from './signup/signup.component';
+import { DepartmentLoginComponent } from './department-login/department-login.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { SignupComponent } from './signup/signup.component';
     AdminLoginComponent,
     LoginComponent,
     AuthOverviewComponent,
-    SignupComponent
+    SignupComponent,
+    DepartmentLoginComponent
   ],
   imports: [
     CommonModule,

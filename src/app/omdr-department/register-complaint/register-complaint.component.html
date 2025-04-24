@@ -1,0 +1,63 @@
+<div class="mainContainer">
+
+    <div class="patientContainer">
+        <div class="heading">
+            Patient Profile
+        </div>
+    
+        <div class="patientInfo">
+    
+            <div class="leftProfile">
+                    <div class="profileName">
+                        <img src="assets/img2.png" alt="">
+                        <span class="name">{{patientInfo.fullname}}</span>
+                        <span class="id">{{patientInfo.userid}}</span>
+                    </div>
+
+                    <div class="details">
+                        <div>
+                            <b>Date Of Birth</b>: {{patientInfo.dob | date:"dd-MM-yyyy"}} <br>
+                            
+                        </div>
+                        <div>
+                            <b>Gender</b>: {{patientInfo.gender}} <br>
+                            
+                        </div>
+                        <div>
+                            <b>Marital Status</b>: {{patientInfo.maritalstatus}} <br>
+                          
+                        </div>
+                        <div>
+                            <b>Emergency Contact Name</b>: {{patientInfo.emergency_name}} <br>
+                        </div>
+                        <div>
+                            <b>Emergency Contact Number</b>: {{patientInfo.emergency_contact}} <br></div>
+                    </div>
+
+                    <div class="contactDetails mt-5">
+                        <b>Contact Details:</b>
+
+                        <div>
+                            <i class="fa-solid fa-phone"></i>:{{patientInfo.phone}}
+        
+                        </div>
+
+                        <div>
+                            <i class="fa-solid fa-envelope"></i>:{{patientInfo.email}}
+                        </div>
+
+
+                        <div>
+                            <i class="fa-solid fa-house"></i>:{{patientInfo.address}}
+                        </div>
+                    </div>
+            </div>
+
+            <div class="rightProfile">
+                <label for="username">Department Email</label>
+                <input class="input-text" id="username" type="text" placeholder="Department Email" formControlName="email">
+            </div>
+        </div>
+    </div>
+   
+</div>

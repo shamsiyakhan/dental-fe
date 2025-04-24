@@ -1,0 +1,18 @@
+<div class="mainContainer">
+    <div class="patientContainer">
+        <div class="heading">
+            <span>Patients</span>
+        </div>
+
+
+        <div class="patientList">
+
+            <div class="patientInfo" *ngFor="let patient of patients" (click)="redirectToPatientInfo(patient.userid)">
+                <img src="assets/img1.png" alt="" class="patientImg">
+                <span class="patientName">{{patient.fullname}}</span>
+                <span class="id">Id:{{patient.userid}}</span>
+            </div>
+
+        </div>
+    </div>
+</div>

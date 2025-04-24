@@ -1,0 +1,59 @@
+.mainContainer {
+    width: 100%;
+    height: 98vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.patientContainer {
+    width: 90%;
+    height: 90%;
+    border-radius: 10px;
+    background-color: white;
+    padding: 30px;
+
+    .heading {
+        width: 100%;
+        color: #007DC6;
+        font-weight: 600;
+        font-size: 2.5rem;
+    }
+
+    .patientList {
+        width: 100%;
+        height: 95%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 50px;
+        padding: 20px;
+        
+
+        .patientInfo {
+            width: 20%;
+            height: 30%;
+            background-color: #007dc610;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            justify-content: space-evenly;
+            cursor: pointer;
+            img{
+                width: 30%;
+            }
+
+            .patientName{
+                font-size: 1.5rem;
+                font-weight: 700;   
+            }
+
+            .id{
+                font-size: 1.3rem;
+                font-weight: 600; 
+            }
+        }
+    }
+}
