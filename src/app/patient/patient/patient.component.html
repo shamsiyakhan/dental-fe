@@ -1,6 +1,6 @@
 <div class="main">
     <div class="row" style="height: 99vh !important; width: 100%;">
-        <div class="col-2" style="background-color: white;">
+        <div class="col-2">
             <div class="icon">
                 <img class="logo" src="assets/DentalCare.png" alt="">
             </div>
@@ -8,19 +8,23 @@
                 <div class="menu-item" [ngClass]="isActive('dashboard')">
                     <span (click)="redirect('dashboard')">Dashboard</span>
                 </div>
-                <div class="menu-item" [ngClass]="isActive('patient')">
-                    <span (click)="redirect('patient')">Patients</span>
+
+                <div class="menu-item" [ngClass]="isActive('profile')">
+                    <span>Profile</span>
                 </div>
-                <div class="menu-item" [ngClass]="isActive('doctor')">
-                    <span>Doctors</span>
+                <div class="menu-item" [ngClass]="isActive('testreports')">
+                    <span>Test reports</span>
                 </div>
-                <div class="menu-item" [ngClass]="isActive('appointment')">
+                <div class="menu-item" [ngClass]="isActive('appointments')">
                     <span>Appointments</span>
                 </div>
-                <div class="menu-item" [ngClass]="isActive('transaction')">
-                    <span>Transactions</span>
+                <div class="menu-item" [ngClass]="isActive('treatment')">
+                    <span>Treatment</span>
                 </div>
-                <div class="menu-item" [ngClass]="isActive('setting')">
+                <div class="menu-item" [ngClass]="isActive('bills')">
+                    <span>Bills</span>
+                </div>
+                <div class="menu-item" [ngClass]="isActive('settings')">
                     <span>Settings</span>
                 </div>
             </div>

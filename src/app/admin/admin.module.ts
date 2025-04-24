@@ -9,6 +9,7 @@ import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 import { PatientTreatmentComponent } from './patient-treatment/patient-treatment.component';
 import { PatientTreatmentDiagnosisComponent } from './patient-treatment-diagnosis/patient-treatment-diagnosis.component';
+import { NgChartsModule } from 'ng2-charts';
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -21,7 +22,8 @@ import { PatientTreatmentDiagnosisComponent } from './patient-treatment-diagnosi
     CommonModule,
     AdminRoutingModule,
     MatTableModule,
-    HttpClientModule
+    HttpClientModule,
+    NgChartsModule
   ]
 })
 export class AdminModule { }
