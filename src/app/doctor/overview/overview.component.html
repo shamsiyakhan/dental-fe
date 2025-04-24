@@ -1,24 +1,30 @@
 <div class="main">
     <div class="row" style="height: 99vh !important; width: 100%;">
-        <div class="col-2">
+        <div class="col-2" style="background-color: white;">
             <div class="icon">
                 <img class="logo" src="assets/DentalCare.png" alt="">
+            </div>
+            <div class="info">
+               <!--  <i class="fa-regular fa-hand">👋</i>  -->
+                <span class="emoji">👋</span>
+                <span>Hello!</span>
+                <span>Dr. Dave Affleck</span>
             </div>
             <div class="menu-container">
                 <div class="menu-item" [ngClass]="isActive('dashboard')">
                     <span (click)="redirect('dashboard')">Dashboard</span>
                 </div>
-                <div class="menu-item" [ngClass]="isActive('patientTreatment')">
+                <!-- <div class="menu-item" [ngClass]="isActive('patientTreatment')">
                     <span (click)="redirect('patientTreatment')">Patients</span>
-                </div>
+                </div> -->
                 <div class="menu-item" [ngClass]="isActive('doctor')">
-                    <span>Doctors</span>
+                    <span (click)="redirect('doctor')">Doctors</span>
                 </div>
-                <div class="menu-item" [ngClass]="isActive('appointment')">
-                    <span>Appointments</span>
+                <div class="menu-item" [ngClass]="isActive('consultations')">
+                    <span>Consultations</span>
                 </div>
-                <div class="menu-item" [ngClass]="isActive('transaction')">
-                    <span>Transactions</span>
+                <div class="menu-item" [ngClass]="isActive('profile')">
+                    <span (click)="redirect('profile')">Profile</span>
                 </div>
                 <div class="menu-item" [ngClass]="isActive('setting')">
                     <span>Settings</span>

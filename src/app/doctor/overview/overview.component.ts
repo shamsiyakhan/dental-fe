@@ -26,5 +26,6 @@ export class OverviewComponent implements OnInit {
    redirect(route:any){
      this.router.navigate([`/doctor/${route}`])
    }
+    
  
  }
