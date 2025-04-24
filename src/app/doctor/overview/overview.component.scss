@@ -2,10 +2,10 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 28px;
     text-decoration: none;
     font-size: 1.5rem;
-    margin: 50% 0 0 20%;
+    margin: 20% 12% 0% 12% !important;
     align-items: center;
     justify-content: center;
     width: 80%;
@@ -54,5 +54,19 @@
 .logo{
     position: absolute;
     top: 4%;
-    left: 4%;
+    left: 3%;
 }
+.info{
+    display: flex;
+        gap: 9px;
+        height: auto;
+        flex-direction: column;
+        margin-top: 80px;
+        font-size: 2rem;
+        margin-left: 10px;
+        align-items: center;
+        font-weight: 600;
+}
+.emoji {
+    font-size: 30px; /* Increase this for bigger emoji */
+  }

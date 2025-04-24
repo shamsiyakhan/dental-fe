@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { OverviewComponent } from './overview/overview.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PatientTreatmentComponent } from './patient-treatment/patient-treatment.component';
+import { DoctorComponent } from './doctor/doctor.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 const routes: Routes = [
@@ -11,13 +13,27 @@ const routes: Routes = [
     component:OverviewComponent,
     children:[
       { 
+        path:"",
+        redirectTo:'dashboard',
+        pathMatch:'full'
+      },
+      { 
         path: 'dashboard',
         component:DashboardComponent
       },
       {
         path: 'patientTreatment',
         component:PatientTreatmentComponent
+      },
+      {
+        path:'doctor',
+        component:DoctorComponent
+      },
+      {
+        path:'profile',
+        component:ProfileComponent
       }
+     
     ]
   }
 ];
