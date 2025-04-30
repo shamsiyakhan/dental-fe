@@ -13,6 +13,8 @@ import { NgChartsModule } from 'ng2-charts';
 import { ProfileComponent } from './profile/profile.component';
 import { DepartmentComponent } from './department/department.component';
 import { DepartmentInfoComponent } from './department-info/department-info.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -30,7 +32,9 @@ import { DepartmentInfoComponent } from './department-info/department-info.compo
     MatTableModule,
     HttpClientModule,
     NgChartsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatIconModule,
+    MatButtonModule
   ]
 })
 export class AdminModule { }

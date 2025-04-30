@@ -1,4 +1,4 @@
-<div class="header">
+<div class="header1">
     <span class="back-arrow">&#8592;</span>
     <span class="department-name">Prosthodontics and Crown & Bridge</span>
 </div>
@@ -14,21 +14,312 @@
 
 <!-- treatment  list-->
 
-<div class="treatment" *ngIf="treatment">
-<h1>hfgghhdfhj</h1>
-</div>
+<!-- <div class="treatment" *ngIf="treatment">
+    <div class="container">
+        <div class="header">
+          <h2>List of treatments</h2>
+          <button class="add-btn"><i class="fas fa-plus"></i></button>
+        </div>
+      
+        <table>
+          <thead>
+            <tr>
+              <th>List of treatments</th>
+              <th>Charges (INR)</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let treatment of treatments">
+              <td>{{ treatment.name }}</td>
+              <td>{{ treatment.charge }}</td>
+              <td class="actions">
+                <i class="fas fa-pen" (click)="editTreatment(treatment)"></i>
+                <i class="fas fa-trash" (click)="deleteTreatment(treatment)"></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+</div> -->
+
+
+<div class="container" *ngIf="treatment">
+    <div class="header">
+      <h2>List of treatments</h2>
+      <button mat-mini-fab color="primary" class="add"><mat-icon>add</mat-icon></button>
+    </div>
+  
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z1">
+  
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> List of treatments </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="charge">
+        <th mat-header-cell *matHeaderCellDef> Charges (INR) </th>
+        <td mat-cell *matCellDef="let element"> {{element.charge}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button color="accent" class="edit" (click)="editTreatment(element)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" class="delete" (click)="deleteTreatment(element)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="tdcell"></tr>
+    </table>
+  </div>
+  
+
+
+
+
 
 
 
 
 <!-- list of doctor -->
 
-<div class="doctor" *ngIf="doctor">
-<h1>doctor</h1>
+<div class="doctor" *ngIf="doctor" style="margin-top: -40px;">    
+    <div class="main">
+        <div class="doc1">
+            <span>List Of Doctor</span>
+            <div class="pagination">
+                <button (click)="prevPage()" [disabled]="currentPage === 1">
+                  <span>&#10094;</span>
+                </button>
+            
+                <button
+                  *ngFor="let page of [].constructor(totalPages()); let i = index"
+                  [class.active]="currentPage === i + 1"
+                  (click)="goToPage(i + 1)">
+                  {{ i + 1 }}
+                </button>
+            
+                <button (click)="nextPage()" [disabled]="currentPage === totalPages()">
+                  <span>&#10095;</span>
+                </button>
+              </div>
+            <img src="assets/add.svg" alt="">
+        </div>
+        
+       
+          <div class="card-container">
+            <div class="card">
+              <img src="assets/doc1.jpg" alt="">
+              <h3>Dr. Arvind Kapoor</h3>
+              <p>Cardiologist</p>
+            </div>
+    
+            <div class="card">
+                <img src="assets/doc2.jpg" alt="">
+                <h3>Dr. Arvind Kapoor</h3>
+                <p>Cardiologist</p>
+              </div>
+    
+              <div class="card">
+                <img src="assets/doc3.jpg" alt="">
+                <h3>Dr. Arvind Kapoor</h3>
+                <p>Cardiologist</p>
+              </div>
+    
+              <div class="card">
+                <img src="assets/doc4.jpg" alt="">
+                <h3>Dr. Arvind Kapoor</h3>
+                <p>Cardiologist</p>
+              </div>
+    
+              <div class="card">
+                <img src="assets/doc5.jpg" alt="">
+                <h3>Dr. Arvind Kapoor</h3>
+                <p>Cardiologist</p>
+              </div>
+    
+              <div class="card">
+                <img src="assets/doc1.jpg" alt="">
+                <h3>Dr. Arvind Kapoor</h3>
+                <p>Cardiologist</p>
+              </div>
+      
+              <div class="card">
+                  <img src="assets/doc2.jpg" alt="">
+                  <h3>Dr. Arvind Kapoor</h3>
+                  <p>Cardiologist</p>
+                </div>
+      
+                <div class="card">
+                  <img src="assets/doc3.jpg" alt="">
+                  <h3>Dr. Arvind Kapoor</h3>
+                  <p>Cardiologist</p>
+                </div>
+      
+                <div class="card">
+                  <img src="assets/doc4.jpg" alt="">
+                  <h3>Dr. Arvind Kapoor</h3>
+                  <p>Cardiologist</p>
+                </div>
+      
+                <div class="card">
+                  <img src="assets/doc5.jpg" alt="">
+                  <h3>Dr. Arvind Kapoor</h3>
+                  <p>Cardiologist</p>
+                </div>
+                <div class="card">
+                  <img src="assets/doc1.jpg" alt="">
+                  <h3>Dr. Arvind Kapoor</h3>
+                  <p>Cardiologist</p>
+                </div>
+        
+                <div class="card">
+                    <img src="assets/doc2.jpg" alt="">
+                    <h3>Dr. Arvind Kapoor</h3>
+                    <p>Cardiologist</p>
+                  </div>
+        
+                  <div class="card">
+                    <img src="assets/doc3.jpg" alt="">
+                    <h3>Dr. Arvind Kapoor</h3>
+                    <p>Cardiologist</p>
+                  </div>
+        
+                  <div class="card">
+                    <img src="assets/doc4.jpg" alt="">
+                    <h3>Dr. Arvind Kapoor</h3>
+                    <p>Cardiologist</p>
+                  </div>
+        
+                  <div class="card">
+                    <img src="assets/doc5.jpg" alt="">
+                    <h3>Dr. Arvind Kapoor</h3>
+                    <p>Cardiologist</p>
+                  </div>
+          </div>
+    </div>
 </div>
 
 
 <!-- list of patient -->
-<div class="patient" *ngIf="patient">
-<h2>patient</h2>
+<div class="patient" *ngIf="patient" style="margin-top: -40px;">
+    <div class="main">
+        <div class="doc1">
+            <span>List Of Patient</span>
+            <div class="pagination">
+                <button (click)="prevPage()" [disabled]="currentPage === 1">
+                  <span>&#10094;</span>
+                </button>
+            
+                <button
+                  *ngFor="let page of [].constructor(totalPages()); let i = index"
+                  [class.active]="currentPage === i + 1"
+                  (click)="goToPage(i + 1)">
+                  {{ i + 1 }}
+                </button>
+            
+                <button (click)="nextPage()" [disabled]="currentPage === totalPages()">
+                  <span>&#10095;</span>
+                </button>
+              </div>
+        </div>
+
+          <div class="card-container">
+            <div class="card">
+              <img src="assets/doc1.jpg" alt="">
+              <h3>Dr. Arvind Kapoor</h3>
+              <p>Cardiologist</p>
+            </div>
+    
+            <div class="card">
+                <img src="assets/doc2.jpg" alt="">
+                <h3>Dr. Arvind Kapoor</h3>
+                <p>Cardiologist</p>
+              </div>
+    
+              <div class="card">
+                <img src="assets/doc3.jpg" alt="">
+                <h3>Dr. Arvind Kapoor</h3>
+                <p>Cardiologist</p>
+              </div>
+    
+              <div class="card">
+                <img src="assets/doc4.jpg" alt="">
+                <h3>Dr. Arvind Kapoor</h3>
+                <p>Cardiologist</p>
+              </div>
+    
+              <div class="card">
+                <img src="assets/doc5.jpg" alt="">
+                <h3>Dr. Arvind Kapoor</h3>
+                <p>Cardiologist</p>
+              </div>
+    
+              <div class="card">
+                <img src="assets/doc1.jpg" alt="">
+                <h3>Dr. Arvind Kapoor</h3>
+                <p>Cardiologist</p>
+              </div>
+      
+              <div class="card">
+                  <img src="assets/doc2.jpg" alt="">
+                  <h3>Dr. Arvind Kapoor</h3>
+                  <p>Cardiologist</p>
+                </div>
+      
+                <div class="card">
+                  <img src="assets/doc3.jpg" alt="">
+                  <h3>Dr. Arvind Kapoor</h3>
+                  <p>Cardiologist</p>
+                </div>
+      
+                <div class="card">
+                  <img src="assets/doc4.jpg" alt="">
+                  <h3>Dr. Arvind Kapoor</h3>
+                  <p>Cardiologist</p>
+                </div>
+      
+                <div class="card">
+                  <img src="assets/doc5.jpg" alt="">
+                  <h3>Dr. Arvind Kapoor</h3>
+                  <p>Cardiologist</p>
+                </div>
+                <div class="card">
+                  <img src="assets/doc1.jpg" alt="">
+                  <h3>Dr. Arvind Kapoor</h3>
+                  <p>Cardiologist</p>
+                </div>
+        
+                <div class="card">
+                    <img src="assets/doc2.jpg" alt="">
+                    <h3>Dr. Arvind Kapoor</h3>
+                    <p>Cardiologist</p>
+                  </div>
+        
+                  <div class="card">
+                    <img src="assets/doc3.jpg" alt="">
+                    <h3>Dr. Arvind Kapoor</h3>
+                    <p>Cardiologist</p>
+                  </div>
+        
+                  <div class="card">
+                    <img src="assets/doc4.jpg" alt="">
+                    <h3>Dr. Arvind Kapoor</h3>
+                    <p>Cardiologist</p>
+                  </div>
+        
+                  <div class="card">
+                    <img src="assets/doc5.jpg" alt="">
+                    <h3>Dr. Arvind Kapoor</h3>
+                    <p>Cardiologist</p>
+                  </div>
+          </div>
+    </div>
 </div>
