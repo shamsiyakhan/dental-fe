@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SignupComponent } from './signup/signup.component';
 import { DepartmentLoginComponent } from './department-login/department-login.component';
+import { ClerkLoginComponent } from './clerk-login/clerk-login.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { DepartmentLoginComponent } from './department-login/department-login.co
     LoginComponent,
     AuthOverviewComponent,
     SignupComponent,
-    DepartmentLoginComponent
+    DepartmentLoginComponent,
+    ClerkLoginComponent
   ],
   imports: [
     CommonModule,

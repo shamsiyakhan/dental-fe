@@ -1,0 +1,22 @@
+<div class="wrap row">
+    <div class="col-7 login">
+    <form [formGroup]="loginForm" class="logincontent" (ngSubmit)="onSubmit()">
+            <span class="logo">Login to Clerk<span style="color: #007DC6;">DentalCare+</span></span>
+            <div class="input">
+                <label for="username">Clerk Login</label>
+            <input class="input-text" id="username" type="text" placeholder="Clerk Email" formControlName="username">
+            </div>
+            <div class="input">
+                <label for="password">Password</label>
+            <input class="input-text" id="password" type="password" placeholder="Password" formControlName="password">
+            </div>
+            <div class="button1" style="margin-left: 16px;">
+                <button class="button" type="submit">Login</button>
+            </div>
+    </form>
+    </div>
+    <div class="col-5">
+        <img class="img" src="assets/login.png" alt="">
+    </div>
+
+</div>

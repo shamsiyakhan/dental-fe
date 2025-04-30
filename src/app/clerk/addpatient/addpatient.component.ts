@@ -20,13 +20,12 @@ export class AddpatientComponent implements OnInit {
       password: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', Validators.required],
-      emergencyContactName: [''],
-      emergencyContactNumber: [''],
+      emergency_name: [''],
+      emergency_contact: [''],
       address: ['', Validators.required],
       dob: [''],
       gender: [''],
-      maritalStatus: [''],
-      role:['patient']
+      marital_status: ['']
     });
   }
 

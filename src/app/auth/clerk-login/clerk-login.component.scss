@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.wrap{
+    width: 100%;
+    background-color: #F9FAFB;
+  /*   overflow: hidden; */
+}
+
+.img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    aspect-ratio:2/2.3;
+}
+.logincontent{
+    background-color:white;
+    font-family:'Montserrat';
+    width: 69%;
+    height: 49%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+   font-size: 16px;
+   border-radius: 12px;
+   /* max-height: 100vh; */  // Prevents content from exceeding viewport height
+    /* overflow: auto; */
+
+}
+.login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.input{
+    display: flex;
+    flex-direction: column;
+    margin: 0px 16px;
+}
+.logo{
+    font-weight: 600;
+    font-family: "Montserrat";
+    font-size: 25px;
+    margin-left: 16px;
+}

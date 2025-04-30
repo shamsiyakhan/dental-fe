@@ -43,11 +43,11 @@
       </div>
       <div class="form-group">
         <label>Emergency Contact Name</label>
-        <input formControlName="emergencyContactName" type="text" placeholder="Alex" />
+        <input formControlName="emergency_name" type="text" placeholder="Alex" />
       </div>
       <div class="form-group">
         <label>Emergency Contact Number</label>
-        <input formControlName="emergencyContactNumber" type="tel" placeholder="+91 9988776655" />
+        <input formControlName="emergency_contact" type="tel" placeholder="+91 9988776655" />
       </div>
 
       <div class="form-group full-width">
@@ -57,7 +57,7 @@
 
       <div class="form-group">
         <label>Date of Birth</label>
-        <input formControlName="dob" type="text" placeholder="DD/MM/YYYY" />
+        <input formControlName="dob" type="date" placeholder="DD/MM/YYYY" />
       </div>
       <div class="form-group">
         <label>Gender</label>
@@ -67,7 +67,7 @@
         <label>Marital Status</label>
         <input formControlName="maritalStatus" type="text" placeholder="Single/Married" />
       </div>
-      <button type="submit" class="submit-btn" (click)="showcharges()">Save and Next</button>
+      <button type="button" class="submit-btn" (click)="showcharges()">Save and Next</button>
     </div>
 
 
@@ -90,7 +90,7 @@
         <label>Amount</label>
         <div class="value">₹ 20</div>
       </div>
-      <button type="submit" class="submit-btn" (click)="showcharges()">Submit</button>
+      <button type="submit" class="submit-btn">Submit</button>
     </div>
 
     
