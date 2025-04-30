@@ -6,12 +6,14 @@ import { OverviewComponent } from './overview/overview.component';
 import { AddpatientComponent } from './addpatient/addpatient.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { InfoPatientComponent } from './info-patient/info-patient.component';
 
 @NgModule({
   declarations: [
     OverviewComponent,
     AddpatientComponent,
-    DashboardComponent
+    DashboardComponent,
+    InfoPatientComponent
   ],
   imports: [
     CommonModule,

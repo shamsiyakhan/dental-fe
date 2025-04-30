@@ -14,6 +14,7 @@ export class AddpatientComponent implements OnInit {
   activeStep: number = 1;
   download=false
   card=false
+  addUserInfo:any
   constructor(private fb: FormBuilder,private http:HttpClient) {}
 
   ngOnInit() {
@@ -27,20 +28,20 @@ export class AddpatientComponent implements OnInit {
       address: ['', Validators.required],
       dob: [''],
       gender: [''],
-      marital_status: ['']
+      marital_status: [''],
+      registration_payment_type:['']
     });
   }
 
   onSubmit() {
+    console.warn("function called")
     if (this.patientForm.valid) {
       console.log(this.patientForm.value);
-      this.patientForm.patchValue({
-        password:window.btoa(this.patientForm.value.password)
-      })
 
 
-      this.http.post('http://localhost:3000/register',this.patientForm.value).subscribe(data=>{
+      this.http.post('http://localhost:3000/register',this.patientForm.value).subscribe((data:any)=>{
         console.warn(data);
+        this.addUserInfo=data.user
       })
       // Submit logic here
     } 
@@ -54,6 +55,9 @@ export class AddpatientComponent implements OnInit {
 
   showDownload(){
     this.download=true
+    console.warn(this.patientForm.value)
+    this.onSubmit()
+
   }
 
 

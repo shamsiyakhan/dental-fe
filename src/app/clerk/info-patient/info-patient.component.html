@@ -1,0 +1,131 @@
+<div class="form-wrapper">
+    <form [formGroup]="patientForm">
+      <h2 >Patient Information </h2>
+     
+  
+  
+      <div class="profile-section" >
+        <img src="assets/doc4.jpg" alt="Profile">
+        <label class="edit-icon">
+          <input type="file" hidden>
+          ✏️
+        </label>
+      </div>
+  
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input formControlName="fullname" type="text" placeholder="Full Name" />
+        </div>
+        <div class="form-group">
+          <label>User Email</label>
+          <input formControlName="email" type="email" placeholder="example@gmail.com" />
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input formControlName="password" type="tel" placeholder="Password" />
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input formControlName="phone" type="tel" placeholder="+91 9876543210" />
+        </div>
+        <div class="form-group">
+          <label>Emergency Contact Name</label>
+          <input formControlName="emergency_name" type="text" placeholder="Alex" />
+        </div>
+        <div class="form-group">
+          <label>Emergency Contact Number</label>
+          <input formControlName="emergency_contact" type="tel" placeholder="+91 9988776655" />
+        </div>
+  
+        <div class="form-group full-width">
+          <label>Address</label>
+          <input formControlName="address" type="text" placeholder="Street, City, ZIP" />
+        </div>
+  
+        <div class="form-group">
+          <label>Date of Birth</label>
+          <input formControlName="dob" type="date" placeholder="DD/MM/YYYY" />
+        </div>
+        <div class="form-group">
+          <label>Gender</label>
+          <input formControlName="gender" type="text" placeholder="Male/Female" />
+        </div>
+        <div class="form-group">
+          <label>Marital Status</label>
+          <input formControlName="maritalStatus" type="text" placeholder="Single/Married" />
+        </div>
+        <button type="button" class="submit-btn" (click)="Update()">Update</button>
+      </div>
+  
+  
+
+  
+
+      <div class="successcard">
+        <div class="registration-section1">
+          <h2 class="title">Patient Registration Card</h2>
+  
+          <!-- Top Section -->
+          <div class="card top-card">
+            <div class="toptitle">
+              <span>Dental Care+</span>
+              <span>Patient Registration Card</span>
+            </div>
+            <div class="left-section">
+              <div class="left">
+                <img class="photo" src="assets/doc1.jpg" alt="">
+              </div>
+              <div class="right">
+                <h3>{{patient.fullname}}</h3>
+                <p><strong>ID:</strong> {{patient.userid}}</p>
+                <p><strong>Date of birth:</strong>{{patient.dob | date:"dd-MM-yyyy"}}</p>
+                <p><strong>Gender:</strong> {{patient.gender}}</p>
+                <p><strong>Emergency Contact:</strong> {{patient.emergency_contact}}</p>
+                <p><strong>Phone:</strong> +91 {{patient.phone}}</p>
+                <p><strong>Email:</strong> {{patient.email}}</p>
+                <p><strong>Address:</strong> {{patient.address}}</p>
+              </div>
+            </div>
+          </div>
+  
+  
+          <!-- Bottom Section -->
+          <div class="card bottom-card">
+            <div class="toptitle">
+              <span>DentalCare+</span>
+              <span>Contact details</span>
+            </div>
+  
+            <div class="left-section">
+              <div class="left">
+                <p>📞 +91 8976789938</p>
+                <p>✉️ dentalcarehelp@gmail.com</p>
+                <p>📍 MG Road, Camp, Pune - 411001</p>
+                <p>🌐 www.dentalcare.com</p>
+              </div>
+  
+              <div class="right">
+                <h4>Important Instructions</h4>
+                <ul>
+                  <li>Bring your card when you visit our clinic.</li>
+                  <li>Verify the data before registration.</li>
+                  <li>DentalCare+ holds the rights to access your details.</li>
+                </ul>
+                <h4>Terms/Privacy Notice</h4>
+                <p>By registering, you consent to share limited personal data for medical record keeping.</p>
+              </div>
+            </div>
+  
+            <div class="footer">Date of registration: 18 March 2025</div>
+          </div>
+  
+          <div class="download1">
+            <a href="#">⬇️ Download</a>
+          </div>
+        </div>
+      </div>
+  
+  
+    </form>
+  </div>

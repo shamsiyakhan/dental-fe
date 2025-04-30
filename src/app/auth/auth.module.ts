@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SignupComponent } from './signup/signup.component';
 import { DepartmentLoginComponent } from './department-login/department-login.component';
 import { ClerkLoginComponent } from './clerk-login/clerk-login.component';
+import { DoctorLoginComponent } from './doctor-login/doctor-login.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ClerkLoginComponent } from './clerk-login/clerk-login.component';
     AuthOverviewComponent,
     SignupComponent,
     DepartmentLoginComponent,
-    ClerkLoginComponent
+    ClerkLoginComponent,
+    DoctorLoginComponent
   ],
   imports: [
     CommonModule,

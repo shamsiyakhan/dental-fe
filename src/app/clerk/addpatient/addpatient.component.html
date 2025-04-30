@@ -78,7 +78,7 @@
 
       <div class="form-group">
         <label for="paymentType">Payment Type</label>
-        <select id="paymentType">
+        <select id="paymentType" formControlName="registration_payment_type">
           <option>Select</option>
           <option>Cash</option>
           <option>UPI</option>
@@ -127,14 +127,14 @@
               <img class="photo" src="assets/doc1.jpg" alt="">
             </div>
             <div class="right">
-              <h3>Vihaan Malhotra</h3>
-              <p><strong>ID:</strong> 990919</p>
-              <p><strong>Date of birth:</strong> 28 April 1996</p>
-              <p><strong>Gender:</strong> Male</p>
-              <p><strong>Emergency Contact:</strong> 9098976896</p>
-              <p><strong>Phone:</strong> +91 8900767897</p>
-              <p><strong>Email:</strong> vihaanmalhotra@gmail.com</p>
-              <p><strong>Address:</strong> 2A B-block, FC Road, Pune, India</p>
+              <h3>{{addUserInfo.fullname}}</h3>
+              <p><strong>ID:</strong> {{addUserInfo.userid}}</p>
+              <p><strong>Date of birth:</strong>{{addUserInfo.dob | date:"dd-MM-yyyy"}}</p>
+              <p><strong>Gender:</strong> {{addUserInfo.gender}}</p>
+              <p><strong>Emergency Contact:</strong> {{addUserInfo.emergency_contact}}</p>
+              <p><strong>Phone:</strong> +91 {{addUserInfo.phone}}</p>
+              <p><strong>Email:</strong> {{addUserInfo.email}}</p>
+              <p><strong>Address:</strong> {{addUserInfo.address}}</p>
             </div>
           </div>
         </div>
@@ -166,7 +166,7 @@
               <p>By registering, you consent to share limited personal data for medical record keeping.</p>
             </div>
           </div>
-          
+
           <div class="footer">Date of registration: 18 March 2025</div>
         </div>
 

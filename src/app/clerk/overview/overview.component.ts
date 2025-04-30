@@ -25,6 +25,10 @@ export class OverviewComponent implements OnInit {
     }
   }
 
+  login(){
+    this.router.navigate(['/auth/clerk-login'])
+  }
+
   redirect(route:any){
     this.router.navigate([`/clerk/${route}`])
   }

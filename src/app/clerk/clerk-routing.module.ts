@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { OverviewComponent } from './overview/overview.component';
 import { AddpatientComponent } from './addpatient/addpatient.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { InfoPatientComponent } from './info-patient/info-patient.component';
 
 const routes: Routes = [
   {
@@ -23,8 +24,11 @@ const routes: Routes = [
       {
         path:'addpatient',
         component:AddpatientComponent
+      },
+      {
+        path:'patientinfo/:id',
+        component:InfoPatientComponent
       }
-      
     ]
   }
 ];

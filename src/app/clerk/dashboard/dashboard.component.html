@@ -11,11 +11,11 @@
           <a href="#" class="headerOverview">View all</a>
         </div>
         <div class="patient-list">
-          <div class="patient-card" *ngFor="let patient of patients">
-            <img [src]="patient.image" [alt]="patient.name">
+          <div class="patient-card" *ngFor="let patient of patients" (click)="viewPatient(patient)">
+            <img src="https://randomuser.me/api/portraits/men/1.jpg" [alt]="patient.fullname">
             <div class="patient-details">
-              <p class="name">{{ patient.name }}</p>
-              <p class="id">ID: {{ patient.id }}</p>
+              <p class="name">{{ patient.fullname }}</p>
+              <p class="id">ID: {{ patient.userid }}</p>
             </div>
           </div>
         </div>
