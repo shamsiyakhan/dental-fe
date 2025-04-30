@@ -1,0 +1,41 @@
+<div class="container">
+    <header class="header">
+      <h1 class="headerOverview">⌘ Overview</h1>
+      <button class="register-btn" (click)="register()">Register new patient</button>
+    </header>
+  
+    <div class="cards">
+      <section class="card">
+        <div class="card-header">
+          <h2 class="headerOverview">Patients</h2>
+          <a href="#" class="headerOverview">View all</a>
+        </div>
+        <div class="patient-list">
+          <div class="patient-card" *ngFor="let patient of patients">
+            <img [src]="patient.image" [alt]="patient.name">
+            <div class="patient-details">
+              <p class="name">{{ patient.name }}</p>
+              <p class="id">ID: {{ patient.id }}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+  
+      <section class="card">
+        <div class="card-header">
+          <h2 class="headerOverview">Pending bills</h2>
+          <a href="#">View all</a>
+        </div>
+        <div class="bill-list">
+          <div class="bill-card" *ngFor="let bill of pendingBills">
+            <img [src]="bill.image" [alt]="bill.name">
+            <div class="bill-details">
+              <p class="name">{{ bill.name }}</p>
+              <p class="amount">₹{{ bill.amount }}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  

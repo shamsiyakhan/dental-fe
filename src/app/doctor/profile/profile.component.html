@@ -1,1 +1,48 @@
-<p>profile works!</p>
+<div class="header">
+    <span class="profile-text">Profile</span>
+    <span class="notification-icon">🔔</span>
+</div>
+
+<div class="tabs">
+    <div class="tab" [class.active]="activeTab === 'identity'" (click)="selectTab('identity')">
+        Identity
+    </div>
+    <div class="tab" [class.active]="activeTab === 'personal'" (click)="selectTab('personal')">
+        Personal
+    </div>
+    <div class="tab" [class.active]="activeTab === 'professional'" (click)="selectTab('professional')">
+        Professional
+    </div>
+</div>
+
+<!-- Optional: Conditional content -->
+<div class="tab-content">
+    <ng-container [ngSwitch]="activeTab">
+        <div class="wrapper"  *ngSwitchCase="'identity'">
+            <span>Please upload the front and back of your identity card</span>
+        
+            <div class="row">
+                <div class="col-6 front">
+                    <span>Front</span>
+                    <button class="upload">Upload ID</button>
+                    <img class="imgs" src="assets/frontid.png" alt="">
+                    <!-- <span class="material-icons" style="color: #D32F2F; font-size: 32px;">delete</span> -->
+                    <i class="fas fa-trash delete"></i>
+                </div>
+        
+        
+                <div class="col-6 front">
+                    <span>Back</span>
+                    <button class="upload">Upload ID</button>
+                    <img class="imgs" src="assets/backid.png" alt="">
+                    <i class="fas fa-trash delete"></i>
+                </div>
+            </div>
+        </div>
+
+        <div *ngSwitchCase="'personal'" style="margin: 10px 30px;"><app-personal></app-personal></div>
+        <div *ngSwitchCase="'professional'" style="margin: 10px 30px;"><app-professional></app-professional></div>
+        
+    </ng-container>
+</div>
+

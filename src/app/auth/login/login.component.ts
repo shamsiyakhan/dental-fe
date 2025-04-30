@@ -32,8 +32,8 @@ export class LoginComponent implements OnInit {
   onSubmit(){
     this.http.post(this.api.url+'/login',this.loginForm.value).subscribe((data:any)=>{
       console.log(data)
-      if(data.msg.roleid==5){
-        this.router.navigate(['/doctor/dashboard'])
+      if(data.user.role=='clerk'){
+        this.router.navigate(['/clerk/dashboard'])
       }
     },(error)=>{
       Swal.fire({

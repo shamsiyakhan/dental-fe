@@ -1,0 +1,102 @@
+<!-- <div class="pro-container">
+
+    <div class="row">
+        <div class="col-4 doctor-profile">
+            <div class="logo">
+                <img class="logo" src="assets/logo.png" alt="">
+            </div>
+
+            <h2 class="name1">Dr. Dave Affleck</h2>
+            <p class="info">Orthodontist</p>
+        </div>
+    </div>
+
+        <div class="col-8">
+            <form [formGroup]="professional" (ngSubmit)="submit()" class="right-panel">
+                <div class="row">
+                  <div class="form-group">
+                    <label>Department ID</label>
+                    <input type="text" formControlName="departmentid" />
+                  </div>
+                  <div class="form-group">
+                    <label>Department Name</label>
+                    <input type="text" formControlName="departmentname" />
+                  </div>
+                </div>
+          
+                <div class="form-group full">
+                  <label>Experience</label>
+                  <input type="email" formControlName="experience" />
+                </div>
+          
+                
+                  <div class="form-group">
+                    <label>Qualification/Degree</label>
+                    <input type="text" formControlName="qualification" />
+                  </div>
+                  <div class="form-group">
+                    <label>Specialization</label>
+                    <input type="date" formControlName="specialization" />
+                  </div>
+              
+
+          
+                <div class="form-group full">
+                  <label>Biography</label>
+                  <input type="text" formControlName="biography" />
+                </div>
+          
+                <button type="submit" class="save-btn">Save Changes</button>
+              </form>
+        </div>
+
+</div> -->
+
+<div class="pro-container">
+
+    <div class="row">
+        <div class="col-4 doctor-profile">
+            <div class="logo">
+                <img class="logo" src="assets/logo.png" alt="">
+            </div>
+
+            <h2 class="name1">Dr. Dave Affleck</h2>
+            <p class="info">Orthodontist</p>
+        </div>
+    </div>
+    <form [formGroup]="professional" (ngSubmit)="submit()" class="profile-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Department ID</label>
+          <input type="text" formControlName="departmentId">
+        </div>
+        <div class="form-group">
+          <label>Department Name</label>
+          <input type="text" formControlName="departmentName">
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label>Experience</label>
+        <input type="text" formControlName="experience">
+      </div>
+  
+      <div class="form-group">
+        <label>Qualification/Degree</label>
+        <input type="text" formControlName="qualificationDegree">
+      </div>
+  
+      <div class="form-group">
+        <label>Specialization</label>
+        <input type="text" formControlName="specialization">
+      </div>
+  
+      <div class="form-group">
+        <label>Biography</label>
+        <textarea rows="3" formControlName="biography"></textarea>
+      </div>
+  
+      <button type="submit" class="save-button">Save Changes</button>
+    </form>
+  </div>
+  

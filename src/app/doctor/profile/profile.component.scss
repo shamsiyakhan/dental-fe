@@ -1,0 +1,99 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 10px 20px;
+  }
+  
+  .profile-text {
+    color: #007DC6;
+    font-weight: 600;
+    font-size: 2.5rem;
+  }
+  
+  .notification-icon {
+    font-size: 18px;
+    cursor: pointer;
+  }
+  
+  .tabs {
+    display: flex;
+    border: 2px solid #007DC6;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 10px 30px;
+  
+    .tab {
+        padding: 10px 20px;
+        text-align: center;
+        color: #007DC6;
+        background-color: #f9f9f9;
+        font-weight: 500;
+        cursor: pointer;
+        border-right: 1px solid #ccc;
+        width: 50%;
+        font-size: 1.5rem;
+  
+      &:last-child {
+        border-right: none;
+      }
+  
+      &.active {
+        background-color: #007DC6;
+        color: #fff;
+      }
+    }
+  }
+  
+  .tab-content {
+    margin-top: 15px;
+    font-size: 14px;
+  }
+  
+  .wrapper{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 2rem;
+    padding: 30px;
+    color: #007DC6;
+    font-weight: 600;
+  }
+  .front{
+   
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    gap: 25px;
+    font-weight: 600;
+    font-size: 2rem;
+    color: #0000006b;
+  }
+  .upload{
+
+    background-color: #007DC6;
+    border: none;
+    border-radius: 8px;
+    width: 40%;
+    height: 5vh;
+    color: white;
+    cursor: pointer;
+
+  }
+  .imgs{
+    width: 50%;
+    padding: 10px;
+
+  }
+  .delete{
+    left: 30%;
+    color: #D32F2F;
+    position: relative;
+    top: -55px;
+    cursor: pointer;
+  }
