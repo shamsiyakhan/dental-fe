@@ -11,7 +11,7 @@ import { ApiService } from 'src/app/commanServices/api/api.service';
   styleUrls: ['./patient.component.scss']
 })
 export class PatientComponent implements OnInit {
-  displayedColumns: string[] = ['Name', 'email', 'phone_no', 'gender' , 'dob'  , 'emergency_contact_name' , 'emergency_contact_number' , 'treatment'];
+  displayedColumns: string[] = ['Name', 'email', 'phone_no', 'gender' , 'dob'  , 'emergency_contact_name' , 'emergency_contact_number' , ];
   dataSource = [];
   url:any
   constructor(
@@ -23,10 +23,9 @@ export class PatientComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.http.get(this.url+'/get-patients').subscribe((data:any)=>{
+    this.http.get(this.url+'/getPatients').subscribe((data:any)=>{
       console.log(data)
-      this.dataSource=data.msg
-    }
+      this.dataSource=data   }
     )
   }
 

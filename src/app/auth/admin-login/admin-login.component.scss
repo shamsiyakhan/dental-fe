@@ -1,25 +1,48 @@
-.main{
-    width: 100%;
-    height: 99vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.container{
-    width: 500px;
-    height: 500px;
-    border: 1px solid #000;
-    border-radius: 10px;
+.wrap{
+    width: 100%;
+    background-color: #F9FAFB;
+  /*   overflow: hidden; */
+}
+
+.img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    aspect-ratio:2/2.3;
+}
+.logincontent{
+    background-color:white;
+    font-family:'Montserrat';
+    width: 69%;
+    height: 49%;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     flex-direction: column;
-    .form-group{
-        width: 100%;
-        margin: 10px 0;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
+   font-size: 16px;
+   border-radius: 12px;
+   /* max-height: 100vh; */  // Prevents content from exceeding viewport height
+    /* overflow: auto; */
+
+}
+.login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.input{
+    display: flex;
+    flex-direction: column;
+    margin: 0px 16px;
+}
+.logo{
+    font-weight: 600;
+    font-family: "Montserrat";
+    font-size: 25px;
+    margin-left: 16px;
 }

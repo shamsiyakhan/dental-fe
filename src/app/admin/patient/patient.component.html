@@ -7,7 +7,7 @@
         <!-- Position Column -->
         <ng-container matColumnDef="Name">
           <th mat-header-cell *matHeaderCellDef> Full Name </th>
-          <td mat-cell *matCellDef="let element"> {{element.firstname}}  {{element.lastname}}</td>
+          <td mat-cell *matCellDef="let element"> {{element.fullname}}</td>
         </ng-container>
       
         <!-- Name Column -->
@@ -19,7 +19,7 @@
         <!-- Weight Column -->
         <ng-container matColumnDef="phone_no">
           <th mat-header-cell *matHeaderCellDef> Phone Number </th>
-          <td mat-cell *matCellDef="let element"> {{element.phone_no}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
         </ng-container>
       
         <!-- Symbol Column -->
@@ -30,13 +30,13 @@
 
         <ng-container matColumnDef="dob">
             <th mat-header-cell *matHeaderCellDef> Date of Birth </th>
-            <td mat-cell *matCellDef="let element"> {{element.dob | date:"MMM d y"}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.dob | date:"dd-MM-yyyy"}} </td>
           </ng-container>
 
 
           <ng-container matColumnDef="emergency_contact_name">
             <th mat-header-cell *matHeaderCellDef> Emergency Contact Name </th>
-            <td mat-cell *matCellDef="let element"> {{element.emergency_contact_name}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.emergency_name}} </td>
           </ng-container>
 
           <ng-container matColumnDef="emergency_contact_number">
@@ -47,7 +47,7 @@
           <ng-container matColumnDef="treatment">
             <th mat-header-cell *matHeaderCellDef>Treatments </th>
             <td mat-cell *matCellDef="let element"> 
-                <i class="fa-solid fa-angle-right treatmentIcon" (click)="redirectTreatment(element.patientId)"></i> 
+                <i class="fa-solid fa-angle-right treatmentIcon" (click)="redirectTreatment(element.userid)"></i> 
             </td>
           </ng-container>
       

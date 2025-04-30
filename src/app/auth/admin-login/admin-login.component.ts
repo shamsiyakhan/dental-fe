@@ -29,8 +29,16 @@ export class AdminLoginComponent implements OnInit {
   }
 
   onSubmit(){
+    let data
+    if(this.loginForm.value.password){
+       data={
+        email:this.loginForm.value.username,
+        password:window.btoa(this.loginForm.value.password)
+      }
+    }
+   
     console.warn(this.loginForm.value)
-    this.http.post(this.url+'/admin-login',this.loginForm.value).subscribe((data:any)=>{
+    this.http.post(this.url+'/admin-login',data).subscribe((data:any)=>{
       this.router.navigate(['/admin/dashboard'])
     }, (error)=>{
       console.log(error)

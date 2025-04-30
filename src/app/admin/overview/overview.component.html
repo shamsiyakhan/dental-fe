@@ -11,6 +11,11 @@
                 <div class="menu-item" [ngClass]="isActive('patient')">
                     <span (click)="redirect('patient')">Patients</span>
                 </div>
+
+                <div class="menu-item" [ngClass]="isActive('department')">
+                    <span (click)="redirect('department')">Department</span>
+                </div>
+                
                 <div class="menu-item" [ngClass]="isActive('doctor')">
                     <span>Doctors</span>
                 </div>

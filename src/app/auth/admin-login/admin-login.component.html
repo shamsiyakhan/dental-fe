@@ -1,16 +1,22 @@
-<div class="main">
-    <div class="wrapper">
-        <div class="container">
-            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" formControlName="username" id="email" placeholder="Enter email">   
-                    <label for="email">Password</label>
-                    <input type="password" class="form-control" formControlName="password" id="password" placeholder="Enter Password"> 
-                    <input type="submit" value="Login">     
-                </div>
-            </form> 
-        </div>
+<div class="wrap row">
+    <div class="col-7 login">
+    <form [formGroup]="loginForm" class="logincontent" (ngSubmit)="onSubmit()">
+            <span class="logo">Login to Admin<span style="color: #007DC6;">DentalCare+</span></span>
+            <div class="input">
+                <label for="username">Admin Login</label>
+            <input class="input-text" id="username" type="text" placeholder="Department Email" formControlName="username">
+            </div>
+            <div class="input">
+                <label for="password">Password</label>
+            <input class="input-text" id="password" type="password" placeholder="Password" formControlName="password">
+            </div>
+            <div class="button1" style="margin-left: 16px;">
+                <button class="button" type="submit">Login</button>
+            </div>
+    </form>
     </div>
-    
+    <div class="col-5">
+        <img class="img" src="assets/login.png" alt="">
+    </div>
+
 </div>
