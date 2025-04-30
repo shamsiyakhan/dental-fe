@@ -12,6 +12,8 @@ export class AddpatientComponent implements OnInit {
   patientForm!: FormGroup;
   show=true
   activeStep: number = 1;
+  download=false
+  card=false
   constructor(private fb: FormBuilder,private http:HttpClient) {}
 
   ngOnInit() {
@@ -51,9 +53,16 @@ export class AddpatientComponent implements OnInit {
     this.setStep(2)
   }
 
+  showDownload(){
+    this.download=true
+  }
+
 
   setStep(step: number) {
     this.activeStep = step;
     console.warn(this.activeStep)
+  }
+  viewcard(){
+    this.card=true
   }
 }
