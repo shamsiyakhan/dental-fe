@@ -5,6 +5,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PatientComponent } from './patient/patient.component';
 import { PatientTreatmentComponent } from './patient-treatment/patient-treatment.component';
 import { PatientTreatmentDiagnosisComponent } from './patient-treatment-diagnosis/patient-treatment-diagnosis.component';
+import { ProfileComponent } from './profile/profile.component';
+import { DepartmentComponent } from './department/department.component';
+import { DepartmentInfoComponent } from './department-info/department-info.component';
 
 const routes: Routes = [
   {
@@ -32,6 +35,18 @@ const routes: Routes = [
        {
         path:"patient/treatment/:id",
         component:PatientTreatmentDiagnosisComponent
+       },
+       {
+        path:'profile',
+        component:ProfileComponent
+       },
+       {
+        path:'department',
+        component:DepartmentComponent
+       },
+       {
+        path:'departInfo/:id',
+        component:DepartmentInfoComponent
        }
     ]
   }

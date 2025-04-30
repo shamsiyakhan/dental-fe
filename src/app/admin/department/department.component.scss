@@ -1,0 +1,52 @@
+.departments-container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    font-family: 'Segoe UI', sans-serif;
+    /* max-width: 800px; */
+    margin: 50px auto;
+    width: 90%;
+  }
+  
+  .departments-container h3 {
+    color: #007bff;
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .departments-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    max-width: 700px;
+    font-size: 1.5rem;
+    margin-left: 60px;
+  }
+  
+  .dept-item {
+    background-color: #eaf5ff;
+    color: #007bff;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+  }
+  
+  .dept-item:hover {
+    background-color: #d8ecff;
+  }
+
+  .profile1{
+    color: #007DC6;
+    margin-left: 50px;
+    font-size: 3rem;
+    margin-top: 50px;
+  }
+  
+  @media (max-width: 600px) {
+    .departments-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
