@@ -1,7 +1,7 @@
 <div class="form-wrapper">
   <form [formGroup]="patientForm" (ngSubmit)="onSubmit()">
-    <h2>Patient registration form</h2>
-    <div class="stepper-container">
+    <h2 *ngIf="!download && !card">Patient registration form</h2>
+    <div class="stepper-container" *ngIf="!download && !card">
       <div class="step" [class.active]="activeStep === 1">
         <div class="circle">1</div>
         <div class="label">Patient details</div>
@@ -16,7 +16,7 @@
     </div>
 
 
-    <div class="profile-section" *ngIf="show">
+    <div class="profile-section" *ngIf="show && !download && !card">
       <img src="assets/doc4.jpg" alt="Profile">
       <label class="edit-icon">
         <input type="file" hidden>
@@ -73,7 +73,7 @@
 
     <!-- registration charges page -->
 
-    <div class="registration-section" *ngIf="!show">
+    <div class="registration-section" *ngIf="!show && !download && !card">
       <h2>Registration charges</h2>
 
       <div class="form-group">
@@ -90,9 +90,92 @@
         <label>Amount</label>
         <div class="value">₹ 20</div>
       </div>
-      <button type="submit" class="submit-btn">Submit</button>
+      <button type="submit" class="submit-btn" (click)="showDownload()">Submit</button>
     </div>
 
-    
+
+
+    <div class="download" *ngIf="download && !card">
+      <div class="registration-section">
+        <h2>Patient registration successful</h2>
+
+        <div class="form-group1">
+          <label for="paymentType1">View Link</label>
+          <a (click)="viewcard()">Patient Registration Card</a>
+        </div>
+
+        <div class="img">
+          <img src="assets/card.png" alt="">
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="successcard" *ngIf="card">
+      <div class="registration-section1">
+        <h2 class="title">Patient Registration Card</h2>
+
+        <!-- Top Section -->
+        <div class="card top-card">
+          <div class="toptitle">
+            <span>Dental Care+</span>
+            <span>Patient Registration Card</span>
+          </div>
+          <div class="left-section">
+            <div class="left">
+              <img class="photo" src="assets/doc1.jpg" alt="">
+            </div>
+            <div class="right">
+              <h3>Vihaan Malhotra</h3>
+              <p><strong>ID:</strong> 990919</p>
+              <p><strong>Date of birth:</strong> 28 April 1996</p>
+              <p><strong>Gender:</strong> Male</p>
+              <p><strong>Emergency Contact:</strong> 9098976896</p>
+              <p><strong>Phone:</strong> +91 8900767897</p>
+              <p><strong>Email:</strong> vihaanmalhotra@gmail.com</p>
+              <p><strong>Address:</strong> 2A B-block, FC Road, Pune, India</p>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Bottom Section -->
+        <div class="card bottom-card">
+          <div class="toptitle">
+            <span>DentalCare+</span>
+            <span>Contact details</span>
+          </div>
+
+          <div class="left-section">
+            <div class="left">
+              <p>📞 +91 8976789938</p>
+              <p>✉️ dentalcarehelp@gmail.com</p>
+              <p>📍 MG Road, Camp, Pune - 411001</p>
+              <p>🌐 www.dentalcare.com</p>
+            </div>
+
+            <div class="right">
+              <h4>Important Instructions</h4>
+              <ul>
+                <li>Bring your card when you visit our clinic.</li>
+                <li>Verify the data before registration.</li>
+                <li>DentalCare+ holds the rights to access your details.</li>
+              </ul>
+              <h4>Terms/Privacy Notice</h4>
+              <p>By registering, you consent to share limited personal data for medical record keeping.</p>
+            </div>
+          </div>
+          
+          <div class="footer">Date of registration: 18 March 2025</div>
+        </div>
+
+        <div class="download1">
+          <a href="#">⬇️ Download</a>
+        </div>
+      </div>
+    </div>
+
+
   </form>
 </div>

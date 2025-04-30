@@ -1,0 +1,34 @@
+<div class="header">
+    <span class="back-arrow">&#8592;</span>
+    <span class="department-name">Prosthodontics and Crown & Bridge</span>
+</div>
+
+<div class="section-container">
+
+    <div class="options-grid">
+        <div class="option-card" [class.active]="treatment" (click)="treatment1()">Lists of treatments</div>
+        <div class="option-card" [class.active]="doctor" (click)="doctor1()">List of doctors</div>
+        <div class="option-card" [class.active]="patient" (click)="patient1()">List of patients</div>
+    </div>
+</div>
+
+<!-- treatment  list-->
+
+<div class="treatment" *ngIf="treatment">
+<h1>hfgghhdfhj</h1>
+</div>
+
+
+
+
+<!-- list of doctor -->
+
+<div class="doctor" *ngIf="doctor">
+<h1>doctor</h1>
+</div>
+
+
+<!-- list of patient -->
+<div class="patient" *ngIf="patient">
+<h2>patient</h2>
+</div>
