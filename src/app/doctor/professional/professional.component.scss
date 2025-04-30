@@ -1,0 +1,193 @@
+/* .pro-container{
+    background-color: white;
+    border-radius: 12px;
+    padding: 30px;
+    width: 100%;
+    display: flex;
+    gap: 40px;
+    margin-top: 40px; 
+  }
+
+
+.doctor-profile {
+    width: 100%;
+    padding: 20px;
+    background-color: #e8f0f8;
+    border-radius: 12px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .logo {
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .name1 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+  }
+  
+  .info {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .id-label {
+    margin-top: 10px;
+    color: #999;
+    font-size: 14px;
+  }
+  
+  .right-panel {
+    flex: 1;
+  }
+  
+  .row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  .form-group.full {
+    width: 97%;
+    margin-left: 20px;
+  }
+  
+  label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #333;
+  }
+  
+  input,
+  select {
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    background: #f9f9f9;
+    transition: border-color 0.3s ease;
+  }
+  
+  input:focus,
+  select:focus {
+    outline: none;
+    border-color: #007DC6;
+    background-color: #fff;
+  }
+  
+  .save-btn {
+    background: #007DC6;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-left: 20px;
+    
+  }
+  
+  .save-btn:hover {
+    background: #007DC6;
+  } */
+
+
+
+  .pro-container{
+    background-color: white;
+    border-radius: 12px;
+    padding: 30px;
+    width: 100%;
+    display: flex;
+    gap: 40px;
+    margin-top: 40px; 
+  }
+
+
+.doctor-profile {
+    width: 100%;
+    padding: 20px;
+    background-color: #e8f0f8;
+    border-radius: 12px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    height: 25vh;
+  }
+  .logo {
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .name1 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+  }
+  
+  .info {
+    font-size: 14px;
+    color: #666;
+  }
+
+  
+  .profile-form {
+    flex: 1;
+    background: #ffffff;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+  }
+  
+  .form-row {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    flex: 1;
+  }
+  
+  .form-group label {
+    margin-bottom: 5px;
+    font-weight: 600;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #f8f8f8;
+  }
+  
+  .save-button {
+    margin-top: 1rem;
+    padding: 10px 20px;
+    background-color: #007bdb;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  .save-button:hover {
+    background-color: #007bdb;
+  }
+  

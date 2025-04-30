@@ -1,0 +1,162 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: #f9f9f9;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 30px;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 20px;
+  }
+  
+  .register-btn {
+    background-color: #007DC6;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .card {
+    background: #ffffff;
+    flex: 1;
+    padding: 20px;
+    border-radius: 16px;
+    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); */
+  }
+  
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background: none;
+    border: none;
+  }
+  
+  .patient-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+  }
+  
+  .patient-card {
+    background: #f0f7ff;
+    padding: 12px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .patient-details{
+    display: flex
+    ;
+        flex-direction: column;
+        align-items: center;
+  }
+
+  
+  
+  .patient-card img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .patient-details .name {
+    font-weight: 600;
+    font-size: 14px;
+  }
+  
+  .patient-details .id {
+    font-size: 12px;
+    color: gray;
+  }
+  
+  .bill-list {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  
+  .bill-card {
+    background: #ffffff;
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: calc(50% - 6px); /* <-- Yeh line add karo */
+  }
+
+  .headerOverview{
+    color: #007DC6;
+  }
+  
+  
+  .bill-card img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .bill-details {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .bill-details .name {
+    font-weight: 500;
+  }
+  
+  .bill-details .amount {
+    font-weight: 600;
+    color: #007DC6;
+  }
+  
+  h1 {
+    font-size: 28px;
+    color: #333;
+  }
+  
+  h2 {
+    font-size: 22px;
+    color: #333;
+  }
+  
+  a {
+    font-size: 14px;
+    color: #007DC6;
+    text-decoration: none;
+  }
+  

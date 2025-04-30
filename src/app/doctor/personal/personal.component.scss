@@ -1,0 +1,146 @@
+/* .wrapper{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 2rem;
+    padding: 30px;
+    color: #007DC6;
+    font-weight: 600;
+  }
+  .profile-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  
+  .profile-section img {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+  }
+  
+  .edit-icon {
+    background: #007DC6;
+    color: white;
+    padding: 5px 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 12px;
+    position: absolute;
+    top: 60px;
+    left: 60px;
+  } */
+
+
+  .profile-container {
+    display: flex;
+    justify-content: center;
+   /*  padding: 40px 20px;
+    background: #f5f7fa; */
+  }
+  
+  .profile-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 30px;
+    width: 100%;
+    display: flex;
+    gap: 40px;
+    margin-top: 40px;
+  }
+  
+  .left-panel {
+    text-align: center;
+    min-width: 150px;
+  }
+  
+  .profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ccc;
+  }
+  
+  .id-label {
+    margin-top: 10px;
+    color: #999;
+    font-size: 14px;
+  }
+  
+  .right-panel {
+    flex: 1;
+  }
+  
+  .row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  .form-group.full {
+    width: 97%;
+    margin-left: 20px;
+  }
+  
+  label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #333;
+  }
+  
+  input,
+  select {
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    background: #f9f9f9;
+    transition: border-color 0.3s ease;
+  }
+  
+  input:focus,
+  select:focus {
+    outline: none;
+    border-color: #007DC6;
+    background-color: #fff;
+  }
+  
+  .save-btn {
+    background: #007DC6;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-left: 20px;
+    /* transition: background 0.3s ease; */
+  }
+  
+  .save-btn:hover {
+    background: #007DC6;
+  }
+  .edit-icon {
+    background: #007DC6;
+    color: white;
+    padding: 5px 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 12px;
+    position: absolute;
+    top: 34%;
+    left: 26%;
+  }

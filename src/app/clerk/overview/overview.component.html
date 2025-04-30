@@ -1,0 +1,30 @@
+<div class="main">
+    <div class="row" style="height: 99vh !important; width: 100%;">
+        <div class="col-2" style="background-color: white;">
+            <div class="icon">
+                <img class="logo" src="assets/DentalCare.png" alt="">
+            </div>
+            <div class="info">
+               <!--  <i class="fa-regular fa-hand">👋</i>  -->
+                <span class="emoji">👋</span>
+                <span>Hello!</span>
+                <span>Harry Winston</span>
+            </div>
+            <div class="menu-container">
+                <div class="menu-item" [ngClass]="isActive('dashboard')">
+                    <span (click)="redirect('dashboard')">Dashboard</span>
+                </div>
+                <div class="menu-item" [ngClass]="isActive('addpatient')">
+                    <span (click)="redirect('addpatient')">Add Patient</span>
+                </div>
+                <div class="menu-item" [ngClass]="isActive('setting')">
+                    <span>Settings</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-10">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

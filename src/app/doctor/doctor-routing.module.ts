@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PatientTreatmentComponent } from './patient-treatment/patient-treatment.component';
 import { DoctorComponent } from './doctor/doctor.component';
 import { ProfileComponent } from './profile/profile.component';
+import { PersonalComponent } from './personal/personal.component';
 
 
 const routes: Routes = [
@@ -32,6 +33,10 @@ const routes: Routes = [
       {
         path:'profile',
         component:ProfileComponent
+      },
+      {
+        path:'personal',
+        component:PersonalComponent
       }
      
     ]

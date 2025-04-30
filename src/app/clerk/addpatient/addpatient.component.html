@@ -1,0 +1,98 @@
+<div class="form-wrapper">
+  <form [formGroup]="patientForm" (ngSubmit)="onSubmit()">
+    <h2>Patient registration form</h2>
+    <div class="stepper-container">
+      <div class="step" [class.active]="activeStep === 1">
+        <div class="circle">1</div>
+        <div class="label">Patient details</div>
+      </div>
+
+      <div class="line"></div>
+
+      <div class="step" [class.active]="activeStep === 2" (click)="setStep(2)">
+        <div class="circle">2</div>
+        <div class="label">Registration charges</div>
+      </div>
+    </div>
+
+
+    <div class="profile-section" *ngIf="show">
+      <img src="assets/doc4.jpg" alt="Profile">
+      <label class="edit-icon">
+        <input type="file" hidden>
+        ✏️
+      </label>
+    </div>
+
+    <div class="form-grid" *ngIf="show">
+      <div class="form-group">
+        <label>Full Name</label>
+        <input formControlName="fullname" type="text" placeholder="Full Name" />
+      </div>
+      <div class="form-group">
+        <label>User Email</label>
+        <input formControlName="email" type="email" placeholder="example@gmail.com" />
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input formControlName="password" type="tel" placeholder="Password" />
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input formControlName="phone" type="tel" placeholder="+91 9876543210" />
+      </div>
+      <div class="form-group">
+        <label>Emergency Contact Name</label>
+        <input formControlName="emergencyContactName" type="text" placeholder="Alex" />
+      </div>
+      <div class="form-group">
+        <label>Emergency Contact Number</label>
+        <input formControlName="emergencyContactNumber" type="tel" placeholder="+91 9988776655" />
+      </div>
+
+      <div class="form-group full-width">
+        <label>Address</label>
+        <input formControlName="address" type="text" placeholder="Street, City, ZIP" />
+      </div>
+
+      <div class="form-group">
+        <label>Date of Birth</label>
+        <input formControlName="dob" type="text" placeholder="DD/MM/YYYY" />
+      </div>
+      <div class="form-group">
+        <label>Gender</label>
+        <input formControlName="gender" type="text" placeholder="Male/Female" />
+      </div>
+      <div class="form-group">
+        <label>Marital Status</label>
+        <input formControlName="maritalStatus" type="text" placeholder="Single/Married" />
+      </div>
+      <button type="submit" class="submit-btn" (click)="showcharges()">Save and Next</button>
+    </div>
+
+
+    <!-- registration charges page -->
+
+    <div class="registration-section" *ngIf="!show">
+      <h2>Registration charges</h2>
+
+      <div class="form-group">
+        <label for="paymentType">Payment Type</label>
+        <select id="paymentType">
+          <option>Select</option>
+          <option>Cash</option>
+          <option>UPI</option>
+          <option>Card</option>
+        </select>
+      </div>
+
+      <div class="amount">
+        <label>Amount</label>
+        <div class="value">₹ 20</div>
+      </div>
+      <button type="submit" class="submit-btn" (click)="showcharges()">Submit</button>
+    </div>
+
+    
+  </form>
+</div>
