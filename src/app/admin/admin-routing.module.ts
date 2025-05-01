@@ -8,6 +8,7 @@ import { PatientTreatmentDiagnosisComponent } from './patient-treatment-diagnosi
 import { ProfileComponent } from './profile/profile.component';
 import { DepartmentComponent } from './department/department.component';
 import { DepartmentInfoComponent } from './department-info/department-info.component';
+import { ViewProfileComponent } from './view-profile/view-profile.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,10 @@ const routes: Routes = [
        {
         path:'departInfo/:id',
         component:DepartmentInfoComponent
+       },
+       {
+        path:'view-pro',
+        component:ViewProfileComponent
        }
     ]
   }

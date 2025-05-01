@@ -2,7 +2,7 @@
     padding: 30px;
     background-color: #ffffff;
     border-radius: 10px;
-    width: 90%;
+    width: 100%;
     margin: 10px;
     /* margin-top: 20px; */
     font-family: "Segoe UI", sans-serif;
@@ -51,75 +51,6 @@
     color: #fff;
   }
 
- /*  .container {
-    background: #ffffff;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    max-width: 900px;
-    margin: auto;
-  }
-  
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  h2 {
-    color: #0077cc;
-    margin: 0;
-  }
-  
-  .add-btn {
-    background-color: #0077cc;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 8px 12px;
-    cursor: pointer;
-  
-    i {
-      font-size: 16px;
-    }
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  
-  thead th {
-    background-color: #e9f2fb;
-    text-align: left;
-    padding: 12px;
-    font-weight: 600;
-    color: #333;
-  }
-  
-  tbody td {
-    padding: 12px;
-    border-top: 1px solid #eee;
-    color: #444;
-  }
-  
-  .actions {
-    text-align: right;
-  
-    i {
-      margin-left: 10px;
-      cursor: pointer;
-      color: #555;
-  
-      &:hover {
-        color: #0077cc;
-      }
-    }
-  } */
-  
-  
-  
   .container {
     background: #fff;
     padding: 20px;
@@ -212,7 +143,9 @@
   grid-template-columns: repeat(5, 1fr); /* 5 cards per row */
   gap: 20px;
   padding: 20px;
+  cursor: pointer;
 }
+
 
 .card {
   background-color:#e8f0f8;
@@ -274,7 +207,123 @@
   }
 }
  
+  .profile-container {
+    display: flex;
+    justify-content: center;
+    /* margin-top: 50px; */
+   flex-direction: column;
+  }
+  
+  .profile-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 30px;
+    width: 100%;
+    display: flex;
+    gap: 40px;
+    margin-top: 40px;
+  }
+  
+  .left-panel {
+    text-align: center;
+    min-width: 150px;
+  }
+  
+  .profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 9%;
+    object-fit: cover;
+    border: 2px solid #ccc;
+  }
+  
+  .id-label {
+    margin-top: 10px;
+    color: #999;
+    font-size: 14px;
+  }
+  
+  .right-panel {
+    flex: 1;
+  }
+  
+  .row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    font-size: 1.5rem;
+  }
+  
+  .form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  .form-group.full {
+    width: 97%;
+    margin-left: 20px;
+    font-size: 1.5rem;
+  }
+  
+  label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #333;
+  }
+  
+  input,
+  select {
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    background: #f9f9f9;
+    transition: border-color 0.3s ease;
+  }
+  
+  input:focus,
+  select:focus {
+    outline: none;
+    border-color: #007DC6;
+    background-color: #fff;
+  }
+  
+  .save-btn {
+    background: #007DC6;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-left: 20px;
+    /* transition: background 0.3s ease; */
+  }
+  
+  .save-btn:hover {
+    background: #007DC6;
+  }
+  .edit-icon {
+    background: #007DC6;
+    color: white;
+    padding: 5px 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 12px;
+    position: relative;
+    top: -12%;
+    left: 26%;
+  }
 
+  .profile1{
+    width: 50%;
+   color: #007DC6;
+    margin-left: 50px;
+    font-size: 3rem;
+  }
   
 
   

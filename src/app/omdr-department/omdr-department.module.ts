@@ -21,7 +21,8 @@ import { RegisterComplaintComponent } from './register-complaint/register-compla
     CommonModule,
     OmdrDepartmentRoutingModule,
     HttpClientModule,
-    MatTabsModule
+    MatTabsModule,
+    
   ]
 })
 export class OmdrDepartmentModule { }
