@@ -29,6 +29,9 @@
                 <div class="menu-item" [ngClass]="isActive('setting')">
                     <span>Settings</span>
                 </div>
+                <div class="menu-item" [ngClass]="isActive('login')">
+                    <span (click)="logout()">Logout</span>
+                </div>
             </div>
         </div>
 

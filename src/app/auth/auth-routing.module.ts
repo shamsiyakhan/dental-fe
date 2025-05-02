@@ -6,6 +6,7 @@ import { AuthOverviewComponent } from './auth-overview/auth-overview.component';
 import { SignupComponent } from './signup/signup.component';
 import { DepartmentLoginComponent } from './department-login/department-login.component';
 import { ClerkLoginComponent } from './clerk-login/clerk-login.component';
+import { DoctorLoginComponent } from './doctor-login/doctor-login.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
       {
         path:"clerk-login",
         component:ClerkLoginComponent
+      },
+      {
+        path:"doctor-login",
+        component:DoctorLoginComponent
       }
       
     ]

@@ -40,8 +40,10 @@ export class DoctorLoginComponent implements OnInit {
     }
    
     console.warn(this.loginForm.value)
-    this.http.post(this.url+'/clerklogin',data).subscribe((data:any)=>{
-      this.router.navigate(['/clerk/dashboard'])
+    this.http.post(this.url+'/doctor-login',data).subscribe((data:any)=>{
+      localStorage.setItem('doctor',JSON.stringify(data.user.doctor))
+      localStorage.setItem('department',JSON.stringify(data.user.department))
+      this.router.navigate(['/doctor/dashboard'])
     }, (error)=>{
       console.log(error)
       Swal.fire({

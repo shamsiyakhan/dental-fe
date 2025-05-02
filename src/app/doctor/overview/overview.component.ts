@@ -26,6 +26,14 @@ export class OverviewComponent implements OnInit {
    redirect(route:any){
      this.router.navigate([`/doctor/${route}`])
    }
+
+   logout(){
+    localStorage.clear()
+    setTimeout(() => {
+      localStorage.clear();
+    }, 1000);
+    this.router.navigate(['/auth/doctor-login'])
+   }
     
  
  }

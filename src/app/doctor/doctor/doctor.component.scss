@@ -96,9 +96,44 @@
   margin: 0;
 }
 
- 
 
-  
+.container{
+  padding: 20px 40px;
+}
 
-  
-  
+
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.form-group.full {
+  width: 97%;
+  margin-left: 20px;
+  font-size: 1.5rem;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+input,
+select {
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  background: #f9f9f9;
+  transition: border-color 0.3s ease;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #007DC6;
+  background-color: #fff;
+}

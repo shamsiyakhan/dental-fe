@@ -39,6 +39,9 @@ export class InfoPatientComponent implements OnInit {
         console.warn(data)
         this.patient=data[0]
         this.patientForm.patchValue(data[0])
+        this.patientForm.patchValue({
+          password:""
+        })
       })
     })
   }
@@ -47,6 +50,9 @@ export class InfoPatientComponent implements OnInit {
     this.http.post(`http://localhost:3000/update-patient/${this.patient.userid}`,this.patientForm.value).subscribe((data:any)=>{
       this.patient=data.user
       this.patientForm.patchValue(data.user)
+      this.patientForm.patchValue({
+        password:""
+      })
   })
 
 
