@@ -1,0 +1,32 @@
+<div class="reports-container">
+    <div class="header">
+        <h2>Reports</h2>
+        <button class="upload-btn">
+            <mat-icon>cloud_upload</mat-icon> Upload
+        </button>
+    </div>
+
+    <div class="reports-grid">
+        <div class="report-card" *ngFor="let report of reports">
+            <div class="doc-profi">
+                <img src="assets/doc5.jpg" alt="" class="profile-img">
+                <div class="id">ID: {{ report.id }}</div>
+            </div>
+            <div class="report-info">
+                <div class="name">{{ report.name }}</div>
+                <div class="file">
+                    <mat-icon class="icon">insert_drive_file</mat-icon>
+                    <a [href]="report.fileUrl" target="_blank">{{ report.fileName }}</a>
+                    <mat-icon>cloud_download</mat-icon>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- <div class="pagination">
+        <mat-icon class="arrow">chevron_left</mat-icon>
+        <div class="page" *ngFor="let page of pages" [class.active]="page === 2">{{ page }}</div>
+        <mat-icon class="arrow">chevron_right</mat-icon>
+    </div> -->
+</div>

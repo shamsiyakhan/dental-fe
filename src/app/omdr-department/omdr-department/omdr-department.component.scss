@@ -5,7 +5,8 @@
     gap: 40px;
     text-decoration: none;
     font-size: 1.5rem;
-    margin: 50% 0 0 20%;
+    margin-top: 50%;
+    margin-left: 15%;
     align-items: center;
     justify-content: center;
     width: 80%;
@@ -17,7 +18,8 @@
 }
 
 .activeClass{
-    background-color: #005485;
+   /*  background-color: #005485; */
+   background-color: #007DC6;
     color: #ffff !important;
     border-radius: 10px;
     width: 100%;
@@ -33,12 +35,14 @@
 
 .activeClass:hover{
     cursor: pointer;
+    background-color: #007DC6;
 }
 
 
 .inactiveClass{
-    background-color: rgba(9, 86, 131, 0.1);
-    color: rgba(0, 84, 133, 1);
+    /* background-color: rgba(9, 86, 131, 0.1); */
+    background-color: #f4f9fc;
+    color: #007DC6;
     border-radius: 10px;
     width: 100%;
     text-align: center;
@@ -46,6 +50,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    /* font-weight: 500; */
 }
 
 .inactiveClass:hover{
@@ -56,3 +61,41 @@
     top: 4%;
     left: 4%;
 }
+
+
+.bottom-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    margin-top: 95px;
+    font-size: 1.5rem;
+    margin-left: 20px;
+  
+    .logout-btn {
+        background-color: #f4f9fc;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        color: #007DC6;
+        /* font-weight: 500; */
+        cursor: pointer;
+        width: 75%;
+  
+      &:hover {
+        /* background-color: #e4f1fc; */
+        background-color: #007DC6;
+        color: white;
+      }
+    }
+  
+    .department {
+      display: flex;
+      align-items: center;
+      color: #007DC6;
+      gap: 5px;
+  
+      i {
+        font-size: 16px;
+      }
+    }}

@@ -1,0 +1,73 @@
+.update-password-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f9fbfc;
+  }
+  
+  .update-password-card {
+    background: white;
+    padding: 30px 40px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 500px;
+  
+    h2 {
+      color: #007DC6;
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
+  
+    form {
+      display: flex;
+      flex-direction: column;
+  
+      label {
+        margin-bottom: 5px;
+        font-size: 1.9rem;
+        font-weight: 500;
+        color: #333;
+      }
+  
+      input {
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-size: 14px;
+        outline: none;
+        transition: border-color 0.3s;
+  
+        &:focus {
+          border-color: #007DC6;
+        }
+      }
+  
+      button {
+        background-color: #007DC6;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+  
+        &:hover {
+          background-color: #0d4ec2;
+        }
+      }
+    }
+  }
+  
+
+
+
+.error {
+    color: #ff4d4f;
+    font-size: 12px;
+    margin-top: -15px;
+    margin-bottom: 10px;
+  }
+  
