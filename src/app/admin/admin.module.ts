@@ -15,6 +15,7 @@ import { DepartmentComponent } from './department/department.component';
 import { DepartmentInfoComponent } from './department-info/department-info.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { ViewProfileComponent } from './view-profile/view-profile.component';
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -24,7 +25,8 @@ import { MatButtonModule } from '@angular/material/button';
     PatientTreatmentDiagnosisComponent,
     ProfileComponent,
     DepartmentComponent,
-    DepartmentInfoComponent
+    DepartmentInfoComponent,
+    ViewProfileComponent
   ],
   imports: [
     CommonModule,

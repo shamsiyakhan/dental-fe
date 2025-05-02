@@ -11,21 +11,30 @@
                 <div class="menu-item" [ngClass]="isActive('patient')">
                     <span (click)="redirect('patient')">Patients</span>
                 </div>
-                <div class="menu-item" [ngClass]="isActive('doctor')">
-                    <span>Doctors</span>
-                </div>
                 <div class="menu-item" [ngClass]="isActive('appointment')">
-                    <span>Appointments</span>
+                    <span (click)="redirect('appointment')">Appointments</span>
                 </div>
-                <div class="menu-item" [ngClass]="isActive('transaction')">
-                    <span>Transactions</span>
+                <div class="menu-item" [ngClass]="isActive('test')">
+                    <span (click)="redirect('test')">Test</span>
+                </div>
+                <div class="menu-item" [ngClass]="isActive('report')">
+                    <span (click)="redirect('report')">Report</span>
                 </div>
                 <div class="menu-item" [ngClass]="isActive('setting')">
-                    <span>Settings</span>
+                    <span (click)="redirect('setting')"> Settings</span>
                 </div>
             </div>
+            <div class="bottom-section">
+                <button class="logout-btn">Log out</button>
+                <div class="department">
+                  <i class="fa fa-bell"></i>
+                  <span>OMDR department</span>
+                </div>
+              </div>
         </div>
 
+
+        
         <div class="col-10">
             <router-outlet></router-outlet>
         </div>

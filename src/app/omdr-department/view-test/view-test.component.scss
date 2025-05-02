@@ -1,0 +1,135 @@
+.profile-container {
+    padding: 20px;
+  
+    .back-icon {
+      margin-bottom: 10px;
+      mat-icon {
+        font-size: 24px;
+        cursor: pointer;
+        color: #007DC6;
+      }
+    }
+  
+    .profile-card {
+        background: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 50px auto;
+        height: 75vh;
+        width: 80%;
+  
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        h2 {
+          color: #007DC6;
+          margin: 0;
+        }
+        .status {
+            background-color: #d1f7e1;
+            color: #00a651;
+            padding: 4px 35px;
+            border-radius: 6px;
+            font-size: 2rem;
+        }
+      }
+  
+      .profile-content {
+        display: flex;
+        margin-top: 20px;
+  
+        .left-panel {
+            width: 30%;
+            background: #f6f9fc;
+            border-radius: 10px;
+            padding: 26px;
+            text-align: center;
+            height: 64vh;
+            font-size: 1.4rem;
+  
+          .profile-img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+          }
+  
+          h3 {
+            margin: 0;
+          }
+  
+          .id {
+            color: #999;
+          }
+  
+          .details {
+            text-align: left;
+            margin-top: 15px;
+            p {
+              margin: 5px 0;
+            }
+          }
+  
+          .contact {
+            margin-top: 20px;
+            text-align: left;
+            mat-icon {
+              vertical-align: middle;
+              margin-right: 6px;
+              font-size: 18px;
+              color: #007DC6;
+            }
+          }
+        }
+  
+        .right-panel {
+            width: 60%;
+            padding: 30px;
+            font-size: 1.5rem;
+            display: flex;
+            flex-direction: column;
+  
+          p {
+            margin: 8px 0;
+          }
+  
+          .pdf-section {
+            margin-top: 15rem;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+  
+            .file-button {
+                background-color: #f1f9ff;
+                color: #007DC6;
+                margin-bottom: 10px;
+                display: flex;
+                align-items: center;
+                gap: 9px;
+                border-radius: 7px;
+                border: none;
+                height: 5vh;
+                width: 40%;
+            }
+  
+            .upload-btn {
+                display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    border-radius: 9px;
+                    height: 5vh;
+                    width: 40%;
+                    align-items: center;
+                    justify-content: center;
+                    border: none;
+                    color: white;
+                    background-color:#007DC6 ;
+            }
+          }
+        }
+      }
+    }
+  }
+  

@@ -4,47 +4,15 @@
 </div>
 
 <div class="section-container">
-
     <div class="options-grid">
         <div class="option-card" [class.active]="treatment" (click)="treatment1()">Lists of treatments</div>
+        <div class="option-card" [class.active]="newDoctor" (click)="addNew()">Add New Doctor</div>
         <div class="option-card" [class.active]="doctor" (click)="doctor1()">List of doctors</div>
         <div class="option-card" [class.active]="patient" (click)="patient1()">List of patients</div>
     </div>
 </div>
 
 <!-- treatment  list-->
-
-<!-- <div class="treatment" *ngIf="treatment">
-    <div class="container">
-        <div class="header">
-          <h2>List of treatments</h2>
-          <button class="add-btn"><i class="fas fa-plus"></i></button>
-        </div>
-      
-        <table>
-          <thead>
-            <tr>
-              <th>List of treatments</th>
-              <th>Charges (INR)</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let treatment of treatments">
-              <td>{{ treatment.name }}</td>
-              <td>{{ treatment.charge }}</td>
-              <td class="actions">
-                <i class="fas fa-pen" (click)="editTreatment(treatment)"></i>
-                <i class="fas fa-trash" (click)="deleteTreatment(treatment)"></i>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      
-</div> -->
-
-
 <div class="container" *ngIf="treatment">
     <div class="header">
       <h2>List of treatments</h2>
@@ -81,6 +49,68 @@
   </div>
   
 
+  <!-- add new doctor -->
+
+  <div class="profile-container" *ngIf="newDoctor">
+    <div class="profile-card">
+      <div class="left-panel">
+        <img src="assets/doc1.jpg" alt="Profile" class="profile-pic" />
+        <!-- <label class="edit-icon">
+            <input type="file" hidden>
+            ✏️
+          </label> -->
+      </div>
+  
+      <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="right-panel">
+        <div class="row">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" formControlName="fullName" />
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="text" formControlName="phone" />
+          </div>
+        </div>  
+        <div class="row">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" formControlName="email" />
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" formControlName="password" />
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="form-group">
+            <label>Gender</label>
+            <select formControlName="gender">
+              <option>Male</option>
+              <option>Female</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Marital Status</label>
+            <select formControlName="maritalStatus">
+              <option>Single</option>
+              <option>Married</option>
+            </select>
+          </div>
+        </div>
+  
+        <div class="form-group full">
+          <label>Address</label>
+          <input type="text" formControlName="address" />
+        </div>
+  
+        <button type="submit" class="save-btn">Save Changes</button>
+      </form>
+    </div>
+  </div>
+  
 
 
 
@@ -115,7 +145,7 @@
         
        
           <div class="card-container">
-            <div class="card">
+            <div class="card" (click)="viewprofile()">
               <img src="assets/doc1.jpg" alt="">
               <h3>Dr. Arvind Kapoor</h3>
               <p>Cardiologist</p>
@@ -234,7 +264,7 @@
           <div class="card-container">
             <div class="card">
               <img src="assets/doc1.jpg" alt="">
-              <h3>Dr. Arvind Kapoor</h3>
+              <h3>Dr shayban khan</h3>
               <p>Cardiologist</p>
             </div>
     

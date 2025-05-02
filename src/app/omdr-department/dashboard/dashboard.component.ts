@@ -8,7 +8,105 @@ import { Component, OnInit } from '@angular/core';
 export class DashboardComponent implements OnInit {
 
   constructor() { }
-
+  appointments = [
+    {
+      image: 'assets/doc1.jpg',
+      name: 'Aarav Mehta',
+      type: 'Initial Oral Checkup',
+      id: 'ID: 983749',
+      date: '8th Mar, 2025',
+      time: '6:00 pm',
+      status: 'Waiting'
+    },
+    {
+      image: 'assets/doc2.jpg',
+      name: 'Aarav Mehta',
+      type: 'Initial Oral Checkup',
+      id: 'ID: 983749',
+      date: '8th Mar, 2025',
+      time: '6:00 pm',
+      status: 'Waiting'
+    },
+    {
+      image: 'assets/doc5.jpg',
+      name: 'Aarav Mehta',
+      type: 'Initial Oral Checkup',
+      id: 'ID: 983749',
+      date: '8th Mar, 2025',
+      time: '6:00 pm',
+      status: 'Waiting'
+    },
+    {
+      image: 'assets/doc1.jpg',
+      name: 'Aarav Mehta',
+      type: 'Initial Oral Checkup',
+      id: 'ID: 983749',
+      date: '8th Mar, 2025',
+      time: '6:00 pm',
+      status: 'Waiting'
+    },
+    {
+      image: 'assets/doc1.jpg',
+      name: 'Aarav Mehta',
+      type: 'Initial Oral Checkup',
+      id: 'ID: 983749',
+      date: '8th Mar, 2025',
+      time: '6:00 pm',
+      status: 'Waiting'
+    },
+    // ...others
+  ];
+  
+  tests = [
+    {
+      image: 'assets/doc2.jpg',
+      name: 'Rohan Desai',
+      id: 'ID: 983749',
+      type: 'CBCT (Cone Beam CT Scan)',
+      date: '8th Mar, 2025',
+      time: '6:00 pm',
+      status: 'Waiting'
+    },
+    {
+      image: 'assets/doc2.jpg',
+      name: 'Rohan Desai',
+      id: 'ID: 983749',
+      type: 'CBCT (Cone Beam CT Scan)',
+      date: '8th Mar, 2025',
+      time: '6:00 pm',
+      status: 'Waiting'
+    },
+    {
+      image: 'assets/doc2.jpg',
+      name: 'Rohan Desai',
+      id: 'ID: 983749',
+      type: 'CBCT (Cone Beam CT Scan)',
+      date: '8th Mar, 2025',
+      time: '6:00 pm',
+      status: 'Waiting'
+    },
+    // ...others
+  ];
+  
+  reports = [
+    {
+      image: 'assets/doc3.jpg',
+      name: 'Ethan Brooks',
+      id: '898198',
+      label: 'Blood Test Report.pdf',
+      file: 'assets/reports/blood-test.pdf'
+    },
+    {
+      image: 'assets/doc3.jpg',
+      name: 'Ethan Brooks',
+      id: '898198',
+      label: 'Blood Test Report.pdf',
+      file: 'assets/reports/blood-test.pdf'
+    },
+    
+    // ...others
+  ];
+  
   ngOnInit(): void {
   }
 

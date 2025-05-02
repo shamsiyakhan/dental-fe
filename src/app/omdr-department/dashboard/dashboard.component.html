@@ -1,5 +1,101 @@
-<div class="mainContainer">
+<!-- <div class="mainContainer">
     <div class="left">
         
     </div>
+</div> -->
+
+<div class="dashboard">
+    <!-- Today's Appointments -->
+    <div class="section">
+        <div class="section-header">
+            <h3>Today's Appointments</h3>
+            <a>View all</a>
+        </div>
+        <div class="card-list">
+            <div class="appointment-card" *ngFor="let appointment of appointments">
+                <div class="imgid">
+                    <img [src]="appointment.image" alt="User" />
+                    <span>{{ appointment.id }}</span>
+                </div>
+
+                <div class="info">
+                    <h4>{{ appointment.name }}</h4>
+                    <p>{{ appointment.type }}</p>
+                    <div class="timeinfo">
+                        <span><i class="fa fa-calendar"></i> {{ appointment.date }}</span>
+                    <span><i class="fa fa-clock"></i> {{ appointment.time }}</span>
+                    </div>
+                </div>
+                <div class="leftstatus">
+                    <div class="status">
+                        <span class="dot" [ngClass]="appointment.status.toLowerCase()"></span>
+                        {{ appointment.status }}
+                    </div>
+                    <div class="actions" *ngIf="appointment.status === 'Waiting'">
+                        <button class="reschedule">Reschedule</button>
+                        <button class="cancel">Cancel</button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- right side section -->
+    <div class="mainsection">
+        <!-- Today's Tests -->
+        <div class="section1">
+            <div class="section-header">
+                <h3>Today's Tests</h3>
+                <a>View all</a>
+            </div>
+            <div class="card-list">
+                <div class="test-card" *ngFor="let test of tests">
+                    <div class="imgid">
+                        <img [src]="test.image" alt="User" />
+                        <span>{{test.id }}</span>
+                    </div>
+                    <div class="info">
+                        <h4>{{ test.name }}</h4>
+                        <p>{{ test.type }}</p>
+                        <div class="timeinfo">
+                            <span><i class="fa fa-calendar"></i> {{test.date }}</span>
+                        <span><i class="fa fa-clock"></i> {{ test.time }}</span>
+                        </div>
+                    </div>
+                    <div class="status">
+                        <span class="dot" [ngClass]="test.status.toLowerCase()"></span>
+                        {{ test.status }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Reports -->
+        <div class="section1">
+            <div class="section-header">
+                <h3>Recent Reports</h3>
+                <a>View all</a>
+            </div>
+            <div class="card-list">
+                <div class="report-card" *ngFor="let report of reports">
+                    <div class="imgid">
+                        <img [src]="report.image" alt="User" />
+                        <span>ID: {{report.id }}</span>
+                    </div>
+                    <!-- <div class="info">
+                        <h4>{{ report.name }}</h4>
+                    </div> -->
+                    <div class="download">
+                        <h4>{{ report.name }}</h4>
+                        <a [href]="report.file" download>
+                            <i class="fa fa-file"></i> {{ report.label }}
+                            <i class="fa fa-download"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>

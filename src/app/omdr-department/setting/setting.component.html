@@ -1,0 +1,29 @@
+<div class="update-password-wrapper">
+    <div class="update-password-card">
+      <h2>Update Password</h2>
+  
+      <form [formGroup]="passwordForm" (ngSubmit)="onSubmit()">
+        <label for="oldPassword">Old Password</label>
+        <input type="password" id="oldPassword" formControlName="oldPassword" placeholder="********" />
+        <div class="error" *ngIf="passwordForm.get('oldPassword')?.touched && passwordForm.get('oldPassword')?.invalid">
+          Old password is required
+        </div>
+  
+        <label for="newPassword">New Password</label>
+        <input type="password" id="newPassword" formControlName="newPassword" placeholder="********" />
+        <div class="error" *ngIf="passwordForm.get('newPassword')?.touched && passwordForm.get('newPassword')?.invalid">
+          New password is required (min 6 chars)
+        </div>
+  
+        <label for="confirmPassword">Confirm New Password</label>
+        <input type="password" id="confirmPassword" formControlName="confirmPassword" placeholder="********" />
+        <div class="error" *ngIf="passwordForm.errors?.['mismatch'] && passwordForm.get('confirmPassword')?.touched"
+        >
+          Passwords do not match
+        </div>
+  
+        <button type="submit">Update</button>
+      </form>
+    </div>
+  </div>
+  
