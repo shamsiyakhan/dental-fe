@@ -220,3 +220,31 @@
     font-size: 1.3rem;
     align-items: center;
 }
+
+.status1 {
+    font-size: 14px;
+    font-weight: 500;
+    color: #000;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+
+    &.red1 {
+        background-color: orange;
+    }
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+
+    &.red2{
+        background-color: green;
+    }
+}

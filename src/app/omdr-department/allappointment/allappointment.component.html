@@ -63,3 +63,87 @@
         
     </ng-container>
 </div>
+
+
+<!-- in progress -->
+
+<div class="tab-content">
+    <ng-container [ngSwitch]="activeTab">
+        <div class="wrapper"  *ngSwitchCase="'in-progress'">
+           
+            <div class="appointments-container">
+                <div class="header">
+                  <h3><i class="fa fa-calendar"></i>In-progress Appointments</h3>
+                  <select>
+                    <option>Today</option>
+                    <option>Tomorrow</option>
+                    <option>This Week</option>
+                  </select>
+                </div>
+              
+                <div class="appointment-card" *ngFor="let prog of progress">
+                  <div class="imgid">
+                    <img [src]="prog.image" alt="User" />
+                    <span>ID:{{ prog.id }}</span>
+                </div>
+                  <div class="info">
+                    <h4>{{ prog.name }}</h4>
+                    <p>{{ prog.purpose }}</p>
+                    <div class="meta">
+                      <span><i class="fa fa-calendar-alt"></i> {{ prog.date }}</span>
+                      <span><i class="fa fa-clock"></i> {{ prog.time }}</span>
+                    </div>
+                  </div>
+              
+                  <div class="status1">
+                    <span class="dot red1"></span> In-progress
+                  </div>
+                </div>
+              </div>
+              
+        </div>
+        
+    </ng-container>
+</div>
+
+
+
+<!-- complete -->
+<div class="tab-content">
+    <ng-container [ngSwitch]="activeTab">
+        <div class="wrapper"  *ngSwitchCase="'completed'">
+           
+            <div class="appointments-container">
+                <div class="header">
+                  <h3><i class="fa fa-calendar"></i>Complete Appointments</h3>
+                  <select>
+                    <option>Today</option>
+                    <option>Tomorrow</option>
+                    <option>This Week</option>
+                  </select>
+                </div>
+              
+                <div class="appointment-card" *ngFor="let prog of progress">
+                  <div class="imgid">
+                    <img [src]="prog.image" alt="User" />
+                    <span>ID:{{ prog.id }}</span>
+                </div>
+                  <div class="info">
+                    <h4>{{ prog.name }}</h4>
+                    <p>{{ prog.purpose }}</p>
+                    <div class="meta">
+                      <span><i class="fa fa-calendar-alt"></i> {{ prog.date }}</span>
+                      <span><i class="fa fa-clock"></i> {{ prog.time }}</span>
+                    </div>
+                  </div>
+              
+                  <div class="status1">
+                    <span class="dot red2"></span>Completed
+                  </div>
+                </div>
+              </div>
+              
+        </div>
+        
+    </ng-container>
+</div>
