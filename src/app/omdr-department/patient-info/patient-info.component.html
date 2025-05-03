@@ -17,15 +17,18 @@
 
            <div class="treatments" *ngIf="isTreatment">
             <div class="treatment" *ngIf="treatments.length > 0; else noTreatment">
-                <div *ngFor="let treatment of treatments">
-                  <div class="treatmentInfo">
-                    <span class="treatmentName">{{treatment.treatment}}</span>
-                    <span class="treatmentDate">{{treatment.date}}</span>
-                  </div>
-                  <div class="treatmentStatus">
-                    <span class="status">{{treatment.status}}</span>
-                  </div>
+              <div *ngFor="let item of treatments" class="treatment-card">
+                <div class="treatment-info">
+                  <h3>{{ item.doctor.treatment_name }}</h3>
+                  <p>Date: {{ item.doctor.issue_date | date: 'yyyy-MM-dd' }}</p>
+                  <p>Status: {{ item.doctor.status }}</p>
+                  <p>Department: {{ item.department.dept_name }}</p>
                 </div>
+                <button class="custom-button" (click)="appointment(item)">Create Appointment</button>
+
+                <div class="arrow" style="cursor: pointer;">➔</div>
+              </div>
+              
               </div>
               
               <ng-template #noTreatment>
@@ -46,7 +49,7 @@
                   
              
                     <span class="status">{{complaint.payment_status}}</span>
-                    <i style="color: white; background-color: #005485; padding: 10px; border-radius: 50px; cursor: pointer;" class="fa-solid fa-arrow-right"></i>
+                    <i style="color: white; background-color: #005485; padding: 10px; border-radius: 50px; cursor: pointer;" (click)="startTreatment(complaint)" class="fa-solid fa-arrow-right"></i>
                   
                 </div>
               </div>

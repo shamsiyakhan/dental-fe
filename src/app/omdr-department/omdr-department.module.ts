@@ -16,6 +16,14 @@ import { ViewTestComponent } from './view-test/view-test.component';
 import { SettingComponent } from './setting/setting.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AllappointmentComponent } from './allappointment/allappointment.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
+import { AssignDepartmentComponent } from './assign-department/assign-department.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { AppointmentAssignComponent } from './appointment-assign/appointment-assign.component';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     OmdrDepartmentComponent,
@@ -28,7 +36,9 @@ import { AllappointmentComponent } from './allappointment/allappointment.compone
     TestComponent,
     ViewTestComponent,
     SettingComponent,
-    AllappointmentComponent
+    AllappointmentComponent,
+    AssignDepartmentComponent,
+    AppointmentAssignComponent
   ],
   imports: [
     CommonModule,
@@ -36,8 +46,13 @@ import { AllappointmentComponent } from './allappointment/allappointment.compone
     HttpClientModule,
     MatTabsModule,
     MatIconModule,
-    ReactiveFormsModule
-    
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatDialogModule,
+    MatButtonModule,
+    FormsModule
   ]
 })
 export class OmdrDepartmentModule { }

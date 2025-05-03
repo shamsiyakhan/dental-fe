@@ -12,6 +12,10 @@ import { ProfileComponent } from './profile/profile.component';
 import { PersonalComponent } from './personal/personal.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProfessionalComponent } from './professional/professional.component';
+import { ConsultationComponent } from './consultation/consultation.component';
+import { InfoConsultationComponent } from './info-consultation/info-consultation.component';
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     OverviewComponent,
@@ -20,7 +24,9 @@ import { ProfessionalComponent } from './professional/professional.component';
     DoctorComponent,
     ProfileComponent,
     PersonalComponent,
-    ProfessionalComponent
+    ProfessionalComponent,
+    ConsultationComponent,
+    InfoConsultationComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +34,8 @@ import { ProfessionalComponent } from './professional/professional.component';
     HttpClientModule,
     MatTableModule,
     MatTabsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class DoctorModule { }

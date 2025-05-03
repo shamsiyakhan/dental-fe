@@ -248,3 +248,30 @@
         background-color: green;
     }
 }
+
+.custom-button {
+    background-color: #007DC6;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  
+    &:hover {
+      background-color: #0063a8;
+      transform: translateY(-2px);
+    }
+  
+    &:active {
+      background-color: #00538c;
+      transform: scale(0.98);
+    }
+  
+    &:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+  }

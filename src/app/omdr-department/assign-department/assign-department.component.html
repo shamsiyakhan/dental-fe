@@ -1,0 +1,44 @@
+<div class="container">
+    <h2>Complaint Form</h2>
+    <form [formGroup]="complaintForm" (ngSubmit)="onSubmit()">
+      <label for="treatment_name">Treatment Name</label>
+      <input type="text" id="treatment_name" formControlName="treatment_name" />
+  
+      <label for="issue_date">Issue Date</label>
+      <input type="date" id="issue_date" formControlName="issue_date" />
+  
+      <label for="status">Status</label>
+      <input type="text" id="status" formControlName="status" />
+  
+      <label for="total_charge">Total Charge</label>
+      <input type="number" id="total_charge" formControlName="total_charge" />
+  
+      <label for="finding">Finding</label>
+      <textarea id="finding" formControlName="finding"></textarea>
+  
+      <label for="history">History</label>
+      <textarea id="history" formControlName="history"></textarea>
+  
+      <label for="dept_id">Department</label>
+      <select id="dept_id" formControlName="dept_id">
+        <option *ngFor="let department of departments" value="{{department.dept_id}}">{{department.dept_name}}</option>
+      </select>
+  
+      <label for="patient_id">Patient ID</label>
+      <input type="text" id="patient_id" formControlName="patient_id" />
+  
+      <label for="complaint_id">Complaint ID</label>
+      <input type="text" id="complaint_id" formControlName="complaint_id" />
+  
+  <!--     <label for="payment_status">Payment Status</label>
+      <input type="text" id="payment_status" formControlName="payment_status" /> -->
+
+      <label for="dept_id">Payment Status</label>
+      <select id="payment_status" formControlName="payment_status">
+        <option value="Paid">Paid</option>
+        <option value="UnPaid">UnPaid</option>
+      </select>
+  
+      <button type="submit">Submit</button>
+    </form>
+  </div>

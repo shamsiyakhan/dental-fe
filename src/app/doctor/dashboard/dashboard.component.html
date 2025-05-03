@@ -8,53 +8,28 @@
         <div class="col-8 profile1">
             <span class="text1">Upcoming Appointments</span>
             <hr class="divider">
-            <div class="infoProfile">
+            <div class="infoProfile" *ngFor="let appointment of inProgressAppointments">
                 <div class="left">
                     <img src="assets/img3.png" alt="" class="images">
                     <div class="details">
-                        <span class="name">Sonia Singh</span>
-                        <span class="extra">Cavity Filling</span>
+                        <span class="name">{{appointment.patient_name}}</span>
+                        <span class="extra">{{appointment.treatment_name}}</span>
                     </div>
                 </div>
                 <div class="right">
-                    <span class="date">7th Mar, 2025</span>
-                    <span class="time">9:00 am</span>
+                    <span class="date">{{appointment.appointment_date | date:"dd-MM-yyyy"}}</span>
+                    <span class="time">{{appointment.appointment_date | date:"hh-mm"}}</span>
                 </div>
             </div>
-            <div class="infoProfile">
-                <div class="left">
-                    <img src="assets/img2.png" alt="" class="images">
-                    <div class="details">
-                        <span class="name">Sonia Singh</span>
-                        <span class="extra">Cavity Filling</span>
-                    </div>
-                </div>
-                <div class="right">
-                    <span class="date">7th Mar, 2025</span>
-                    <span class="time">9:00 am</span>
-                </div>
-            </div>
-            <div class="infoProfile">
-                <div class="left">
-                    <img src="assets/img1.png" alt="" class="images">
-                    <div class="details">
-                        <span class="name">Sonia Singh</span>
-                        <span class="extra">Cavity Filling</span>
-                    </div>
-                </div>
-                <div class="right">
-                    <span class="date">7th Mar, 2025</span>
-                    <span class="time">9:00 am</span>
-                </div>
-            </div>
+     
         </div>
         <div class="col-4 doctor-profile">
             <div class="logo">
                 <img class="logo" src="assets/logo.png" alt="">
             </div>
             
-            <h2 class="name1">Dr. Dave Affleck</h2>
-            <p class="info">Orthodontist</p>
+            <h2 class="name1">{{doctor.fullname}}</h2>
+            <p class="info">{{doctor.specialization}}</p>
         </div>
     </div>
 

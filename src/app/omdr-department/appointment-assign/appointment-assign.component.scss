@@ -1,0 +1,32 @@
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    border: 1px solid #ccc;
+  
+    label {
+      display: block;
+      margin-top: 10px;
+      color: #007DC6;
+      font-weight: 600;
+    }
+  
+    input[type="date"],
+    input[type="time"] {
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      width: 100%;
+      font-size: 1rem;
+      margin-top: 5px;
+      margin-bottom: 10px;
+    }
+  
+    .output {
+      margin-top: 15px;
+      color: #007DC6;
+      font-weight: 500;
+    }
+  }
+  

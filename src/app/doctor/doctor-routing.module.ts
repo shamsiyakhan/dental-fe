@@ -6,6 +6,8 @@ import { PatientTreatmentComponent } from './patient-treatment/patient-treatment
 import { DoctorComponent } from './doctor/doctor.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PersonalComponent } from './personal/personal.component';
+import { ConsultationComponent } from './consultation/consultation.component';
+import { InfoConsultationComponent } from './info-consultation/info-consultation.component';
 
 
 const routes: Routes = [
@@ -31,12 +33,20 @@ const routes: Routes = [
         component:DoctorComponent
       },
       {
+        path:'consultation',
+        component:ConsultationComponent
+      },
+      {
         path:'profile',
         component:ProfileComponent
       },
       {
         path:'personal',
         component:PersonalComponent
+      },
+      {
+        path:'info-consultation',
+        component:InfoConsultationComponent
       }
      
     ]

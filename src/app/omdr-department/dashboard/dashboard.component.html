@@ -12,28 +12,28 @@
             <a>View all</a>
         </div>
         <div class="card-list">
-            <div class="appointment-card" *ngFor="let appointment of appointments">
+            <div class="appointment-card" *ngFor="let appointment of todaysAppointments">
                 <div class="imgid">
-                    <img [src]="appointment.image" alt="User" />
-                    <span>{{ appointment.id }}</span>
+                    <img src="assets/doc3.jpg" alt="User" />
+                    <span>ID: {{ appointment.appointment_id }}</span>
                 </div>
 
                 <div class="info">
-                    <h4>{{ appointment.name }}</h4>
-                    <p>{{ appointment.type }}</p>
+                    <h4>{{ appointment.patient_name }}</h4>
+                    <p>{{ appointment.treatment_name }}</p>
                     <div class="timeinfo">
-                        <span><i class="fa fa-calendar"></i> {{ appointment.date }}</span>
-                    <span><i class="fa fa-clock"></i> {{ appointment.time }}</span>
+                        <span><i class="fa fa-calendar"></i> {{ appointment.appointment_date | date:"dd-MM-yyyy"}}</span>
+                    <span><i class="fa fa-clock"></i> {{ appointment.appointment_date | date:"hh-mm"}}</span>
                     </div>
                 </div>
                 <div class="leftstatus">
                     <div class="status">
-                        <span class="dot" [ngClass]="appointment.status.toLowerCase()"></span>
+                        <span class="dot" [ngClass]="appointment?.status?.toLowerCase()"></span>
                         {{ appointment.status }}
                     </div>
                     <div class="actions" *ngIf="appointment.status === 'Waiting'">
-                        <button class="reschedule">Reschedule</button>
-                        <button class="cancel">Cancel</button>
+                        <!-- <button class="reschedule">Reschedule</button>
+                        <button class="cancel">Cancel</button> -->
                     </div>
                 </div>
                 

@@ -26,6 +26,14 @@ constructor(
    redirect(route:any){
      this.router.navigate([`/omdr/${route}`])
    }
+
+   logout(){
+    localStorage.clear()
+    setTimeout(() => {
+      localStorage.clear();
+    }, 1000);
+    this.router.navigate(['/auth/department-login'])  
+   }
  
 
 }

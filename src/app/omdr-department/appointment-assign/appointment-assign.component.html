@@ -1,0 +1,14 @@
+<div class="container">
+    <label for="dateInput">Select Date:</label>
+    <input type="date" id="dateInput" [(ngModel)]="selectedDate" (change)="onDateTimeChange()" />
+  
+    <label for="timeInput">Select Time:</label>
+    <input type="time" id="timeInput" [(ngModel)]="selectedTime" (change)="onDateTimeChange()" />
+  
+    <div class="output" *ngIf="formattedDateTime">
+      <p><strong>Formatted:</strong> {{ formattedDateTime }}</p>
+    </div>
+
+    <button class="custom-button" (click)="createAppointment()">Create Appointment</button>
+  </div>
+  

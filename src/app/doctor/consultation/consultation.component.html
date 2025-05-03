@@ -1,0 +1,33 @@
+<div class="tabs">
+    <div class="tab" [class.active]="activeTab === 'identity'" (click)="selectTab('identity')">
+        Identity
+    </div>
+    <div class="tab" [class.active]="activeTab === 'personal'" (click)="selectTab('personal')">
+        Personal
+    </div>
+    <div class="tab" [class.active]="activeTab === 'professional'" (click)="selectTab('professional')">
+        Professional
+    </div>
+</div>
+
+
+<div *ngFor="let item of todaysAppointments" class="appointment-card">
+    <div class="card-header">
+      <div>
+        <h3>{{ item.treatment_name }}</h3>
+        <p class="status">{{ item.treatment_status }}</p>
+      </div>
+      <span class="arrow" (click)="saveInfo(item)">➔</span>
+    </div>
+  
+    <div class="card-body">
+      <p><strong>Date:</strong> {{ item.appointment_date | date: 'dd-MM-yyyy' }}</p>
+      <p><strong>Time:</strong> {{ item.appointment_date | date: 'hh:mm a' }}</p>
+      <p><strong>Department:</strong> {{ item.dept_name }}</p>
+      <p><strong>Patient:</strong> {{ item.patient_name }}</p>
+      <p><strong>Email:</strong> {{ item.patient_email }}</p>
+    </div>
+
+    
+  </div>
+  

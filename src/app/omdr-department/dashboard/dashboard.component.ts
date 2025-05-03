@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private http:HttpClient
+  ) { }
+
+  todaysAppointments:any[]=[]
   appointments = [
     {
       image: 'assets/doc1.jpg',
@@ -108,6 +113,15 @@ export class DashboardComponent implements OnInit {
   ];
   
   ngOnInit(): void {
+    this.getTodaysAppointments()
+  }
+
+  getTodaysAppointments(){
+    const deptId = localStorage.getItem('department_id')
+    this.http.get('http://localhost:3000/getTodayAppointment/'+deptId).subscribe((data:any)=>{
+      console.warn(data)
+      this.todaysAppointments=data.result
+    })
   }
 
 }

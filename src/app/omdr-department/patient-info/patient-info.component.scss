@@ -82,10 +82,48 @@
         display: flex;
         flex-direction: column;
         gap: 10px;
+        width: 100%;
+        margin-top: 10px;
+        .treatment-info p{
+            font-size: 1.2rem;
+        }
     }
 }
 
+.custom-button {
+    background-color: #007DC6;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  
+    &:hover {
+      background-color: #0063a8;
+      transform: translateY(-2px);
+    }
+  
+    &:active {
+      background-color: #00538c;
+      transform: scale(0.98);
+    }
+  
+    &:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+  }
+  
+
 .noTreatmentMessage{
+    margin: auto;
+    font-size: 1.5rem;
+}
+
+.noComplaintMessage{
     margin: auto;
     font-size: 1.5rem;
 }
@@ -112,3 +150,41 @@
         margin: 10px 0;
     }
 }
+
+
+.treatment-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    background-color: white;
+    transition: background-color 0.2s ease;
+  
+    &:hover {
+      background-color: #f0f9ff;
+    }
+  
+    .treatment-info {
+      h3 {
+        color: #007DC6;
+        margin: 0 0 5px;
+        font-size: 1.2rem;
+      }
+  
+      p {
+        margin: 2px 0;
+        font-size: 0.95rem;
+        color: #444;
+      }
+    }
+  
+    .arrow {
+      color: #007DC6;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+  }
+  

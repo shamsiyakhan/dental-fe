@@ -19,3 +19,35 @@
 body{
     background-color: #F9FAFB;
 }
+
+.form-container {
+    position: relative;
+    max-width: 100%;
+    overflow: visible;
+    z-index: 1;
+  }
+  
+  mat-form-field {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .mat-select-panel {
+    max-height: 250px !important;
+    overflow-y: auto !important;
+    z-index: 1000 !important;
+  }
+  
+  .cdk-overlay-pane {
+    z-index: 1000 !important;
+  }
+  
+  .mat-dialog-container{
+    z-index: 9999 !important;
+    position: absolute;
+    top: 0px
+  }

@@ -44,8 +44,11 @@ export class DepartmentLoginComponent implements OnInit {
 
     this.http.post(this.api.url + '/deptlogin', data).subscribe((data: any) => {
       console.log(data)
+      localStorage.setItem('department_id', data.user.dept_id)
       if (data.user.dept_name == "OMDR") {
         this.router.navigate(['/omdr/dashboard'])
+      }else{
+        this.router.navigate(['/department/dashboard'])
       }
     }, (error) => {
       Swal.fire({
