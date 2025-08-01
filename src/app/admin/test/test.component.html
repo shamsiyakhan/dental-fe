@@ -1,0 +1,72 @@
+<div class="dashboard-container">
+  <h1>Dental Test Management</h1>
+  <p class="subtitle">Admin Dashboard - Today's Test Overview</p>
+
+  <div class="cards">
+    <div class="card">
+      <h2>{{ totalTests }}</h2>
+      <p>Total Tests Today</p>
+    </div>
+    <div class="card">
+      <h2>{{ completed }}</h2>
+      <p>Completed</p>
+    </div>
+    <div class="card">
+      <h2>{{ inProgress }}</h2>
+      <p>In Progress</p>
+    </div>
+    <div class="card">
+      <h2>{{ pending }}</h2>
+      <p>Pending</p>
+    </div>
+  </div>
+
+  <div class="table-section" *ngIf="!isMobile()">
+    <h3>Dental Tests - {{ today | date:'fullDate' }}</h3>
+    <p>Complete list of all dental tests conducted today</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Test ID</th>
+          <th>Patient</th>
+          <th>Test Type</th>
+          <th>Time</th>
+          <th>Status</th>
+          <th>Priority</th>
+          <th>Technician</th>
+          <th>Doctor</th>
+          <th>Results</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let test of testData">
+          <td>{{ test.id }}</td>
+          <td><strong>{{ test.name }}</strong><br><span class="pid">{{ test.pid }}</span></td>
+          <td>{{ test.type }}</td>
+          <td>{{ test.time }}</td>
+          <td><span class="badge" [ngClass]="test.status">{{ test.status }}</span></td>
+          <td><span class="priority" [ngClass]="test.priority">{{ test.priority }}</span></td>
+          <td>{{ test.technician }}</td>
+          <td>{{ test.doctor }}</td>
+          <td>{{ test.result }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Mobile View Cards -->
+  <div class="mobile-cards" *ngIf="isMobile()">
+    <div class="test-card" *ngFor="let test of testData">
+      <div class="top">
+        <strong>{{ test.name }}</strong> ({{ test.id }})<br>
+        <small>{{ test.type }} - {{ test.time }}</small>
+      </div>
+      <div class="row"><strong>Status:</strong> <span class="badge" [ngClass]="test.status">{{ test.status }}</span></div>
+      <div class="row"><strong>Priority:</strong> <span class="priority" [ngClass]="test.priority">{{ test.priority }}</span></div>
+      <div class="row"><strong>Technician:</strong> {{ test.technician }}</div>
+      <div class="row"><strong>Doctor:</strong> {{ test.doctor }}</div>
+      <div class="row"><strong>Result:</strong> {{ test.result }}</div>
+    </div>
+  </div>
+</div>

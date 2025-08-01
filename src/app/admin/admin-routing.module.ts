@@ -9,6 +9,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { DepartmentComponent } from './department/department.component';
 import { DepartmentInfoComponent } from './department-info/department-info.component';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
+import { TestComponent } from './test/test.component';
+import { ReportComponent } from './report/report.component';
 
 const routes: Routes = [
   {
@@ -52,6 +54,14 @@ const routes: Routes = [
        {
         path:'view-pro',
         component:ViewProfileComponent
+       },
+       {
+        path:'test',
+        component:TestComponent
+       },
+       {
+        path:'report',
+        component:ReportComponent
        }
     ]
   }
