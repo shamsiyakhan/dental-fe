@@ -9,14 +9,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { DepartmentComponent } from './department/department.component';
 import { DepartmentInfoComponent } from './department-info/department-info.component';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
-<<<<<<< HEAD
 import { ClerkComponent } from './clerk/clerk.component';
 import { TestComponent } from './test/test.component';
 import { ReportComponent } from './report/report.component';
-=======
-import { TestComponent } from './test/test.component';
-import { ReportComponent } from './report/report.component';
->>>>>>> 0eb2d787a6802d1b23667810c0f0f7ec908ca507
 
 const routes: Routes = [
   {
