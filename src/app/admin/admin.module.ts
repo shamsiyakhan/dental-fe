@@ -15,6 +15,11 @@ import { DepartmentInfoComponent } from './department-info/department-info.compo
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
+import { TestComponent } from './test/test.component';
+import { MatCardModule } from '@angular/material/card';
+import { ReportComponent } from './report/report.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 import { ClerkComponent } from './clerk/clerk.component';
 @NgModule({
   declarations: [
@@ -27,7 +32,9 @@ import { ClerkComponent } from './clerk/clerk.component';
     DepartmentComponent,
     DepartmentInfoComponent,
     ViewProfileComponent,
-    ClerkComponent
+    ClerkComponent,
+    TestComponent,
+    ReportComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +43,11 @@ import { ClerkComponent } from './clerk/clerk.component';
     NgChartsModule,
     ReactiveFormsModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    
   ]
 })
 export class AdminModule { }
