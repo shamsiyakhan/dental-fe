@@ -20,11 +20,11 @@
                     <span (click)="redirect('department')">Department</span>
                 </div>
                 
-                <div class="menu-item" [ngClass]="isActive('doctor')">
+             <!--    <div class="menu-item" [ngClass]="isActive('doctor')">
                     <span>Doctors</span>
-                </div>
+                </div> -->
                 <div class="menu-item" [ngClass]="isActive('clerk')">
-                    <span>Clerk</span>
+                    <span (click)="redirect('clerk')">Clerk</span>
                 </div>
                 <div class="menu-item" [ngClass]="isActive('test')">
                     <span>Test</span>

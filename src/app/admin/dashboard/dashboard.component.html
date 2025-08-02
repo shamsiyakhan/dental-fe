@@ -1,143 +1,109 @@
-<div class="mainContainer">
-    <div class="activity row">
-        <div class="col-8">
-            <div style="width: 90%; background-color: white; border-radius: 10px;padding: 20px; position: relative;display: flex; flex-direction: column;">
-                <span style="color:#007DC6 ; font-size: 2.5rem; font-weight: 600; margin-bottom: 20px;">Department Appointments</span>
-                <div class="range-dropdown">
-                    <select (change)="onRangeChange($event)">
-                      <option value="today">Today</option>
-                      <option value="1week">1 Week</option>
-                      <option value="1month">1 Month</option>
-                      <option value="1year">1 Year</option>
-                    </select>
-                  </div>
-                  
-                <canvas baseChart
-                        [datasets]="pieChartData"
-                        [labels]="pieChartLabels"
-                        [type]="pieChartType">
-                </canvas>
-              </div>
-        </div>
-
-        <div class="col-4">
-            <div class="departmentList">
-                <div class="departmentInfo">
-                    <span style="color: #007DC6; font-weight: 600; font-size: 1.9rem;">Departmental List With Hod</span>
-                    <div class="department">
-
-                        <span>Prosthodontics and Crown & Bridge</span>
-                        <div class="hod">
-                            <img src="assets/img1.png" alt="">
-                            <div class="hodInfo">
-                                <span class="hodName">Dr. Shamsiya Khan</span>
-                                <span class="hodSpecialization">Cardilogist</span>
-                            </div>
-                        </div>
-                        
-
-                    </div>
-
-                    <div class="department">
-                        <span>Periodontology</span>
-                        <div class="hod">
-                            <img src="assets/img2.png" alt="">
-                            <div class="hodInfo">
-                                <span class="hodName">Dr. Fareeha Choglay</span>
-                                <span class="hodSpecialization">Cardilogist</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="department">
-                        <span>Conservative Dentistry & Endodontics</span>
-                        <div class="hod">
-                            <img src="assets/img3.png" alt="">
-                            <div class="hodInfo">
-                                <span class="hodName">Dr. Shayban Khan</span>
-                                <span class="hodSpecialization">Cardilogist</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="department">
-                        <span>Oral & Maxillofacial Surgery</span>
-                        <div class="hod">
-                            <img src="assets/img2.png" alt="">
-                            <div class="hodInfo">
-                                <span class="hodName">Dr. John Doe</span>
-                                <span class="hodSpecialization">Cardilogist</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="department">
-                        <span>Orthodontics & Dentofacial Orthopedics</span>
-                        <div class="hod">
-                            <img src="assets/img1.png" alt="">
-                            <div class="hodInfo">
-                                <span class="hodName">Dr. John Doe</span>
-                                <span class="hodSpecialization">Cardilogist</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="department">
-                        <span>Paedodontics & Preventive Dentistry</span>
-                        <div class="hod">
-                            <img src="assets/img3.png" alt="">
-                            <div class="hodInfo">
-                                <span class="hodName">Dr. John Doe</span>
-                                <span class="hodSpecialization">Cardilogist</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="department">
-                        <span>Oral Medicine & Radiology</span>
-                        <div class="hod">
-                            <img src="assets/img1.png" alt="">
-                            <div class="hodInfo">
-                                <span class="hodName">Dr. John Doe</span>
-                                <span class="hodSpecialization">Cardilogist</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="department">
-                        <span>Oral Pathology & Microbiology</span>
-                        <div class="hod">
-                            <img src="assets/img2.png" alt="">
-                            <div class="hodInfo">
-                                <span class="hodName">Dr. John Doe</span>
-                                <span class="hodSpecialization">Cardilogist</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="department">
-                        <span>Public Health Dentistry</span>
-                        <div class="hod">
-                            <img src="assets/img3.png" alt="">
-                            <div class="hodInfo">
-                                <span class="hodName">Dr. John Doe</span>
-                                <span class="hodSpecialization">Cardilogist</span>
-                            </div>
-                        </div>  
-                    </div>
-                   
-                   
-                   
-                    
-                    
-                    
-                    
-                    
-                    
-                </div>
-            </div>
-        </div>
+<div class="container-fluid mt-4">
+  <div class="d-flex justify-content-between align-items-start mb-4">
+    <div>
+      <h2 class="fw-bold">Welcome back, Dr. Admin!</h2>
+      <p class="text-muted">Here's what's happening today.</p>
     </div>
- 
-</div>
+    <div class="text-end">
+      <p class="text-muted mb-0">Today's Date</p>
+      <p class="fw-medium">Thursday, July 31, 2025</p>
+    </div>
+  </div>
 
+  <div class="row g-3 mb-4">
+    <div class="col-md-3">
+      <div class="card p-3">
+        <div class="d-flex justify-content-between">
+          <span>Total Patients</span>
+          <i class="bi bi-people"></i>
+        </div>
+        <h4 class="fw-bold mt-2">1,234</h4>
+        <p class="text-success mb-0">+12% from last month</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card p-3">
+        <div class="d-flex justify-content-between">
+          <span>Today's Appointments</span>
+          <i class="bi bi-calendar-event"></i>
+        </div>
+        <h4 class="fw-bold mt-2">28</h4>
+        <p class="text-success mb-0">+3 from yesterday</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card p-3">
+        <div class="d-flex justify-content-between">
+          <span>Monthly Revenue</span>
+          <i class="bi bi-currency-dollar"></i>
+        </div>
+        <h4 class="fw-bold mt-2">$45,230</h4>
+        <p class="text-danger mb-0">-8% from last month</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card p-3">
+        <div class="d-flex justify-content-between">
+          <span>Success Rate</span>
+          <i class="bi bi-graph-up"></i>
+        </div>
+        <h4 class="fw-bold mt-2">98.5%</h4>
+        <p class="text-success mb-0">+2.1% from last month</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card p-3 mb-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h5 class="mb-0"><i class="bi bi-calendar-check me-2"></i>Today's Appointments</h5>
+      <button class="btn btn-link btn-sm">View All</button>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover align-middle mb-0">
+        <thead class="table-light">
+          <tr>
+            <th>Patient</th>
+            <th>Treatment</th>
+            <th>Time</th>
+            <th>Doctor</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let appt of appointments">
+            <td>{{ appt.patient }}</td>
+            <td>{{ appt.treatment }}</td>
+            <td>{{ appt.time }}</td>
+            <td>{{ appt.doctor }}</td>
+            <td>
+              <span class="badge"
+                [ngClass]="{
+                  'bg-success': appt.status === 'Confirmed',
+                  'bg-warning text-dark': appt.status === 'Pending',
+                  'bg-primary': appt.status === 'In Progress',
+                  'bg-secondary': appt.status === 'Completed'
+                }">
+                {{ appt.status }}
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row g-3">
+    <div class="col-md-6">
+      <div class="card p-3">
+        <h5>Monthly Revenue Trend</h5>
+        <canvas id="revenueChart"></canvas>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card p-3">
+        <h5>Popular Treatments</h5>
+        <canvas id="treatmentsChart"></canvas>
+      </div>
+    </div>
+  </div>
+</div>

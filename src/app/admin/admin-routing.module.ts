@@ -9,6 +9,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { DepartmentComponent } from './department/department.component';
 import { DepartmentInfoComponent } from './department-info/department-info.component';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
+import { ClerkComponent } from './clerk/clerk.component';
 
 const routes: Routes = [
   {
@@ -52,6 +53,10 @@ const routes: Routes = [
        {
         path:'view-pro',
         component:ViewProfileComponent
+       },
+       {
+        path:"clerk",
+        component:ClerkComponent
        }
     ]
   }

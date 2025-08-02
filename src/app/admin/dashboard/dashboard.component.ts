@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Chart } from 'chart.js';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,6 +16,41 @@ export class DashboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+    appointments = [
+    { patient: 'Sarah Johnson', treatment: 'Dental Cleaning', time: '09:00 AM', doctor: 'Dr. Smith', status: 'Confirmed' },
+    { patient: 'Michael Brown', treatment: 'Root Canal', time: '11:30 AM', doctor: 'Dr. Davis', status: 'In Progress' },
+    { patient: 'Emma Wilson', treatment: 'Teeth Whitening', time: '02:00 PM', doctor: 'Dr. Johnson', status: 'Completed' },
+    { patient: 'James Miller', treatment: 'Cavity Filling', time: '03:30 PM', doctor: 'Dr. Smith', status: 'Pending' },
+    { patient: 'Lisa Anderson', treatment: 'Orthodontic Check', time: '04:45 PM', doctor: 'Dr. Wilson', status: 'Confirmed' }
+  ];
+
+  ngAfterViewInit(): void {
+    new Chart('revenueChart', {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        datasets: [{
+          label: 'Revenue',
+          data: [33000, 44000, 37000, 50000, 46000, 55000],
+          borderColor: '#3b82f6',
+          tension: 0.4,
+          fill: false
+        }]
+      }
+    });
+
+    new Chart('treatmentsChart', {
+      type: 'bar',
+      data: {
+        labels: ['Cleaning', 'Fillings', 'Root Canal', 'Whitening', 'Orthodontics'],
+        datasets: [{
+          label: 'Treatments',
+          data: [150, 90, 40, 70, 20],
+          backgroundColor: '#10b981'
+        }]
+      }
+    });
   }
 
   onRangeChange(event:any){

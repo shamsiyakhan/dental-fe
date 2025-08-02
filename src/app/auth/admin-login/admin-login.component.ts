@@ -11,44 +11,48 @@ import Swal from 'sweetalert2';
   styleUrls: ['./admin-login.component.scss']
 })
 export class AdminLoginComponent implements OnInit {
-  url:any
+  url: any
   constructor(
-    private fb:FormBuilder,
-    private api:ApiService,
-    private http:HttpClient,
-    private router:Router
+    private fb: FormBuilder,
+    private api: ApiService,
+    private http: HttpClient,
+    private router: Router
   ) { }
 
   loginForm = this.fb.group({
-    username:[''],
-    password:['']
+    username: [''],
+    password: ['']
   })
 
   ngOnInit(): void {
     this.url = this.api.url
   }
 
-  onSubmit(){
+  onSubmit() {
     let data
-    if(this.loginForm.value.password){
-       data={
-        email:this.loginForm.value.username,
-        password:window.btoa(this.loginForm.value.password)
+    if (this.loginForm.value.password) {
+      data = {
+        email: this.loginForm.value.username,
+        password: window.btoa(this.loginForm.value.password)
       }
     }
-   
+
     console.warn(this.loginForm.value)
-    this.http.post(this.url+'/admin-login',data).subscribe((data:any)=>{
-      this.router.navigate(['/admin/dashboard'])
-    }, (error)=>{
-      console.log(error)
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: error.error.error
-      })
-    }
-    )
+    this.http.post(this.url + '/admin-login', data).subscribe({
+      next: (data: any) => {
+        localStorage.setItem('token', data.token);
+        this.router.navigate(['/admin/dashboard']);
+      },
+      error: (error) => {
+        console.log(error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.error.error
+        });
+      }
+    });
+
   }
 
 }

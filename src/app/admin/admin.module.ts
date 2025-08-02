@@ -6,7 +6,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { OverviewComponent } from './overview/overview.component';
 import { PatientComponent } from './patient/patient.component';
 import { MatTableModule } from '@angular/material/table';
-import { HttpClientModule } from '@angular/common/http';
 import { PatientTreatmentComponent } from './patient-treatment/patient-treatment.component';
 import { PatientTreatmentDiagnosisComponent } from './patient-treatment-diagnosis/patient-treatment-diagnosis.component';
 import { NgChartsModule } from 'ng2-charts';
@@ -16,6 +15,7 @@ import { DepartmentInfoComponent } from './department-info/department-info.compo
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
+import { ClerkComponent } from './clerk/clerk.component';
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -26,13 +26,13 @@ import { ViewProfileComponent } from './view-profile/view-profile.component';
     ProfileComponent,
     DepartmentComponent,
     DepartmentInfoComponent,
-    ViewProfileComponent
+    ViewProfileComponent,
+    ClerkComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     MatTableModule,
-    HttpClientModule,
     NgChartsModule,
     ReactiveFormsModule,
     MatIconModule,

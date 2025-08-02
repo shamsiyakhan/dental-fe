@@ -1,0 +1,56 @@
+<div class="container mt-4">
+  <h2 class="fw-bold">Clerk Management</h2>
+  <p class="text-muted mb-4">Manage clerical staff</p>
+
+  <div class="d-flex justify-content-between flex-wrap gap-2 mb-4">
+    <div class="d-flex gap-2 flex-grow-1">
+      <input class="form-control" placeholder="Search clerks..." />
+      <select class="form-select w-auto">
+        <option>All Departments</option>
+      </select>
+      <select class="form-select w-auto">
+        <option>All Status</option>
+      </select>
+    </div>
+    <button class="btn btn-primary" style="background-color: #007DC6;">
+      <i class="bi bi-plus-lg" style="background-color: #007DC6;"></i> Add New Clerk
+    </button>
+  </div>
+
+  <div class="mb-3">
+    <span class="me-4"><strong>3</strong> Active Clerks</span>
+    <span><strong>4</strong> Total Clerks</span>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 col-lg-4 col-xl-3 mb-4" *ngFor="let clerk of clerks">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-start mb-2">
+            <div>
+              <h5 class="card-title mb-1">{{ clerk.fullname }}</h5>
+              <small class="text-muted">{{ clerk.role }}</small>
+            </div>
+            <!-- <div class="text-end">
+              <span class="badge" [ngClass]="{
+                'bg-success': clerk.status === 'Active',
+                'bg-secondary': clerk.status === 'Inactive'
+              }">{{ clerk.status }}</span>
+            </div> -->
+          </div>
+
+          <p class="mb-1"><i class="bi bi-envelope me-2"></i>{{ clerk.email }}</p>
+          <p class="mb-1"><i class="bi bi-telephone me-2"></i>{{ clerk.phone }}</p>
+        </div>
+        <div class="card-footer d-flex justify-content-end gap-2 bg-white border-0">
+          <button class="btn btn-sm">
+            <i class="bi bi-pencil" style="color: blue;"></i>
+          </button>
+          <button class="btn btn-sm">
+            <i class="bi bi-trash" style="color: red;"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
