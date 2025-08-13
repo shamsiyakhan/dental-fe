@@ -1,0 +1,116 @@
+<div class="page">
+  <!-- Header -->
+  <div class="page-header">
+    <div>
+      <h1>Patient History</h1>
+      <p class="sub">Comprehensive dental care tracking and management</p>
+    </div>
+    <div class="actions">
+      <button mat-stroked-button (click)="schedule()">
+        <mat-icon>event</mat-icon>
+        Schedule Appointment
+      </button>
+      <button mat-raised-button color="primary" (click)="newTreatment()">New Treatment</button>
+    </div>
+  </div>
+
+  <!-- Patient Card -->
+  <mat-card class="patient-card">
+    <div class="identity">
+      <div class="avatar">{{ patient.initials }}</div>
+      <div>
+        <div class="name">{{ patient.name }}</div>
+        <div class="muted">Patient ID: {{ patient.id }}</div>
+      </div>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-col">
+        <h3>Personal Information</h3>
+        <ul class="kv">
+          <li><mat-icon>cake</mat-icon> Age: {{ patient.age }} years</li>
+          <li><mat-icon>call</mat-icon> {{ patient.phone }}</li>
+          <li><mat-icon>mail</mat-icon> {{ patient.email }}</li>
+          <li><mat-icon>location_on</mat-icon> {{ patient.address }}</li>
+        </ul>
+      </div>
+
+      <div class="info-col">
+        <h3>Medical Information</h3>
+        <ul class="kv">
+          <li>
+            <div class="label">Insurance</div>
+            <div class="strong">{{ patient.insurance.provider }}</div>
+            <div class="muted">{{ patient.insurance.id }}</div>
+          </li>
+          <li>
+            <div class="label">Emergency Contact</div>
+            <div class="strong">{{ patient.emergency.name }} - {{ patient.emergency.phone }}</div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="info-col">
+        <h3>Medical Alerts</h3>
+        <div class="alert-box">
+          <mat-icon color="warn">warning</mat-icon>
+          <span>Allergies: {{ patient.allergies.join(', ') }}</span>
+        </div>
+       <!--  <div class="conditions">
+          <mat-chip-list>
+            <mat-chip *ngFor="let c of patient.conditions" color="warn" selected>
+              {{ c }}
+            </mat-chip>
+          </mat-chip-list>
+        </div> -->
+      </div>
+    </div>
+  </mat-card>
+
+  <!-- Tabs -->
+  <mat-button-toggle-group class="tabs" appearance="legacy">
+    <mat-button-toggle value="history">Treatment History</mat-button-toggle>
+    <mat-button-toggle value="appointments">Appointments</mat-button-toggle>
+    <mat-button-toggle value="documents">Documents & Images</mat-button-toggle>
+  </mat-button-toggle-group>
+
+  <!-- Search & Filter -->
+  <div class="filter-bar">
+    <mat-form-field appearance="outline" class="search-field">
+      <mat-label>Search treatments, procedures, or notes...</mat-label>
+      <input matInput>
+    </mat-form-field>
+
+    <mat-button-toggle-group>
+      <mat-button-toggle value="All">All Status</mat-button-toggle>
+      <mat-button-toggle value="Completed">Completed</mat-button-toggle>
+      <mat-button-toggle value="In Progress">In Progress</mat-button-toggle>
+      <mat-button-toggle value="Scheduled">Scheduled</mat-button-toggle>
+      <mat-button-toggle value="Pending">Pending</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+
+  <!-- Appointments List -->
+  <div class="appointments">
+    <mat-card *ngFor="let appt of filteredAppointments" class="appointment-card">
+      <div class="appt-header">
+        <div>
+          <h3>{{ appt.title }}</h3>
+          <span class="status" [ngClass]="appt.status.toLowerCase()">{{ appt.status }}</span>
+        </div>
+      </div>
+
+      <div class="appt-details">
+        <div><mat-icon>event</mat-icon> {{ appt.date }}</div>
+        <div><mat-icon>schedule</mat-icon> {{ appt.time }}</div>
+        <div><mat-icon>person</mat-icon> {{ appt.doctor }}</div>
+        <div><mat-icon>timer</mat-icon> {{ appt.durationMin }} min</div>
+      </div>
+
+      <div class="appt-actions">
+        <button mat-stroked-button (click)="reschedule(appt)">Reschedule</button>
+        <button mat-stroked-button color="warn" (click)="cancel(appt)">Cancel</button>
+      </div>
+    </mat-card>
+  </div>
+</div>

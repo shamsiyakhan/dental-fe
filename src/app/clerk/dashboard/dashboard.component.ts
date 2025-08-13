@@ -19,7 +19,14 @@ export class DashboardComponent implements OnInit {
   }
 
 
-  patients:any[] = [ ];
+  patients:any[] = [ 
+
+        {
+          fullname:'khan',
+          userid:201
+        }
+
+  ];
 
   pendingBills = [
     { name: 'Liam Carter', amount: 20, image: 'https://randomuser.me/api/portraits/men/13.jpg' },
@@ -47,7 +54,7 @@ export class DashboardComponent implements OnInit {
 
 
   viewPatient(patient:any){
-    this.route.navigate([`/clerk/patientinfo/${patient.userid}`])
+    this.route.navigate([`/clerk/patient-history/${patient.userid}`])
   }
 
   register(){

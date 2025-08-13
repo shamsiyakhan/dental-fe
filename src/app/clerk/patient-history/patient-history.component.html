@@ -1,0 +1,87 @@
+<div class="patient-history-container">
+
+  <!-- Header -->
+  <div class="header-row">
+    <h2>Patient History</h2>
+    <button mat-raised-button color="primary">+ Add Appointment</button>
+  </div>
+
+  <!-- Patient Info Section -->
+  <div class="info-row">
+    <!-- Patient Information -->
+    <mat-card class="info-card">
+      <h3>Patient Information</h3>
+      <p><strong>Age:</strong> 29</p>
+      <p><strong>Contact:</strong> +91 9876543210</p>
+      <p><strong>Email:</strong> patient@mail.com</p>
+      <p><strong>Address:</strong> 123, Green Street, Pune</p>
+    </mat-card>
+
+    <!-- Medical Information -->
+    <mat-card class="info-card">
+      <h3>Medical Information</h3>
+      <p><strong>Insurance:</strong> Yes</p>
+      <p><strong>Provider:</strong> Delta Dental</p>
+      <p><strong>ID:</strong> DENT-12345</p>
+      <p><strong>Contact:</strong> +91 9876543210</p>
+    </mat-card>
+
+    <!-- Medical Alerts -->
+    <mat-card class="info-card">
+      <h3>Medical Alerts</h3>
+      <p><strong>Allergies:</strong> Penicillin</p>
+      <p><strong>Medical Condition:</strong> Hypertension</p>
+    </mat-card>
+  </div>
+
+  <!-- Tabs -->
+  <mat-tab-group>
+    <mat-tab label="History">
+      <div class="tab-content">History content...</div>
+    </mat-tab>
+    <mat-tab label="Appointment">
+      <div class="tab-content">Appointment content...</div>
+    </mat-tab>
+    <mat-tab label="Documents & Images">
+      <div class="tab-content">Documents content...</div>
+    </mat-tab>
+  </mat-tab-group>
+
+  <!-- Filter -->
+  <div class="filter-row">
+    <mat-form-field appearance="outline">
+      <mat-label>Filter by Treatment</mat-label>
+      <mat-select>
+        <mat-option value="all">All</mat-option>
+        <mat-option value="completed">Completed</mat-option>
+        <mat-option value="scheduled">Scheduled</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <!-- Treatment Cards -->
+  <div class="treatment-row">
+    <mat-card class="treatment-card">
+      <mat-card-title>Root Canal - Completed</mat-card-title>
+      <mat-card-content>
+        <p><strong>Date:</strong> 2025-08-01</p>
+        <p><strong>Tooth:</strong> 14</p>
+        <p><strong>Doctor:</strong> Dr. Smith</p>
+        <p><strong>Cost:</strong> ₹5000</p>
+        <div class="status success">Root canal completed successfully</div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="treatment-card">
+      <mat-card-title>Tooth Extraction - Scheduled</mat-card-title>
+      <mat-card-content>
+        <p><strong>Date:</strong> 2025-08-15</p>
+        <p><strong>Tooth:</strong> 18</p>
+        <p><strong>Doctor:</strong> Dr. Jane</p>
+        <p><strong>Cost:</strong> ₹3000</p>
+        <div class="status scheduled">Scheduled</div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+</div>
