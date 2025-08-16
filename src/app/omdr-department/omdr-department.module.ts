@@ -4,7 +4,6 @@ import { OmdrDepartmentRoutingModule } from './omdr-department-routing.module';
 import { OmdrDepartmentComponent } from './omdr-department/omdr-department.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PatientComponent } from './patient/patient.component';
-import { HttpClientModule } from '@angular/common/http';
 import { PatientInfoComponent } from './patient-info/patient-info.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { RegisterComplaintComponent } from './register-complaint/register-complaint.component';
@@ -43,7 +42,6 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     OmdrDepartmentRoutingModule,
-    HttpClientModule,
     MatTabsModule,
     MatIconModule,
     ReactiveFormsModule,

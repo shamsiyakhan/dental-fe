@@ -16,19 +16,19 @@
 <div class="container" *ngIf="treatment">
     <div class="header">
       <h2>List of treatments</h2>
-      <button mat-mini-fab color="primary" class="add"><mat-icon>add</mat-icon></button>
+      <button mat-mini-fab color="primary" class="add" (click)="openTreatmentDialog()"><mat-icon>add</mat-icon></button>
     </div>
   
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z1">
   
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef> List of treatments </th>
-        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.treatment_name}} </td>
       </ng-container>
   
       <ng-container matColumnDef="charge">
         <th mat-header-cell *matHeaderCellDef> Charges (INR) </th>
-        <td mat-cell *matCellDef="let element"> {{element.charge}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.total_charges}} </td>
       </ng-container>
   
       <ng-container matColumnDef="actions">

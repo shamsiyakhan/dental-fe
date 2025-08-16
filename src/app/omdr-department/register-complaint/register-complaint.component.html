@@ -1,120 +1,112 @@
 <div class="mainContainer">
 
-    <div class="patientContainer">
-        <div class="heading">
-            Patient Profile
-        </div>
-    
-        <div class="patientInfo">
-    
-            <div class="leftProfile">
-                    <div class="profileName">
-                        <img src="assets/img2.png" alt="">
-                        <span class="name">{{patientInfo?.fullname}}</span>
-                        <span class="id">{{patientInfo?.userid}}</span>
-                    </div>
-
-                    <div class="details">
-                        <div>
-                            <b>Date Of Birth</b>: {{patientInfo?.dob | date:"dd-MM-yyyy"}} <br>
-                            
-                        </div>
-                        <div>
-                            <b>Gender</b>: {{patientInfo?.gender}} <br>
-                            
-                        </div>
-                        <div>
-                            <b>Marital Status</b>: {{patientInfo?.maritalstatus}} <br>
-                          
-                        </div>
-                        <div>
-                            <b>Emergency Contact Name</b>: {{patientInfo?.emergency_name}} <br>
-                        </div>
-                        <div>
-                            <b>Emergency Contact Number</b>: {{patientInfo?.emergency_contact}} <br></div>
-                    </div>
-
-                    <div class="contactDetails mt-5">
-                        <b>Contact Details:</b>
-
-                        <div>
-                            <i class="fa-solid fa-phone"></i>:{{patientInfo?.phone}}
-        
-                        </div>
-
-                        <div>
-                            <i class="fa-solid fa-envelope"></i>:{{patientInfo?.email}}
-                        </div>
-
-
-                        <div>
-                            <i class="fa-solid fa-house"></i>:{{patientInfo?.address}}
-                        </div>
-                    </div>
-            </div>
-
-            <div class="rightProfile">
-                <form [formGroup]="registerComplaintForm" (ngSubmit)="submitComplaint()">
-                    <div>
-                        <label for="username">Cheif Complaint</label>
-                        <input class="input-text" id="username" type="text" placeholder="Issue Reported" formControlName="issue_reported">
-                    </div>
-                    
-    
-    
-                    <div class="form-container">
-                        <mat-form-field appearance="fill">
-                          <mat-label>Select Tests</mat-label>
-                          <mat-select
-                          [(value)]="selectedTests"
-                          multiple
-                          (selectionChange)="onTestSelectionChange($event)">
-                          >
-                            <mat-option
-                              *ngFor="let test of testsList"
-                              [value]="test.treatment_id"
-                            >
-                              {{ test.treatment_name }} (₹{{ test.treatment_price }})
-                            </mat-option>
-                          </mat-select>
-                        </mat-form-field>
-                      </div>
-                      
-    
-    
-                    <div>
-                        <div class="form-container">
-                            <mat-form-field appearance="fill">
-                              <mat-label>Select Payment Mode</mat-label>
-                              <mat-select
-                              [(value)]="selectedTests"
-                              formControlName="payment_mode">
-                              >
-                                <mat-option
-                                  *ngFor="let test of payment_mode"
-                                  [value]="test"
-                                >
-                                  {{ test }} (₹{{ test }})
-                                </mat-option>
-                              </mat-select>
-                            </mat-form-field>
-                          </div>
-                      </div>
-                    
-    
-    
-                      <div>
-                        <span>Total charges</span>
-                        ₹{{ registerComplaintForm.getRawValue().total_charge || 0 }}
-
-                      </div>
-                      
-                      <button type="submit">Register Complain</button>
-                    
-                </form>
-         
-            </div>
-        </div>
+  <div class="patientContainer">
+    <div class="heading">
+      Patient Profile
     </div>
-   
+
+    <div class="patientInfo">
+
+      <div class="leftProfile">
+        <div class="profileName">
+          <img src="assets/img2.png" alt="">
+          <span class="name">{{patientInfo?.fullname}}</span>
+          <span class="id">{{patientInfo?.userid}}</span>
+        </div>
+
+        <div class="details">
+          <div>
+            <b>Date Of Birth</b>: {{patientInfo?.dob | date:"dd-MM-yyyy"}} <br>
+
+          </div>
+          <div>
+            <b>Gender</b>: {{patientInfo?.gender}} <br>
+
+          </div>
+          <div>
+            <b>Marital Status</b>: {{patientInfo?.maritalstatus}} <br>
+
+          </div>
+          <div>
+            <b>Emergency Contact Name</b>: {{patientInfo?.emergency_name}} <br>
+          </div>
+          <div>
+            <b>Emergency Contact Number</b>: {{patientInfo?.emergency_contact}} <br>
+          </div>
+        </div>
+
+        <div class="contactDetails mt-5">
+          <b>Contact Details:</b>
+
+          <div>
+            <i class="fa-solid fa-phone"></i>:{{patientInfo?.phone}}
+
+          </div>
+
+          <div>
+            <i class="fa-solid fa-envelope"></i>:{{patientInfo?.email}}
+          </div>
+
+
+          <div>
+            <i class="fa-solid fa-house"></i>:{{patientInfo?.address}}
+          </div>
+        </div>
+      </div>
+
+      <div class="rightProfile">
+        <form [formGroup]="registerComplaintForm" (ngSubmit)="submitComplaint()">
+          <div>
+            <label for="username">Cheif Complaint</label>
+            <input class="input-text" id="username" type="text" placeholder="Issue Reported"
+              formControlName="issue_reported">
+          </div>
+
+
+
+          <div class="form-container">
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>Select Tests</mat-label>
+              <mat-select [(value)]="selectedTests" multiple disableOptionCentering
+                [panelClass]="'custom-dropdown-panel'" (selectionChange)="onTestSelectionChange($event)">
+                <mat-option *ngFor="let test of testsList" [value]="test.treatment_id">
+                  {{ test.treatment_name }} (₹{{ test.treatment_price }})
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+
+
+
+          <div>
+            <div class="form-container">
+              <mat-form-field appearance="fill">
+                <mat-label>Select Payment Mode</mat-label>
+                <mat-select [(value)]="selectedTests" formControlName="payment_mode">
+                  >
+                  <mat-option *ngFor="let test of payment_mode" [value]="test">
+                    {{ test }} (₹{{ test }})
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+
+
+
+          <div>
+            <span>Total charges</span>
+            ₹{{ registerComplaintForm.getRawValue().total_charge || 0 }}
+
+          </div>
+
+          <button type="submit">Register Complain</button>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+
 </div>

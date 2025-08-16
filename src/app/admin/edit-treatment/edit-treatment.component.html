@@ -1,0 +1,56 @@
+<div class="form-container">
+  <h2>Add Treatment</h2>
+
+  <form [formGroup]="treatmentForm">
+    <!-- Treatment Name -->
+    <div class="form-group">
+      <input type="text" formControlName="treatment_name" required />
+      <label>Treatment Name</label>
+    </div>
+
+    <!-- Total Charges -->
+    <div class="form-group">
+      <input type="number" formControlName="total_charges" required />
+      <label>Total Charges</label>
+    </div>
+
+    <!-- Custom Checkbox -->
+    <label class="checkbox-container">
+      Has Subcategories?
+      <input type="checkbox" formControlName="had_sub_category" />
+      <span class="checkmark"></span>
+    </label>
+
+    <!-- Subcategory Section -->
+    <div class="subcategory-section" *ngIf="treatmentForm.get('had_sub_category')?.value">
+      <h3>Subcategories</h3>
+
+      <div formArrayName="subcategories">
+        <div class="subcategory-row" *ngFor="let sub of subcategories.controls; let i = index" [formGroupName]="i">
+          <div class="form-group small">
+            <input type="text" formControlName="step_name" required />
+            <label>Step Name</label>
+          </div>
+
+          <div class="form-group small">
+            <input type="number" formControlName="step_charges" required />
+            <label>Step Charges</label>
+          </div>
+
+          <div class="form-group small">
+            <input type="number" formControlName="step_sequence" required />
+            <label>Step Sequence</label>
+          </div>
+
+          <button type="button" class="remove-btn" (click)="removeSubcategory(i)">✕</button>
+        </div>
+      </div>
+
+      <!-- Add Button -->
+      <button type="button" class="add-btn" (click)="addSubcategory()">+ Add Step</button>
+    </div>
+
+    <!-- Save Button -->
+    <button type="button" class="save-btn" (click)="save()">Save</button>
+  </form>
+</div>

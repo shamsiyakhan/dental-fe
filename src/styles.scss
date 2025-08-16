@@ -51,3 +51,136 @@ body{
     position: absolute;
     top: 0px
   }
+
+
+  /* styles.scss — paste below everything else so it overrides material defaults */
+
+/* Top-level container added by panelClass */
+.treatment-dialog-panel .mat-dialog-container {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 22px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+  max-width: 680px;
+  color: #222;
+  font-family: "Roboto", Arial, sans-serif;
+}
+
+/* Title */
+.treatment-dialog-panel .dialog-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #007DC6;
+  margin-bottom: 8px;
+}
+
+/* Content layout */
+.treatment-dialog-panel .dialog-content {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 6px;
+}
+
+/* mat-form-field look */
+.treatment-dialog-panel mat-form-field {
+  width: 100%;
+  background-color: #f4f8fb;
+  border-radius: 8px;
+  padding: 6px 10px;
+  box-sizing: border-box;
+  --mat-form-field-label-color: #555; /* some mat versions use CSS vars */
+}
+
+/* make the inner flex area tighter (remove Material extra padding) */
+.treatment-dialog-panel mat-form-field .mat-form-field-flex {
+  padding: 0 4px;
+}
+
+/* outline stroke color override for outline appearance */
+.treatment-dialog-panel
+.mat-form-field-appearance-outline .mat-form-field-outline,
+.treatment-dialog-panel
+.mat-form-field-appearance-outline .mat-form-field-outline-path {
+  stroke: rgba(0,0,0,0.06); /* subtle outline by default */
+}
+
+/* focused thicker outline color */
+.treatment-dialog-panel
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick,
+.treatment-dialog-panel
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-path {
+  stroke: #007DC6 !important;
+}
+
+/* placeholder / label */
+.treatment-dialog-panel mat-form-field .mat-form-field-label {
+  color: #666;
+  font-weight: 500;
+}
+
+/* input styling */
+.treatment-dialog-panel input.mat-input-element,
+.treatment-dialog-panel textarea.mat-input-element {
+  padding: 8px 0;
+  background: transparent;
+  font-size: 0.98rem;
+  color: #222;
+}
+
+/* subcategory area */
+.treatment-dialog-panel .subcategory-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* step card */
+.treatment-dialog-panel .step-card {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background: #fbfdff;
+  border-left: 4px solid #007DC6;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* make each field inside the step-card smaller width */
+.treatment-dialog-panel .step-card mat-form-field {
+  width: auto;
+  min-width: 150px;
+  flex: 1 1 220px;
+}
+
+/* icons/buttons alignment */
+.treatment-dialog-panel .step-card button {
+  margin-left: auto;
+}
+
+/* Add step button */
+.treatment-dialog-panel button[mat-stroked-button] {
+  align-self: flex-start;
+  margin-top: 6px;
+}
+
+/* total section */
+.treatment-dialog-panel .total-section {
+  margin-top: 6px;
+  font-size: 1.05rem;
+  color: #007DC6;
+  text-align: right;
+  font-weight: 600;
+}
+
+/* small responsive tweak */
+@media (max-width: 700px) {
+  .treatment-dialog-panel .step-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .treatment-dialog-panel .step-card button {
+    margin-left: 0;
+    align-self: flex-end;
+  }
+}

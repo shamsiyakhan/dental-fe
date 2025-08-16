@@ -1,0 +1,159 @@
+$form-color: #4f46e5;
+$bg-light: #f9fafb;
+
+.form-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  font-family: 'Inter', sans-serif;
+}
+
+h2 {
+  text-align: center;
+  color: $form-color;
+}
+
+.form-group {
+  position: relative;
+  margin: 20px 0;
+
+  input {
+    width: 100%;
+    padding: 10px 8px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    background: transparent;
+    transition: 0.3s;
+    font-size: 16px;
+
+    &:focus {
+      border-color: $form-color;
+    }
+
+    &:focus + label,
+    &:not(:placeholder-shown) + label {
+      top: -8px;
+      font-size: 12px;
+      color: $form-color;
+      background: white;
+      padding: 0 4px;
+    }
+  }
+
+  label {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    color: #777;
+    transition: 0.3s;
+    pointer-events: none;
+  }
+
+  &.small {
+    flex: 1;
+    margin: 5px;
+  }
+}
+
+/* Custom Checkbox */
+.checkbox-container {
+  display: block;
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+  margin: 20px 0;
+  user-select: none;
+  font-size: 16px;
+}
+
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border-radius: 4px;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+  background-color: $form-color;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkbox-container .checkmark:after {
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* Subcategories */
+.subcategory-section {
+  margin-top: 20px;
+}
+
+.subcategory-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.add-btn {
+  background: $form-color;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.remove-btn {
+  background: crimson;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+/* Save Button */
+.save-btn {
+  width: 100%;
+  background: $form-color;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+
+  &:hover {
+    background: darken($form-color, 10%);
+  }
+}

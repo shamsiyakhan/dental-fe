@@ -5,7 +5,11 @@
    
   
     <div class="departments-grid">
-      <div class="dept-item" (click)="departInfo()">Prosthodontics and Crown & Bridge</div>
+      <div class="dept-item" *ngFor="let department of department_list" (click)="departInfo(department.dept_id)">
+        {{ department.dept_name }}
+
+      </div>
+      <!-- <div class="dept-item" (click)="departInfo()">Prosthodontics and Crown & Bridge</div>
       <div class="dept-item">Oral Medicine & Radiology</div>
       <div class="dept-item">Periodontology</div>
       <div class="dept-item">Oral Pathology & Microbiology</div>
@@ -13,7 +17,7 @@
       <div class="dept-item">Public Health Dentistry</div>
       <div class="dept-item">Oral & Maxillofacial Surgery</div>
       <div class="dept-item">Orthodontics & Dentofacial Orthopedics</div>
-      <div class="dept-item">Paedodontics & Preventive Dentistry</div>
+      <div class="dept-item">Paedodontics & Preventive Dentistry</div> -->
     </div>
   </div>
   

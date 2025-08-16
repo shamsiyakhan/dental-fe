@@ -27,10 +27,10 @@
                     <span (click)="redirect('clerk')">Clerk</span>
                 </div>
                 <div class="menu-item" [ngClass]="isActive('test')">
-                    <span>Test</span>
+                    <span (click)="redirect('test')">Test</span>
                 </div>
                 <div class="menu-item" [ngClass]="isActive('report')">
-                    <span>Report</span>
+                    <span (click)="redirect('report')">Report</span>
                 </div>
             </div>
         </div>

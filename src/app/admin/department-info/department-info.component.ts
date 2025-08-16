@@ -1,6 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
+import { TreatmentDialogComponent } from '../treatment-dialog/treatment-dialog.component';
+import { EditTreatmentComponent } from '../edit-treatment/edit-treatment.component';
 
 @Component({
   selector: 'app-department-info',
@@ -15,28 +19,27 @@ export class DepartmentInfoComponent implements OnInit {
  pageSize = 12;
  newDoctor=false
  profileForm!: FormGroup;
-
-  constructor(private route:Router,private fb: FormBuilder) { }
+ department_id:any
+  constructor(
+    private route:Router,
+    private fb: FormBuilder,
+    private router:ActivatedRoute,
+    private http:HttpClient,
+    private dialog: MatDialog
+  ) { }
 
     displayedColumns: string[] = ['name', 'charge', 'actions'];
     dataSource = [
-      { name: 'Dental Crown (PFM)', charge: '₹4,000' },
-      { name: 'Dental Crown (Zirconia)', charge: '₹9,000' },
-      { name: 'Dental Bridge (3-unit, PFM)', charge: '₹12,000' },
-      { name: 'Dental Bridge (3-unit, Zirconia)', charge: '₹25,000' },
-      { name: 'Complete Denture (Single Arch)', charge: '₹8,000' },
-      { name: 'Complete Denture (Both Arches)', charge: '₹15,000' },
-      { name: 'Partial Denture (Acrylic)', charge: '₹3,000' },
-      { name: 'Partial Denture (Cast Metal)', charge: '₹9,000' },
-      { name: 'Implant-Supported Crown', charge: '₹35,000' },
-      { name: 'Implant-Supported Denture', charge: '₹60,000' },
-      { name: 'Post and Core', charge: '₹2,000' },
-      { name: 'Tooth Preparation & Impression Taking', charge: '₹1,500' },
-      { name: 'Prosthesis Repair & Relining', charge: '₹1,200' },
-      { name: 'Full Mouth Rehabilitation', charge: '₹1,50,000' }
+      { treatment_name: 'Dental Crown (PFM)', total_charges: '₹4,000' },
     ];
   
     ngOnInit(): void {
+
+      this.router.params.subscribe((params:any)=>{
+        console.warn(params['id'])
+        this.department_id=params['id']
+        this.getDepartments()
+      })
       this.profileForm = this.fb.group({
         title: ['Dr.'],
         fullName: ['Dave Affleck'],
@@ -48,11 +51,37 @@ export class DepartmentInfoComponent implements OnInit {
         address: ['High Street, B2B Building, Pune, India - 411090']
       });
     }
-  
+  getDepartments() {
+   this.http.get('http://localhost:3000/api/getTreatment/' + this.department_id).subscribe((data:any)=>{
+      console.warn(data.treatments)
+      this.dataSource=data.treatments
+      console.warn(this.dataSource)
+    })
+  }
+
+  openTreatmentDialog() {
+  const dialogRef = this.dialog.open(TreatmentDialogComponent, {
+    width: '600px',
+     panelClass: 'treatment-dialog-panel' 
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    if (result) {
+      console.log('Data to send API:', result);
+      this.getDepartments()
+      // call your API here
+    }
+  });
+}
 
 
     editTreatment(treatment: any) {
       console.log('Edit:', treatment);
+      const dialogRef = this.dialog.open(EditTreatmentComponent, {
+        width: '600px',
+        data: treatment,
+        panelClass: 'treatment-dialog-panel'
+      });
     }
   
     deleteTreatment(treatment: any) {

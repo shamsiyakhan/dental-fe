@@ -21,6 +21,13 @@ import { ReportComponent } from './report/report.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { ClerkComponent } from './clerk/clerk.component';
+import { TreatmentDialogComponent } from './treatment-dialog/treatment-dialog.component';
+import { FormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatInputModule } from '@angular/material/input';
+import { EditTreatmentComponent } from './edit-treatment/edit-treatment.component';
+
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -34,7 +41,9 @@ import { ClerkComponent } from './clerk/clerk.component';
     ViewProfileComponent,
     ClerkComponent,
     TestComponent,
-    ReportComponent
+    ReportComponent,
+    TreatmentDialogComponent,
+    EditTreatmentComponent
   ],
   imports: [
     CommonModule,
@@ -47,7 +56,10 @@ import { ClerkComponent } from './clerk/clerk.component';
     MatCardModule,
     MatFormFieldModule,
     MatSelectModule,
-    
+    FormsModule,
+    MatDialogModule,
+    MatSlideToggleModule,
+    MatInputModule
   ]
 })
 export class AdminModule { }

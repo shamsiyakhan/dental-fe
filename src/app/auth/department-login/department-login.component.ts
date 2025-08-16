@@ -47,6 +47,7 @@ export class DepartmentLoginComponent implements OnInit {
       localStorage.setItem('department_id', data.user.dept_id)
       if (data.user.dept_name == "OMDR") {
         this.router.navigate(['/omdr/dashboard'])
+        localStorage.setItem("token" ,data.token)
       }else{
         this.router.navigate(['/department/dashboard'])
       }
