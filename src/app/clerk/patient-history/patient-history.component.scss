@@ -1,0 +1,59 @@
+.patient-history-container {
+  padding: 16px;
+
+  .header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+
+    h2 {
+      margin: 0;
+    }
+  }
+
+  .info-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+
+    .info-card {
+      flex: 1 1 calc(33.33% - 16px);
+      min-width: 280px;
+    }
+  }
+
+  .filter-row {
+    margin: 16px 0;
+    max-width: 300px;
+  }
+
+  .treatment-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+
+    .treatment-card {
+      flex: 1 1 calc(50% - 16px);
+      min-width: 300px;
+
+      .status {
+        margin-top: 8px;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-weight: bold;
+
+        &.success {
+          background-color: #d4edda;
+          color: #155724;
+        }
+
+        &.scheduled {
+          background-color: #fff3cd;
+          color: #856404;
+        }
+      }
+    }
+  }
+}

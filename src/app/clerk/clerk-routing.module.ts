@@ -4,6 +4,8 @@ import { OverviewComponent } from './overview/overview.component';
 import { AddpatientComponent } from './addpatient/addpatient.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { InfoPatientComponent } from './info-patient/info-patient.component';
+import { PatientHistoryComponent } from './patient-history/patient-history.component';
+import { PatientAppointmentComponent } from './patient-appointment/patient-appointment.component';
 
 const routes: Routes = [
   {
@@ -28,6 +30,14 @@ const routes: Routes = [
       {
         path:'patientinfo/:id',
         component:InfoPatientComponent
+      },
+      {
+        path:'patient-history/:id',
+        component:PatientHistoryComponent
+      },
+      {
+        path:'patient-appointment',
+        component:PatientAppointmentComponent
       }
     ]
   }

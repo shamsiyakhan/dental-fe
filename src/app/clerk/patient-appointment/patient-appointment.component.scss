@@ -1,0 +1,157 @@
+.page {
+  padding: 1rem;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  h1 {
+    margin: 0;
+  }
+
+  .sub {
+    color: gray;
+    font-size: 0.9rem;
+  }
+
+  .actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+}
+
+.patient-card {
+  margin-top: 1rem;
+  padding: 1rem;
+
+  .identity {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+
+    .avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+
+    .kv {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      li {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        mat-icon {
+          font-size: 18px;
+        }
+      }
+    }
+
+    .alert-box {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #fff5f5;
+      padding: 0.5rem;
+      border-radius: 4px;
+    }
+  }
+}
+
+.tabs {
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.filter-bar {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  .search-field {
+    flex: 1;
+    min-width: 220px;
+  }
+}
+
+.appointments {
+  margin-top: 1rem;
+  display: grid;
+  gap: 1rem;
+
+  .appointment-card {
+    padding: 1rem;
+
+    .appt-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      h3 {
+        margin: 0;
+      }
+      .status {
+        font-size: 0.8rem;
+        &.confirmed { color: green; }
+        &.pending { color: orange; }
+        &.completed { color: blue; }
+      }
+    }
+
+    .appt-details {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .appt-actions {
+      margin-top: 0.5rem;
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+  }
+}
+
+/* Mobile responsive tweaks */
+@media (max-width: 768px) {
+  .info-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .appt-details {
+    grid-template-columns: 1fr !important;
+  }
+}

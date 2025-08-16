@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth.interceptor';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +23,9 @@ import { AuthInterceptor } from './auth.interceptor';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+     FormsModule,
+    MatButtonToggleModule,
   ],
   providers: [
     {

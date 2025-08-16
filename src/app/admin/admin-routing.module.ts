@@ -9,9 +9,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { DepartmentComponent } from './department/department.component';
 import { DepartmentInfoComponent } from './department-info/department-info.component';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
+import { ClerkComponent } from './clerk/clerk.component';
 import { TestComponent } from './test/test.component';
 import { ReportComponent } from './report/report.component';
-import { ClerkComponent } from './clerk/clerk.component';
 
 const routes: Routes = [
   {
