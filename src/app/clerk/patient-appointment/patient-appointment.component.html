@@ -6,11 +6,11 @@
       <p class="sub">Comprehensive dental care tracking and management</p>
     </div>
     <div class="actions">
-      <button mat-stroked-button (click)="schedule()">
+      <button mat-stroked-button (click)="schedule()" class="button1">
         <mat-icon>event</mat-icon>
         Schedule Appointment
       </button>
-      <button mat-raised-button color="primary" (click)="newTreatment()">New Treatment</button>
+      <button class="button1" mat-raised-button color="primary" (click)="newTreatment()">New Treatment</button>
     </div>
   </div>
 
@@ -78,7 +78,7 @@
   <div class="filter-bar">
     <mat-form-field appearance="outline" class="search-field">
       <mat-label>Search treatments, procedures, or notes...</mat-label>
-      <input matInput>
+      <input matInput class="text1">
     </mat-form-field>
 
     <mat-button-toggle-group>
@@ -101,7 +101,7 @@
       </div>
 
       <div class="appt-details">
-        <div><mat-icon>event</mat-icon> {{ appt.date }}</div>
+        <div class="appt"><mat-icon>event</mat-icon> {{ appt.date }}</div>
         <div><mat-icon>schedule</mat-icon> {{ appt.time }}</div>
         <div><mat-icon>person</mat-icon> {{ appt.doctor }}</div>
         <div><mat-icon>timer</mat-icon> {{ appt.durationMin }} min</div>
