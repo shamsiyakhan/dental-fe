@@ -1,5 +1,5 @@
 <div class="wrap row">
-    <div class="col-7 login">
+    <div class="col-12 col-md-7 login mb-3 mb-md-0 login">
     <form [formGroup]="loginForm" class="logincontent" (ngSubmit)="onSubmit()">
             <span class="logo">Login to Clerk<span style="color: #007DC6;">DentalCare+</span></span>
             <div class="input">
@@ -15,7 +15,7 @@
             </div>
     </form>
     </div>
-    <div class="col-5">
+    <div class="col-md-5 col-12 d-none d-md-block">
         <img class="img" src="assets/login.png" alt="">
     </div>
 

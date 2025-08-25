@@ -29,7 +29,7 @@ const routes: Routes = [
         path:"department-login",
         component:DepartmentLoginComponent
       },
-      {
+      {       
         path:"clerk-login",
         component:ClerkLoginComponent
       },
