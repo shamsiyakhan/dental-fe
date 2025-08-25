@@ -21,7 +21,16 @@
     display: flex;
     gap: 0.5rem;
     flex-wrap: wrap;
+    height: 35px;
+    border: none;
   }
+}
+
+.button1{
+  border-radius: 9px;
+    align-items: center;
+   display: flex
+
 }
 
 .patient-card {
@@ -63,6 +72,18 @@
           font-size: 18px;
         }
       }
+      .label{
+        display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
     }
 
     .alert-box {
@@ -93,7 +114,18 @@
   .search-field {
     flex: 1;
     min-width: 220px;
+    height: 35px;
   }
+  .text1{
+    width: 100%;
+    height: 35px !important;
+  }
+}
+
+.appt{
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .appointments {
