@@ -1,112 +1,85 @@
 <div class="mainContainer">
-
   <div class="patientContainer">
     <div class="heading">
-      Patient Profile
+      <h2>Patient Profile</h2>
     </div>
 
     <div class="patientInfo">
-
+      <!-- Left Profile -->
       <div class="leftProfile">
         <div class="profileName">
           <img src="assets/img2.png" alt="">
           <span class="name">{{patientInfo?.fullname}}</span>
-          <span class="id">{{patientInfo?.userid}}</span>
+          <span class="id">ID: {{patientInfo?.userid}}</span>
         </div>
 
         <div class="details">
-          <div>
-            <b>Date Of Birth</b>: {{patientInfo?.dob | date:"dd-MM-yyyy"}} <br>
-
-          </div>
-          <div>
-            <b>Gender</b>: {{patientInfo?.gender}} <br>
-
-          </div>
-          <div>
-            <b>Marital Status</b>: {{patientInfo?.maritalstatus}} <br>
-
-          </div>
-          <div>
-            <b>Emergency Contact Name</b>: {{patientInfo?.emergency_name}} <br>
-          </div>
-          <div>
-            <b>Emergency Contact Number</b>: {{patientInfo?.emergency_contact}} <br>
-          </div>
+          <p><b>Date Of Birth:</b> {{patientInfo?.dob | date:"dd-MM-yyyy"}}</p>
+          <p><b>Gender:</b> {{patientInfo?.gender}}</p>
+          <p><b>Marital Status:</b> {{patientInfo?.maritalstatus}}</p>
+          <p><b>Emergency Contact:</b> {{patientInfo?.emergency_name}}</p>
+          <p><b>Emergency Number:</b> {{patientInfo?.emergency_contact}}</p>
         </div>
 
-        <div class="contactDetails mt-5">
-          <b>Contact Details:</b>
-
-          <div>
-            <i class="fa-solid fa-phone"></i>:{{patientInfo?.phone}}
-
-          </div>
-
-          <div>
-            <i class="fa-solid fa-envelope"></i>:{{patientInfo?.email}}
-          </div>
-
-
-          <div>
-            <i class="fa-solid fa-house"></i>:{{patientInfo?.address}}
-          </div>
+        <div class="contactDetails">
+          <h4>Contact Details</h4>
+          <p><i class="fa-solid fa-phone"></i> {{patientInfo?.phone}}</p>
+          <p><i class="fa-solid fa-envelope"></i> {{patientInfo?.email}}</p>
+          <p><i class="fa-solid fa-house"></i> {{patientInfo?.address}}</p>
         </div>
       </div>
 
+      <!-- Right Form -->
       <div class="rightProfile">
         <form [formGroup]="registerComplaintForm" (ngSubmit)="submitComplaint()">
-          <div>
-            <label for="username">Cheif Complaint</label>
-            <input class="input-text" id="username" type="text" placeholder="Issue Reported"
-              formControlName="issue_reported">
+
+          <label for="issue">Chief Complaint</label>
+          <input class="input-text" id="issue" type="text" placeholder="Issue Reported"
+            formControlName="issue_reported">
+
+          <!-- Custom Multi Select -->
+          <div class="custom-select">
+            <div class="select-box" (click)="showTests = !showTests">
+              <span *ngIf="selectedTests?.length; else placeholder">
+                {{ selectedTests.length }} Tests Selected
+              </span>
+              <ng-template #placeholder>
+                <span>Select Tests</span>
+              </ng-template>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="options" *ngIf="showTests">
+              <label *ngFor="let test of testsList">
+                <input type="checkbox" [checked]="registerComplaintForm.value.tests?.includes(test.treatment_id)"
+                  (change)="onTestSelectionChange($event, test.treatment_id)">
+                {{ test.treatment_name }} (₹{{ test.treatment_price }})
+              </label>
+            </div>
+
           </div>
 
-
-
-          <div class="form-container">
-            <mat-form-field appearance="fill" class="full-width">
-              <mat-label>Select Tests</mat-label>
-              <mat-select [(value)]="selectedTests" multiple disableOptionCentering
-                [panelClass]="'custom-dropdown-panel'" (selectionChange)="onTestSelectionChange($event)">
-                <mat-option *ngFor="let test of testsList" [value]="test.treatment_id">
-                  {{ test.treatment_name }} (₹{{ test.treatment_price }})
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-
-
-
-
-          <div>
-            <div class="form-container">
-              <mat-form-field appearance="fill">
-                <mat-label>Select Payment Mode</mat-label>
-                <mat-select [(value)]="selectedTests" formControlName="payment_mode">
-                  >
-                  <mat-option *ngFor="let test of payment_mode" [value]="test">
-                    {{ test }} (₹{{ test }})
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
+          <!-- Custom Dropdown Payment Mode -->
+          <div class="custom-select">
+            <div class="select-box" (click)="showPayments = !showPayments">
+              <span>{{ registerComplaintForm.value.payment_mode || 'Select Payment Mode' }}</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="options" *ngIf="showPayments">
+              <label *ngFor="let mode of payment_mode">
+                <input type="radio" name="payment" [value]="mode"
+                  (change)="registerComplaintForm.patchValue({payment_mode: mode}); showPayments=false;">
+                {{ mode }}
+              </label>
             </div>
           </div>
 
-
-
-          <div>
-            <span>Total charges</span>
-            ₹{{ registerComplaintForm.getRawValue().total_charge || 0 }}
-
+          <div class="charges">
+            <b>Total Charges:</b> ₹{{ registerComplaintForm.getRawValue().total_charge || 0 }}
           </div>
 
-          <button type="submit">Register Complain</button>
-
+          <button type="submit" class="submit-btn">Register Complaint</button>
         </form>
-
       </div>
     </div>
   </div>
-
 </div>

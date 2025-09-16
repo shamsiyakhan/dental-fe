@@ -1,60 +1,68 @@
 <div class="main">
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z0 demo-table">
+  <div class="table-container">
 
-        <!--- Note that these columns can be defined in any order.
-              The actual rendered columns are set as a property on the row definition" -->
-      
-        <!-- Position Column -->
-        <ng-container matColumnDef="Name">
-          <th mat-header-cell *matHeaderCellDef> Full Name </th>
-          <td mat-cell *matCellDef="let element"> {{element.fullname}}</td>
-        </ng-container>
-      
-        <!-- Name Column -->
-        <ng-container matColumnDef="email">
-          <th mat-header-cell *matHeaderCellDef> Email </th>
-          <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-        </ng-container>
-      
-        <!-- Weight Column -->
-        <ng-container matColumnDef="phone_no">
-          <th mat-header-cell *matHeaderCellDef> Phone Number </th>
-          <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
-        </ng-container>
-      
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="gender">
-          <th mat-header-cell *matHeaderCellDef> Gender </th>
-          <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
-        </ng-container>
+    <!-- 🔍 Search Bar -->
+    <div class="search-bar">
+      <input matInput placeholder="Search patients..." (keyup)="applyFilter($event)" />
+    </div>
 
-        <ng-container matColumnDef="dob">
-            <th mat-header-cell *matHeaderCellDef> Date of Birth </th>
-            <td mat-cell *matCellDef="let element"> {{element.dob | date:"dd-MM-yyyy"}} </td>
-          </ng-container>
+    <!-- Table -->
+    <table mat-table [dataSource]="dataSource" class="modern-table mat-elevation-z2">
 
+      <!-- Name -->
+      <ng-container matColumnDef="Name">
+        <th mat-header-cell *matHeaderCellDef> Full Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.fullname}} </td>
+      </ng-container>
 
-          <ng-container matColumnDef="emergency_contact_name">
-            <th mat-header-cell *matHeaderCellDef> Emergency Contact Name </th>
-            <td mat-cell *matCellDef="let element"> {{element.emergency_name}} </td>
-          </ng-container>
+      <!-- Email -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+      </ng-container>
 
-          <ng-container matColumnDef="emergency_contact_number">
-            <th mat-header-cell *matHeaderCellDef> Emergency Contact Number </th>
-            <td mat-cell *matCellDef="let element"> {{element.emergency_contact}} </td>
-          </ng-container>
+      <!-- Phone -->
+      <ng-container matColumnDef="phone_no">
+        <th mat-header-cell *matHeaderCellDef> Phone Number </th>
+        <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+      </ng-container>
 
-          <ng-container matColumnDef="treatment">
-            <th mat-header-cell *matHeaderCellDef>Treatments </th>
-            <td mat-cell *matCellDef="let element"> 
-                <i class="fa-solid fa-angle-right treatmentIcon" (click)="redirectTreatment(element.userid)"></i> 
-            </td>
-          </ng-container>
-      
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
+      <!-- Gender -->
+      <ng-container matColumnDef="gender">
+        <th mat-header-cell *matHeaderCellDef> Gender </th>
+        <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+      </ng-container>
+
+      <!-- DOB -->
+      <ng-container matColumnDef="dob">
+        <th mat-header-cell *matHeaderCellDef> Date of Birth </th>
+        <td mat-cell *matCellDef="let element"> {{element.dob | date:"dd-MM-yyyy"}} </td>
+      </ng-container>
+
+      <!-- Emergency Name -->
+      <ng-container matColumnDef="emergency_contact_name">
+        <th mat-header-cell *matHeaderCellDef> Emergency Contact Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.emergency_name}} </td>
+      </ng-container>
+
+      <!-- Emergency Number -->
+      <ng-container matColumnDef="emergency_contact_number">
+        <th mat-header-cell *matHeaderCellDef> Emergency Contact Number </th>
+        <td mat-cell *matCellDef="let element"> {{element.emergency_contact}} </td>
+      </ng-container>
+
+      <!-- Treatment -->
+      <ng-container matColumnDef="treatment">
+        <th mat-header-cell *matHeaderCellDef> Treatments </th>
+        <td mat-cell *matCellDef="let element"> 
+          <i class="fa-solid fa-angle-right treatmentIcon" 
+             (click)="redirectTreatment(element.userid)"></i> 
+        </td>
+      </ng-container>
+
+      <!-- Rows -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
 </div>
-
-  
-  

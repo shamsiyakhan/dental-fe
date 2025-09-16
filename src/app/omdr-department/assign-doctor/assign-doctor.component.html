@@ -1,0 +1,76 @@
+<div class="container-fluid py-4 px-4" style="background:#f7faff;">
+
+    <!-- 🔍 Search Doctors -->
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <input type="text" class="form-control" placeholder="Search doctor..." [(ngModel)]="searchTerm">
+        </div>
+    </div>
+
+    <!-- Doctors Board -->
+    <div class="row flex-nowrap overflow-auto">
+
+        <!-- Doctor Column -->
+        <div class="col-3" *ngFor="let doc of getFilteredDoctors()">
+            <div class="card shadow-sm border-0 mb-4" style="border-radius:12px;">
+
+                <!-- Doctor Header -->
+                <div class="card-header text-white d-flex align-items-center justify-content-between"
+                    style="background: linear-gradient(135deg, #0d6efd, #3b82f6); border-radius:12px 12px 0 0;">
+
+                    <!-- Left Side: Doctor Info -->
+                    <div class="d-flex align-items-center">
+                        <div class="me-3 bg-light text-dark rounded-circle d-flex align-items-center justify-content-center"
+                            style="width:40px; height:40px; font-weight:bold;">
+                            {{ doc.fullname.charAt(0) }}
+                        </div>
+                        <div>
+                            <h6 class="mb-0">{{ doc.fullname }}</h6>
+                            <small class="text-white-50">{{ doc.email }}</small>
+                        </div>
+                    </div>
+
+                    <!-- Right Side: + Icon -->
+                    <button class="btn btn-sm btn-light rounded-circle" (click)="addAppointment(doc)"
+                        title="Add Appointment">
+                        <i class="bi bi-plus-lg text-primary"></i>
+                    </button>
+                </div>
+
+
+                <!-- Doctor Appointments -->
+                <div class="card-body" style="min-height:200px;">
+                    <div *ngIf="appointments[doc.doctor_id]?.length > 0; else noAppointments">
+                        <div class="card mb-2 border-start border-3" *ngFor="let appt of appointments[doc.doctor_id]"
+                            [ngClass]="{
+                   'border-primary': appt.status === 'Scheduled',
+                   'border-success': appt.status === 'Completed',
+                   'border-warning': appt.status === 'Pending'
+                 }" style="border-radius:8px;">
+                            <div class="card-body py-2">
+                                <h6 class="mb-1">{{ appt.patient_name }}</h6>
+                                <small class="text-muted">📞 {{ appt.patient_phone }}</small><br>
+                                <span class="badge bg-primary" *ngIf="appt.status === 'Scheduled'">Scheduled</span>
+                                <span class="badge bg-success" *ngIf="appt.status === 'Completed'">Completed</span>
+                                <span class="badge bg-warning text-dark"
+                                    *ngIf="appt.status === 'Pending'">Pending</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- No Appointments Placeholder -->
+                    <ng-template #noAppointments>
+                        <div class="d-flex justify-content-center align-items-center" style="height:180px;">
+                            <button class="btn btn-outline-primary rounded-circle"
+                                style="width:60px; height:60px; font-size:24px;" (click)="addAppointment(doc)">
+                                +
+                            </button>
+                        </div>
+                    </ng-template>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

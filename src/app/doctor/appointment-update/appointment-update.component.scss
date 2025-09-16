@@ -1,0 +1,71 @@
+.treatment-form {
+  padding: 20px;
+
+  .form-card {
+    background: #ffffff;
+    border: 1px solid #e0e6f1;
+    border-radius: 12px;
+    overflow: hidden;
+
+    .card-header {
+      background: #007bff;
+      color: white;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+    }
+
+    .card-body {
+      padding: 20px;
+
+      .info-section {
+        margin-bottom: 16px;
+
+        h5 {
+          color: #007bff;
+          font-weight: 600;
+          margin-bottom: 6px;
+        }
+
+        p {
+          margin: 2px 0;
+          font-size: 0.95rem;
+        }
+      }
+
+      .form-group {
+        label {
+          font-weight: 600;
+          color: #333;
+          margin-bottom: 4px;
+          display: block;
+        }
+
+        textarea {
+          border-radius: 8px;
+          border: 1px solid #d0d7e3;
+          padding: 10px;
+          resize: none;
+
+          &:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+          }
+        }
+      }
+    }
+
+    .card-footer {
+      background: #f9fbff;
+      padding: 12px 20px;
+
+      button {
+        border-radius: 8px;
+        font-weight: 500;
+        padding: 8px 14px;
+      }
+    }
+  }
+}

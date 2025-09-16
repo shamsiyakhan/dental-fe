@@ -8,6 +8,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { PersonalComponent } from './personal/personal.component';
 import { ConsultationComponent } from './consultation/consultation.component';
 import { InfoConsultationComponent } from './info-consultation/info-consultation.component';
+import { AppointmentListComponent } from './appointment-list/appointment-list.component';
+import { AppointmentUpdateComponent } from './appointment-update/appointment-update.component';
 
 
 const routes: Routes = [
@@ -47,6 +49,13 @@ const routes: Routes = [
       {
         path:'info-consultation',
         component:InfoConsultationComponent
+      },
+      {
+        path:"appointment",
+        component:AppointmentListComponent
+      },{
+        path:"appointment-update",
+        component:AppointmentUpdateComponent
       }
      
     ]

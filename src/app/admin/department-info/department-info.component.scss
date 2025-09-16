@@ -38,6 +38,7 @@
     border-radius: 10px;
     text-align: center;
     font-weight: 600;
+    font-size: 1.2rem;
     cursor: pointer;
     transition: background-color 0.3s;
   }
@@ -328,3 +329,68 @@
 
   
   
+
+  .doctor-table {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  color: #007DC6;
+}
+
+h2 {
+  margin-bottom: 15px;
+}
+
+.search-box {
+  width: 100%;
+  padding: 8px 12px;
+  margin-bottom: 15px;
+  border: 1px solid #007DC6;
+  border-radius: 4px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #007DC6;
+  color: #fff;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #eaf5ff;
+}
+
+tr.clickable-row {
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+tr.clickable-row:hover {
+  background-color: #eaf5ff;
+}
+
+.pagination {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.pagination button {
+  border: none;
+  background: #eaf5ff;
+  color: #007DC6;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.pagination button.active {
+  background: #007DC6;
+  color: #fff;
+}

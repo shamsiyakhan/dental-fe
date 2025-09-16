@@ -27,4 +27,9 @@ export class OverviewComponent implements OnInit {
     this.router.navigate([`/admin/${route}`])
   }
 
+  logout(){
+    localStorage.clear();
+    this.router.navigate(['/auth/admin-login'])
+  }
+
 }

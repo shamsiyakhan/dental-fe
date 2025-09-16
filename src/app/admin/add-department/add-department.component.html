@@ -1,0 +1,43 @@
+<!-- Dialog Box Wrapper -->
+<div class="modal-dialog modal-dialog-centered bg-white">
+  <div class="modal-content shadow-lg rounded-4  p-5">
+    <div class="modal-header border-0">
+      <h5 class="modal-title fw-bold">Add Department</h5>
+      <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" (click)="close()"></button>
+    </div>
+
+    <div class="modal-body px-4 mt-5">
+      <form [formGroup]="departmentForm" (ngSubmit)="onSubmit()">
+        <!-- Department Name -->
+        <div class="mb-3">
+          <label class="form-label">Department Name</label>
+          <input type="text" class="form-control" formControlName="name" placeholder="Enter department name" />
+        </div>
+
+        <!-- Department HOD -->
+        <div class="mb-3">
+          <label class="form-label">Department HOD</label>
+          <input type="text" class="form-control" formControlName="hodname" placeholder="Enter HOD name" />
+        </div>
+
+        <!-- Department Username -->
+        <div class="mb-3">
+          <label class="form-label">Username</label>
+          <input type="text" class="form-control" formControlName="username" placeholder="Enter username" />
+        </div>
+
+        <!-- Department Password -->
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <input type="password" class="form-control" formControlName="dept_password" placeholder="Enter password" />
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="d-flex justify-content-end gap-2">
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal" (click)="close()">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

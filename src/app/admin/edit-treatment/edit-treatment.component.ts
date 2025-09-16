@@ -11,15 +11,17 @@ import { TreatmentDialogComponent } from '../treatment-dialog/treatment-dialog.c
 })
 export class EditTreatmentComponent implements OnInit {
 
-  
+
   treatmentForm: FormGroup;
 
   constructor(
     private fb: FormBuilder,
-     private http: HttpClient,
+    private http: HttpClient,
     public dialogRef: MatDialogRef<TreatmentDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
-    ) {
+  ) {
+    console.warn("Treatment information")
+    console.warn(this.data)
     this.treatmentForm = this.fb.group({
       treatment_name: ['', Validators.required],
       total_charges: ['', Validators.required],
@@ -30,33 +32,55 @@ export class EditTreatmentComponent implements OnInit {
 
 
     this.treatmentForm.patchValue(this.data);
+    this.setSubcategories(this.data.subcategories || []);
+    console.warn(this.treatmentForm.value)
     console.warn('Data received for editing:', this.data);
     this.treatmentForm.get('subcategories')?.valueChanges.subscribe(() => {
-    if (this.treatmentForm.get('had_sub_category')?.value) {
-      this.updateTotalCharges();
-    }
-  });
+      if (this.treatmentForm.get('had_sub_category')?.value) {
+        this.updateTotalCharges();
+      }
+    });
 
-  // Also watch the checkbox
-  this.treatmentForm.get('had_sub_category')?.valueChanges.subscribe((hasSub) => {
-    if (hasSub && this.subcategories.length === 0) {
-      this.addSubcategory();
-    } else if (!hasSub) {
-      this.treatmentForm.patchValue({ total_charges: '' });
-    }
-  });
-}
+    // Also watch the checkbox
+    this.treatmentForm.get('had_sub_category')?.valueChanges.subscribe((hasSub) => {
+      if (hasSub && this.subcategories.length === 0) {
+        this.addSubcategory();
+      } else if (!hasSub) {
+        this.treatmentForm.patchValue({ total_charges: '' });
+      }
+    });
+  }
   ngOnInit(): void {
     throw new Error('Method not implemented.');
   }
 
-updateTotalCharges() {
-  const total = this.subcategories.controls.reduce((sum, ctrl) => {
-    const charge = Number(ctrl.get('step_charges')?.value) || 0;
-    return sum + charge;
-  }, 0);
-  this.treatmentForm.patchValue({ total_charges: total }, { emitEvent: false });
-}
+  get subCategories(): FormArray {
+    return this.treatmentForm.get('subcategories') as FormArray;
+  }
+
+  setSubcategories(subCatgs: any[]) {
+    if (subCatgs) {
+      this.treatmentForm.patchValue({ had_sub_category: true });
+    }
+    this.subcategories.clear(); 
+    subCatgs.forEach(sc => {
+      this.subcategories.push(
+        this.fb.group({
+          step_name: [sc.step_name || ''],
+          step_charges: [sc.step_charges || 0],
+          step_sequence: [sc.step_sequence || 0]
+        })
+      );
+    });
+  }
+
+  updateTotalCharges() {
+    const total = this.subcategories.controls.reduce((sum, ctrl) => {
+      const charge = Number(ctrl.get('step_charges')?.value) || 0;
+      return sum + charge;
+    }, 0);
+    this.treatmentForm.patchValue({ total_charges: total }, { emitEvent: false });
+  }
 
   get subcategories(): FormArray {
     return this.treatmentForm.get('subcategories') as FormArray;

@@ -31,6 +31,7 @@ export class PatientInfoComponent implements OnInit {
         console.warn(data.length)
         this.patientId=params.id
        this.treatments=data.data
+       console.warn(this.treatments)
       })
 
       this.http.get('http://localhost:3000/getPatientChiefComplaint/'+params.id).subscribe((data:any)=>{
@@ -56,7 +57,7 @@ export class PatientInfoComponent implements OnInit {
     this.http.get('http://localhost:3000/getPatientTreatments/'+this.patientId).subscribe((data:any)=>{
       console.warn(data)
       if(data.result!="No data found"){
-        this.treatments=data.result
+        this.treatments=data.result.data
       }
     })
 
@@ -75,11 +76,12 @@ export class PatientInfoComponent implements OnInit {
   startTreatment(complaint:any){
     const dialogRef=this.dialog.open(AssignDepartmentComponent , {
       data:complaint,
-      width:'500px',
+      width:'2000px',
     })
 
     dialogRef.afterClosed().subscribe((result:any)=>{
       this.getData()
+      console.warn(this.treatments)
     })
   }
 

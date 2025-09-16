@@ -1,44 +1,73 @@
-<div class="container">
-    <h2>Complaint Form</h2>
-    <form [formGroup]="complaintForm" (ngSubmit)="onSubmit()">
+<div class="complaint-container">
+  <h2>Complaint Form</h2>
+  <form [formGroup]="complaintForm" (ngSubmit)="onSubmit()">
+
+    <!-- Department Selection -->
+    <div class="form-group">
+      <label for="dept_id">Department</label>
+      <select id="dept_id" formControlName="dept_id" (change)="onDepartmentChange($event)">
+        <option value="" disabled selected>Select Department</option>
+        <option *ngFor="let dept of departments" [value]="dept.dept_id">{{ dept.dept_name }}</option>
+      </select>
+    </div>
+
+    <!-- Treatment Selection -->
+    <div class="form-group">
       <label for="treatment_name">Treatment Name</label>
-      <input type="text" id="treatment_name" formControlName="treatment_name" />
-  
-      <label for="issue_date">Issue Date</label>
-      <input type="date" id="issue_date" formControlName="issue_date" />
-  
+     <select id="treatment_name" formControlName="treatment_name" (change)="onTreatmentChange($event)" >
+  <option value="" disabled>Select Treatment</option>
+  <option *ngFor="let treatment of treatments" [value]="treatment.treatment_name">
+    {{ treatment.treatment_name }}
+  </option>
+</select>
+
+    </div>
+
+    <!-- Total Charges -->
+    <div class="form-group">
+      <label for="total_charge">Total Charge</label>
+      <input type="number" id="total_charge" formControlName="total_charge" readonly />
+    </div>
+
+    <!-- Patient ID (disabled) -->
+    <div class="form-group">
+      <label for="patient_id">Patient ID</label>
+      <input type="text" id="patient_id" formControlName="patient_id"  />
+    </div>
+
+    <!-- Complaint ID (disabled) -->
+    <div class="form-group">
+      <label for="complaint_id">Complaint ID</label>
+      <input type="text" id="complaint_id" formControlName="complaint_id"  />
+    </div>
+
+    <!-- Status -->
+    <div class="form-group">
       <label for="status">Status</label>
       <input type="text" id="status" formControlName="status" />
-  
-      <label for="total_charge">Total Charge</label>
-      <input type="number" id="total_charge" formControlName="total_charge" />
-  
+    </div>
+
+    <!-- Finding -->
+    <div class="form-group">
       <label for="finding">Finding</label>
       <textarea id="finding" formControlName="finding"></textarea>
-  
+    </div>
+
+    <!-- History -->
+    <div class="form-group">
       <label for="history">History</label>
       <textarea id="history" formControlName="history"></textarea>
-  
-      <label for="dept_id">Department</label>
-      <select id="dept_id" formControlName="dept_id">
-        <option *ngFor="let department of departments" value="{{department.dept_id}}">{{department.dept_name}}</option>
-      </select>
-  
-      <label for="patient_id">Patient ID</label>
-      <input type="text" id="patient_id" formControlName="patient_id" />
-  
-      <label for="complaint_id">Complaint ID</label>
-      <input type="text" id="complaint_id" formControlName="complaint_id" />
-  
-  <!--     <label for="payment_status">Payment Status</label>
-      <input type="text" id="payment_status" formControlName="payment_status" /> -->
+    </div>
 
-      <label for="dept_id">Payment Status</label>
+    <!-- Payment Status -->
+    <div class="form-group">
+      <label for="payment_status">Payment Status</label>
       <select id="payment_status" formControlName="payment_status">
         <option value="Paid">Paid</option>
         <option value="UnPaid">UnPaid</option>
       </select>
-  
-      <button type="submit">Submit</button>
-    </form>
-  </div>
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+</div>

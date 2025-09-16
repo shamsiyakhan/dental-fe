@@ -15,6 +15,8 @@ import { ProfessionalComponent } from './professional/professional.component';
 import { ConsultationComponent } from './consultation/consultation.component';
 import { InfoConsultationComponent } from './info-consultation/info-consultation.component';
 import { FormsModule } from '@angular/forms';
+import { AppointmentListComponent } from './appointment-list/appointment-list.component';
+import { AppointmentUpdateComponent } from './appointment-update/appointment-update.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { FormsModule } from '@angular/forms';
     PersonalComponent,
     ProfessionalComponent,
     ConsultationComponent,
-    InfoConsultationComponent
+    InfoConsultationComponent,
+    AppointmentListComponent,
+    AppointmentUpdateComponent
   ],
   imports: [
     CommonModule,

@@ -14,7 +14,7 @@
             <button [ngClass]="isTreatment ? 'unselectedButton' : 'selectedButton'" (click)="changetab()">Cheif Complaint</button>
            </div>
 
-
+          
            <div class="treatments" *ngIf="isTreatment">
             <div class="treatment" *ngIf="treatments.length > 0; else noTreatment">
               <div *ngFor="let item of treatments" class="treatment-card">
@@ -24,7 +24,7 @@
                   <p>Status: {{ item.doctor.status }}</p>
                   <p>Department: {{ item.department.dept_name }}</p>
                 </div>
-                <button class="custom-button" (click)="appointment(item)">Create Appointment</button>
+               <!--  <button class="custom-button" (click)="appointment(item)">Create Appointment</button> -->
 
                 <div class="arrow" style="cursor: pointer;">➔</div>
               </div>
@@ -39,26 +39,38 @@
            </div>
 
 
-           <div class="chiefComplaint" *ngIf="!isTreatment">
-            <div style="margin-top: 20px;"></div>
-            <div style="width: 100%; height: 100%;" *ngIf="chiefComplaint.length > 0; else noComplaint">
-                <div  class="complaint" *ngFor="let complaint of chiefComplaint">
-                  
-                    <span class="complaintName">{{complaint.issue_reported}}</span>
-                    <span class="complaintDate">{{complaint.reporting_date  | date:'dd-MM-yyyy'}}</span>
-                  
-             
-                    <span class="status">{{complaint.payment_status}}</span>
-                    <i style="color: white; background-color: #005485; padding: 10px; border-radius: 50px; cursor: pointer;" (click)="startTreatment(complaint)" class="fa-solid fa-arrow-right"></i>
-                  
-                </div>
-              </div>
-              
-              <ng-template #noComplaint>
-                <div class="noComplaintMessage">No chief complaints for this patient added yet.</div>
-              </ng-template>
+      <div class="chiefComplaint" *ngIf="!isTreatment">
+  <div class="section-header">
+   <!--  <h2>Chief Complaints</h2> -->
+  </div>
 
-           </div>
+  <div *ngIf="chiefComplaint.length > 0; else noComplaint" class="complaint-list">
+    <div class="complaint-card" *ngFor="let complaint of chiefComplaint">
+      <div class="complaint-info">
+        <span class="complaintName">{{ complaint.issue_reported }}</span>
+        <span class="complaintDate">{{ complaint.reporting_date | date:'dd-MM-yyyy' }}</span>
+      </div>
+
+      <div class="complaint-actions">
+        <span class="status" [ngClass]="complaint.payment_status.toLowerCase()">
+          {{ complaint.payment_status }}
+        </span>
+        <i 
+          class="fa-solid fa-arrow-right start-btn" 
+          (click)="startTreatment(complaint)">
+        </i>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noComplaint>
+    <div class="noComplaintMessage">
+      <i class="fa-solid fa-circle-info"></i>
+      <p>No chief complaints for this patient yet.</p>
+    </div>
+  </ng-template>
+</div>
+
         </div>
     </div>
 

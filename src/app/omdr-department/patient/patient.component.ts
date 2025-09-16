@@ -8,26 +8,34 @@ import { Router } from '@angular/router';
   styleUrls: ['./patient.component.scss']
 })
 export class PatientComponent implements OnInit {
+  patients: any[] = [];
+  filteredPatients: any[] = [];
+  searchText: string = '';
 
   constructor(
-    private http:HttpClient,
-    private router:Router
+    private http: HttpClient,
+    private router: Router
   ) { }
-  patients:any[]=[]
-
-
 
   ngOnInit(): void {
-    this.http.get('http://localhost:3000/getPatients').subscribe((data:any)=>{
-      this.patients=data
-
-      console.warn(this.patients)
-    })
+    this.http.get('http://localhost:3000/getPatients').subscribe((data: any) => {
+      this.patients = data;
+      this.filteredPatients = [...this.patients]; // keep original list
+      console.warn('Patients:', this.patients);
+    });
   }
 
-
-  redirectToPatientInfo(id:any){
-    this.router.navigate([`/omdr/patient-info/${id}`],{queryParams:{id:id}})
+  filterPatients() {
+    const text = this.searchText.toLowerCase();
+    this.filteredPatients = this.patients.filter(
+      p =>
+        p.fullname.toLowerCase().includes(text) ||
+        p.userid.toLowerCase().includes(text) ||
+        (p.phone && p.phone.toLowerCase().includes(text))
+    );
   }
 
+  redirectToPatientInfo(id: any) {
+    this.router.navigate([`/omdr/patient-info/${id}`], { queryParams: { id: id } });
+  }
 }

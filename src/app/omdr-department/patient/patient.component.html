@@ -1,18 +1,48 @@
-<div class="mainContainer">
-    <div class="patientContainer">
-        <div class="heading">
-            <span>Patients</span>
-        </div>
+<div class="patients-container">
+  <div class="header">
+    <h2 class="title">Patients</h2>
+    <input
+      type="text"
+      placeholder="Search patients..."
+      [(ngModel)]="searchText"
+      (input)="filterPatients()"
+      class="search-input"
+    />
+  </div>
 
+  <table class="patients-table">
+    <thead>
+      <tr>
+        <th>Patient ID</th>
+        <th>Full Name</th>
+        <th>Gender</th>
+        <th>DOB</th>
+        <th>Phone</th>
+        <th>Emergency Contact</th>
+        <th>Payment Type</th>
+        <th class="action-col">Action</th>
+      </tr>
+    </thead>
 
-        <div class="patientList">
-
-            <div class="patientInfo" *ngFor="let patient of patients" (click)="redirectToPatientInfo(patient.userid)">
-                <img src="assets/doc1.jpg" alt="" class="patientImg">
-                <span class="patientName">{{patient.fullname}}</span>
-                <span class="id">Id:{{patient.userid}}</span>
-            </div>
-
-        </div>
-    </div>
+    <tbody>
+      <tr *ngFor="let patient of filteredPatients">
+        <td>{{ patient.userid }}</td>
+        <td>{{ patient.fullname }}</td>
+        <td>{{ patient.gender }}</td>
+        <td>{{ patient.dob | date: 'mediumDate' }}</td>
+        <td>{{ patient.phone }}</td>
+        <td>{{ patient.emergency_contact }}</td>
+        <td>{{ patient.registration_payment_type || 'N/A' }}</td>
+        <td class="action-col">
+          <span
+            class="select-icon"
+            matTooltip="Select this patient"
+            (click)="redirectToPatientInfo(patient.userid)"
+          >
+            ➝
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>

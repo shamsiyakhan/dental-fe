@@ -1,116 +1,116 @@
 <div class="header1">
-    <span class="back-arrow">&#8592;</span>
-    <span class="department-name">Prosthodontics and Crown & Bridge</span>
+  <span class="back-arrow" (click)="back()">&#8592;</span>
+  <span class="department-name">{{department_name}}</span>
 </div>
 
 <div class="section-container">
-    <div class="options-grid">
-        <div class="option-card" [class.active]="treatment" (click)="treatment1()">Lists of treatments</div>
-        <div class="option-card" [class.active]="newDoctor" (click)="addNew()">Add New Doctor</div>
-        <div class="option-card" [class.active]="doctor" (click)="doctor1()">List of doctors</div>
-        <div class="option-card" [class.active]="patient" (click)="patient1()">List of patients</div>
-    </div>
+  <div class="options-grid">
+    <div class="option-card" [class.active]="treatment" (click)="treatment1()">Lists of treatments</div>
+    <div class="option-card" [class.active]="newDoctor" (click)="addNew()">Add New Doctor</div>
+    <div class="option-card" [class.active]="doctor" (click)="doctor1()">List of doctors</div>
+    <div class="option-card" [class.active]="patient" (click)="patient1()">List of patients</div>
+  </div>
 </div>
 
 <!-- treatment  list-->
 <div class="container" *ngIf="treatment">
-    <div class="header">
-      <h2>List of treatments</h2>
-      <button mat-mini-fab color="primary" class="add" (click)="openTreatmentDialog()"><mat-icon>add</mat-icon></button>
-    </div>
-  
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z1">
-  
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> List of treatments </th>
-        <td mat-cell *matCellDef="let element"> {{element.treatment_name}} </td>
-      </ng-container>
-  
-      <ng-container matColumnDef="charge">
-        <th mat-header-cell *matHeaderCellDef> Charges (INR) </th>
-        <td mat-cell *matCellDef="let element"> {{element.total_charges}} </td>
-      </ng-container>
-  
-      <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef></th>
-        <td mat-cell *matCellDef="let element">
-          <button mat-icon-button color="accent" class="edit" (click)="editTreatment(element)">
-            <mat-icon>edit</mat-icon>
-          </button>
-          <button mat-icon-button color="warn" class="delete" (click)="deleteTreatment(element)">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </td>
-      </ng-container>
-  
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="tdcell"></tr>
-    </table>
+  <div class="header">
+    <h2>List of treatments</h2>
+    <button mat-mini-fab color="primary" class="add" (click)="openTreatmentDialog()"><mat-icon>add</mat-icon></button>
   </div>
-  
 
-  <!-- add new doctor -->
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z1">
 
-  <div class="profile-container" *ngIf="newDoctor">
-    <div class="profile-card">
-      <div class="left-panel">
-        <img src="assets/doc1.jpg" alt="Profile" class="profile-pic" />
-        <!-- <label class="edit-icon">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> List of treatments </th>
+      <td mat-cell *matCellDef="let element"> {{element.treatment_name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="charge">
+      <th mat-header-cell *matHeaderCellDef> Charges (INR) </th>
+      <td mat-cell *matCellDef="let element"> {{element.total_charges}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button color="accent" class="edit" (click)="editTreatment(element)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" class="delete" (click)="deleteTreatment(element)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="tdcell"></tr>
+  </table>
+</div>
+
+
+<!-- add new doctor -->
+
+<div class="profile-container" *ngIf="newDoctor">
+  <div class="profile-card">
+    <div class="left-panel">
+      <img src="assets/doc1.jpg" alt="Profile" class="profile-pic" />
+      <!-- <label class="edit-icon">
             <input type="file" hidden>
             ✏️
           </label> -->
-      </div>
-  
-      <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="right-panel">
-        <div class="row">
-          <div class="form-group">
-            <label>Full Name</label>
-            <input type="text" formControlName="fullName" />
-          </div>
-          <div class="form-group">
-            <label>Phone Number</label>
-            <input type="text" formControlName="phone" />
-          </div>
-        </div>  
-        <div class="row">
-          <div class="form-group">
-            <label>Email</label>
-            <input type="email" formControlName="email" />
-          </div>
-          <div class="form-group">
-            <label>Password</label>
-            <input type="password" formControlName="password" />
-          </div>
-        </div>
-  
-        <div class="row">
-          <div class="form-group">
-            <label>Gender</label>
-            <select formControlName="gender">
-              <option>Male</option>
-              <option>Female</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Marital Status</label>
-            <select formControlName="maritalStatus">
-              <option>Single</option>
-              <option>Married</option>
-            </select>
-          </div>
-        </div>
-  
-        <div class="form-group full">
-          <label>Address</label>
-          <input type="text" formControlName="address" />
-        </div>
-  
-        <button type="submit" class="save-btn">Save Changes</button>
-      </form>
     </div>
+
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="right-panel">
+      <div class="row">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" formControlName="fullname" />
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="text" formControlName="phone" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" formControlName="email" />
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" formControlName="password" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group">
+          <label>Gender</label>
+          <select formControlName="gender">
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Marital Status</label>
+          <select formControlName="marital_status">
+            <option>Single</option>
+            <option>Married</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group full">
+        <label>Address</label>
+        <input type="text" formControlName="address" />
+      </div>
+
+      <button type="submit" class="save-btn">Save Changes</button>
+    </form>
   </div>
-  
+</div>
+
 
 
 
@@ -120,236 +120,160 @@
 
 <!-- list of doctor -->
 
-<div class="doctor" *ngIf="doctor" style="margin-top: -40px;">    
-    <div class="main">
-        <div class="doc1">
-            <span>List Of Doctor</span>
-            <div class="pagination">
-                <button (click)="prevPage()" [disabled]="currentPage === 1">
-                  <span>&#10094;</span>
-                </button>
-            
-                <button
-                  *ngFor="let page of [].constructor(totalPages()); let i = index"
-                  [class.active]="currentPage === i + 1"
-                  (click)="goToPage(i + 1)">
-                  {{ i + 1 }}
-                </button>
-            
-                <button (click)="nextPage()" [disabled]="currentPage === totalPages()">
-                  <span>&#10095;</span>
-                </button>
-              </div>
-            <img src="assets/add.svg" alt="">
-        </div>
-        
-       
-          <div class="card-container">
-            <div class="card" (click)="viewprofile()">
-              <img src="assets/doc1.jpg" alt="">
-              <h3>Dr. Arvind Kapoor</h3>
-              <p>Cardiologist</p>
-            </div>
-    
-            <div class="card">
-                <img src="assets/doc2.jpg" alt="">
-                <h3>Dr. Arvind Kapoor</h3>
-                <p>Cardiologist</p>
-              </div>
-    
-              <div class="card">
-                <img src="assets/doc3.jpg" alt="">
-                <h3>Dr. Arvind Kapoor</h3>
-                <p>Cardiologist</p>
-              </div>
-    
-              <div class="card">
-                <img src="assets/doc4.jpg" alt="">
-                <h3>Dr. Arvind Kapoor</h3>
-                <p>Cardiologist</p>
-              </div>
-    
-              <div class="card">
-                <img src="assets/doc5.jpg" alt="">
-                <h3>Dr. Arvind Kapoor</h3>
-                <p>Cardiologist</p>
-              </div>
-    
-              <div class="card">
-                <img src="assets/doc1.jpg" alt="">
-                <h3>Dr. Arvind Kapoor</h3>
-                <p>Cardiologist</p>
-              </div>
-      
-              <div class="card">
-                  <img src="assets/doc2.jpg" alt="">
-                  <h3>Dr. Arvind Kapoor</h3>
-                  <p>Cardiologist</p>
-                </div>
-      
-                <div class="card">
-                  <img src="assets/doc3.jpg" alt="">
-                  <h3>Dr. Arvind Kapoor</h3>
-                  <p>Cardiologist</p>
-                </div>
-      
-                <div class="card">
-                  <img src="assets/doc4.jpg" alt="">
-                  <h3>Dr. Arvind Kapoor</h3>
-                  <p>Cardiologist</p>
-                </div>
-      
-                <div class="card">
-                  <img src="assets/doc5.jpg" alt="">
-                  <h3>Dr. Arvind Kapoor</h3>
-                  <p>Cardiologist</p>
-                </div>
-                <div class="card">
-                  <img src="assets/doc1.jpg" alt="">
-                  <h3>Dr. Arvind Kapoor</h3>
-                  <p>Cardiologist</p>
-                </div>
-        
-                <div class="card">
-                    <img src="assets/doc2.jpg" alt="">
-                    <h3>Dr. Arvind Kapoor</h3>
-                    <p>Cardiologist</p>
-                  </div>
-        
-                  <div class="card">
-                    <img src="assets/doc3.jpg" alt="">
-                    <h3>Dr. Arvind Kapoor</h3>
-                    <p>Cardiologist</p>
-                  </div>
-        
-                  <div class="card">
-                    <img src="assets/doc4.jpg" alt="">
-                    <h3>Dr. Arvind Kapoor</h3>
-                    <p>Cardiologist</p>
-                  </div>
-        
-                  <div class="card">
-                    <img src="assets/doc5.jpg" alt="">
-                    <h3>Dr. Arvind Kapoor</h3>
-                    <p>Cardiologist</p>
-                  </div>
-          </div>
-    </div>
+<div class="doctor-table" *ngIf="doctor" style="margin-top: -40px;">
+  
+  <h2>List of Doctors</h2>
+
+  <!-- Search box -->
+  <input type="text" placeholder="Search by name or specialization..." [(ngModel)]="searchTerm" class="search-box" />
+
+  <div class="pagination">
+    <button (click)="prevPage()" [disabled]="currentPage === 1">&#10094;</button>
+
+    <button *ngFor="let page of [].constructor(totalPages()); let i = index" [class.active]="currentPage === i + 1"
+      (click)="goToPage(i + 1)">
+      {{ i + 1 }}
+    </button>
+
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages()">&#10095;</button>
+  </div>
+  <!-- Doctor table -->
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Specialization</th>
+        <th>Email</th>
+        <th>Phone</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let doctor of filteredDoctors() | slice:(currentPage-1)*pageSize:(currentPage*pageSize)"
+        (click)="viewprofile(doctor.doctor_id)" class="clickable-row">
+        <td>{{ doctor.fullname }}</td>
+        <td>{{ doctor.specialization ? doctor.specialization : 'General' }}</td>
+        <td>{{ doctor.email }}</td>
+        <td>{{ doctor.phone_no }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Pagination -->
+  
 </div>
+
 
 
 <!-- list of patient -->
 <div class="patient" *ngIf="patient" style="margin-top: -40px;">
-    <div class="main">
-        <div class="doc1">
-            <span>List Of Patient</span>
-            <div class="pagination">
-                <button (click)="prevPage()" [disabled]="currentPage === 1">
-                  <span>&#10094;</span>
-                </button>
-            
-                <button
-                  *ngFor="let page of [].constructor(totalPages()); let i = index"
-                  [class.active]="currentPage === i + 1"
-                  (click)="goToPage(i + 1)">
-                  {{ i + 1 }}
-                </button>
-            
-                <button (click)="nextPage()" [disabled]="currentPage === totalPages()">
-                  <span>&#10095;</span>
-                </button>
-              </div>
-        </div>
+  <div class="main">
+    <div class="doc1">
+      <span>List Of Patient</span>
+      <div class="pagination">
+        <button (click)="prevPage()" [disabled]="currentPage === 1">
+          <span>&#10094;</span>
+        </button>
 
-          <div class="card-container">
-            <div class="card">
-              <img src="assets/doc1.jpg" alt="">
-              <h3>Dr shayban khan</h3>
-              <p>Cardiologist</p>
-            </div>
-    
-            <div class="card">
-                <img src="assets/doc2.jpg" alt="">
-                <h3>Dr. Arvind Kapoor</h3>
-                <p>Cardiologist</p>
-              </div>
-    
-              <div class="card">
-                <img src="assets/doc3.jpg" alt="">
-                <h3>Dr. Arvind Kapoor</h3>
-                <p>Cardiologist</p>
-              </div>
-    
-              <div class="card">
-                <img src="assets/doc4.jpg" alt="">
-                <h3>Dr. Arvind Kapoor</h3>
-                <p>Cardiologist</p>
-              </div>
-    
-              <div class="card">
-                <img src="assets/doc5.jpg" alt="">
-                <h3>Dr. Arvind Kapoor</h3>
-                <p>Cardiologist</p>
-              </div>
-    
-              <div class="card">
-                <img src="assets/doc1.jpg" alt="">
-                <h3>Dr. Arvind Kapoor</h3>
-                <p>Cardiologist</p>
-              </div>
-      
-              <div class="card">
-                  <img src="assets/doc2.jpg" alt="">
-                  <h3>Dr. Arvind Kapoor</h3>
-                  <p>Cardiologist</p>
-                </div>
-      
-                <div class="card">
-                  <img src="assets/doc3.jpg" alt="">
-                  <h3>Dr. Arvind Kapoor</h3>
-                  <p>Cardiologist</p>
-                </div>
-      
-                <div class="card">
-                  <img src="assets/doc4.jpg" alt="">
-                  <h3>Dr. Arvind Kapoor</h3>
-                  <p>Cardiologist</p>
-                </div>
-      
-                <div class="card">
-                  <img src="assets/doc5.jpg" alt="">
-                  <h3>Dr. Arvind Kapoor</h3>
-                  <p>Cardiologist</p>
-                </div>
-                <div class="card">
-                  <img src="assets/doc1.jpg" alt="">
-                  <h3>Dr. Arvind Kapoor</h3>
-                  <p>Cardiologist</p>
-                </div>
-        
-                <div class="card">
-                    <img src="assets/doc2.jpg" alt="">
-                    <h3>Dr. Arvind Kapoor</h3>
-                    <p>Cardiologist</p>
-                  </div>
-        
-                  <div class="card">
-                    <img src="assets/doc3.jpg" alt="">
-                    <h3>Dr. Arvind Kapoor</h3>
-                    <p>Cardiologist</p>
-                  </div>
-        
-                  <div class="card">
-                    <img src="assets/doc4.jpg" alt="">
-                    <h3>Dr. Arvind Kapoor</h3>
-                    <p>Cardiologist</p>
-                  </div>
-        
-                  <div class="card">
-                    <img src="assets/doc5.jpg" alt="">
-                    <h3>Dr. Arvind Kapoor</h3>
-                    <p>Cardiologist</p>
-                  </div>
-          </div>
+        <button *ngFor="let page of [].constructor(totalPages()); let i = index" [class.active]="currentPage === i + 1"
+          (click)="goToPage(i + 1)">
+          {{ i + 1 }}
+        </button>
+
+        <button (click)="nextPage()" [disabled]="currentPage === totalPages()">
+          <span>&#10095;</span>
+        </button>
+      </div>
     </div>
+
+    <div class="card-container">
+      <div class="card">
+        <img src="assets/doc1.jpg" alt="">
+        <h3>Dr shayban khan</h3>
+        <p>Cardiologist</p>
+      </div>
+
+      <div class="card">
+        <img src="assets/doc2.jpg" alt="">
+        <h3>Dr. Arvind Kapoor</h3>
+        <p>Cardiologist</p>
+      </div>
+
+      <div class="card">
+        <img src="assets/doc3.jpg" alt="">
+        <h3>Dr. Arvind Kapoor</h3>
+        <p>Cardiologist</p>
+      </div>
+
+      <div class="card">
+        <img src="assets/doc4.jpg" alt="">
+        <h3>Dr. Arvind Kapoor</h3>
+        <p>Cardiologist</p>
+      </div>
+
+      <div class="card">
+        <img src="assets/doc5.jpg" alt="">
+        <h3>Dr. Arvind Kapoor</h3>
+        <p>Cardiologist</p>
+      </div>
+
+      <div class="card">
+        <img src="assets/doc1.jpg" alt="">
+        <h3>Dr. Arvind Kapoor</h3>
+        <p>Cardiologist</p>
+      </div>
+
+      <div class="card">
+        <img src="assets/doc2.jpg" alt="">
+        <h3>Dr. Arvind Kapoor</h3>
+        <p>Cardiologist</p>
+      </div>
+
+      <div class="card">
+        <img src="assets/doc3.jpg" alt="">
+        <h3>Dr. Arvind Kapoor</h3>
+        <p>Cardiologist</p>
+      </div>
+
+      <div class="card">
+        <img src="assets/doc4.jpg" alt="">
+        <h3>Dr. Arvind Kapoor</h3>
+        <p>Cardiologist</p>
+      </div>
+
+      <div class="card">
+        <img src="assets/doc5.jpg" alt="">
+        <h3>Dr. Arvind Kapoor</h3>
+        <p>Cardiologist</p>
+      </div>
+      <div class="card">
+        <img src="assets/doc1.jpg" alt="">
+        <h3>Dr. Arvind Kapoor</h3>
+        <p>Cardiologist</p>
+      </div>
+
+      <div class="card">
+        <img src="assets/doc2.jpg" alt="">
+        <h3>Dr. Arvind Kapoor</h3>
+        <p>Cardiologist</p>
+      </div>
+
+      <div class="card">
+        <img src="assets/doc3.jpg" alt="">
+        <h3>Dr. Arvind Kapoor</h3>
+        <p>Cardiologist</p>
+      </div>
+
+      <div class="card">
+        <img src="assets/doc4.jpg" alt="">
+        <h3>Dr. Arvind Kapoor</h3>
+        <p>Cardiologist</p>
+      </div>
+
+      <div class="card">
+        <img src="assets/doc5.jpg" alt="">
+        <h3>Dr. Arvind Kapoor</h3>
+        <p>Cardiologist</p>
+      </div>
+    </div>
+  </div>
 </div>

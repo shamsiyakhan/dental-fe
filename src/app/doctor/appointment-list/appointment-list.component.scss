@@ -1,0 +1,71 @@
+.appointments-container {
+  padding: 20px;
+
+  .appointment-card {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e0e6f1;
+    overflow: hidden;
+
+    .card-header {
+      background: #007bff;
+      color: white;
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .treatment-name {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin: 0;
+      }
+
+      .appointment-date {
+        font-size: 0.9rem;
+        opacity: 0.9;
+      }
+    }
+
+    .card-body {
+      padding: 16px;
+
+      .info-section {
+        margin-bottom: 12px;
+
+        h6 {
+          color: #007bff;
+          font-weight: 600;
+          margin-bottom: 6px;
+        }
+
+        p {
+          margin: 2px 0;
+          font-size: 0.95rem;
+        }
+      }
+
+      .badge {
+        padding: 3px 8px;
+        border-radius: 6px;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+
+      .badge-paid {
+        background: #28a745;
+        color: white;
+      }
+
+      .badge-unpaid {
+        background: #dc3545;
+        color: white;
+      }
+    }
+
+    .card-footer {
+      background: #f9fbff;
+      padding: 10px 16px;
+    }
+  }
+}

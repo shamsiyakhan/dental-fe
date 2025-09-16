@@ -17,6 +17,8 @@ export class RegisterComplaintComponent implements OnInit {
   payment_mode=['Cash','Card','UPI']
   total: number = 50;
   selectedTests: any[] = []; // To store selected test IDs
+    showTests = false;
+  showPayments = false;
   constructor(
     private http:HttpClient,
     private route:ActivatedRoute,
@@ -27,7 +29,7 @@ export class RegisterComplaintComponent implements OnInit {
   registerComplaintForm = this.fb.group({
     patientid:[''],
     issue_reported:[''],
-    total_charge:[''],
+    total_charge:['50'],
     payment_mode:[''],
     payment_status:['paid'],
     tests:[['']],
@@ -73,7 +75,13 @@ export class RegisterComplaintComponent implements OnInit {
 
   submitComplaint(){
     console.warn(this.registerComplaintForm.value)
-    this.http.post('http://localhost:3000/chiefRegister',this.registerComplaintForm.value).subscribe((data:any)=>{
+      const payload = { ...this.registerComplaintForm.value };
+
+  // If tests is [""] or empty array, set it to []
+  if (!payload.tests || (payload.tests.length === 1 && payload.tests[0] === '')) {
+    payload.tests = [];
+  }
+    this.http.post('http://localhost:3000/chiefRegister',payload).subscribe((data:any)=>{
       console.warn(data)
       Swal.fire({
         title: 'Success!',
@@ -86,27 +94,40 @@ export class RegisterComplaintComponent implements OnInit {
     })
   }
 
-  onTestSelectionChange(event: any) {
-    const selectedOptions = event.value; // This is an array of selected values
-  
-    // Update selected test IDs in the form
-    this.registerComplaintForm.get('tests')?.setValue(selectedOptions);
-  
-    // Calculate total
-    let calculatedTotal = 50;
-    for (let id of selectedOptions) {
-      const test = this.testsList.find((t) => t.treatment_id === id);
-      if (test) {
-        calculatedTotal += +test.treatment_price;
-      }
+onTestSelectionChange(event: any, testId: string) {
+  const isChecked = event.target.checked;
+
+  // Work with string[] (your form control type)
+  let selectedOptions: string[] = this.registerComplaintForm.get('tests')?.value || [];
+
+  if (isChecked) {
+    if (!selectedOptions.includes(testId)) {
+      selectedOptions.push(testId);
     }
-  
-    this.total = calculatedTotal;
-    console.warn(this.total)
-    this.registerComplaintForm.patchValue({
-      total_charge: this.total.toString()
-    })
+  } else {
+    selectedOptions = selectedOptions.filter(id => id !== testId);
   }
+
+  // Update selected test IDs in the form
+  this.registerComplaintForm.get('tests')?.setValue(selectedOptions);
+
+  // Calculate total (base 50 + test prices)
+  let calculatedTotal = 50;
+  for (let id of selectedOptions) {
+    const test = this.testsList.find((t) => t.treatment_id === id);
+    if (test) {
+      calculatedTotal += +test.treatment_price;
+    }
+  }
+
+  this.total = calculatedTotal;
+
+  // Keep total_charge as string (your existing datatype)
+  this.registerComplaintForm.patchValue({
+    total_charge: this.total.toString()
+  });
+}
+
   
 
   onCheckboxChange(event: any, test: any) {

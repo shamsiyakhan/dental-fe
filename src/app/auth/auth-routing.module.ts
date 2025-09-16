@@ -7,6 +7,7 @@ import { SignupComponent } from './signup/signup.component';
 import { DepartmentLoginComponent } from './department-login/department-login.component';
 import { ClerkLoginComponent } from './clerk-login/clerk-login.component';
 import { DoctorLoginComponent } from './doctor-login/doctor-login.component';
+import { DoctorOnboardingComponent } from './doctor-onboarding/doctor-onboarding.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
       {
         path:"doctor-login",
         component:DoctorLoginComponent
+      },
+      {
+        path:"doctor/onboarding/:docId",
+        component:DoctorOnboardingComponent
       }
       
     ]

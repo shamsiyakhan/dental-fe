@@ -27,6 +27,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatInputModule } from '@angular/material/input';
 import { EditTreatmentComponent } from './edit-treatment/edit-treatment.component';
+import { AddDepartmentComponent } from './add-department/add-department.component';
+import { UpdateDepartmentComponent } from './update-department/update-department.component';
+import { A11yModule } from "@angular/cdk/a11y";
 
 @NgModule({
   declarations: [
@@ -43,7 +46,9 @@ import { EditTreatmentComponent } from './edit-treatment/edit-treatment.componen
     TestComponent,
     ReportComponent,
     TreatmentDialogComponent,
-    EditTreatmentComponent
+    EditTreatmentComponent,
+    AddDepartmentComponent,
+    UpdateDepartmentComponent
   ],
   imports: [
     CommonModule,
@@ -59,7 +64,8 @@ import { EditTreatmentComponent } from './edit-treatment/edit-treatment.componen
     FormsModule,
     MatDialogModule,
     MatSlideToggleModule,
-    MatInputModule
-  ]
+    MatInputModule,
+    A11yModule
+]
 })
 export class AdminModule { }

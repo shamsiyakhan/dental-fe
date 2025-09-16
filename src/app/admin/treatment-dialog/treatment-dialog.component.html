@@ -23,7 +23,7 @@
 
     <!-- Subcategory Section -->
     <div class="subcategory-section" *ngIf="treatmentForm.get('had_sub_category')?.value">
-      <h3>Subcategories</h3>
+      <h2>Subcategories</h2>
 
       <div formArrayName="subcategories">
         <div class="subcategory-row" *ngFor="let sub of subcategories.controls; let i = index" [formGroupName]="i">

@@ -1,0 +1,52 @@
+<div class="appointments-container container">
+  <div class="row">
+    <div class="col-md-6" *ngFor="let item of appointments">
+      <div class="appointment-card shadow-sm mb-4">
+        
+        <div class="card-header">
+          <h5 class="treatment-name">{{ item.treatment_name }}</h5>
+          <span class="appointment-date">
+            {{ item.appointment_date | date:'medium' }}
+          </span>
+        </div>
+
+        <div class="card-body">
+          <!-- Treatment Details -->
+          <div class="info-section">
+            <h6>Treatment Details</h6>
+            <p><strong>Issue Date:</strong> {{ item.issue_date | date:'mediumDate' }}</p>
+            <p><strong>Total Charges:</strong> ₹{{ item.total_charges }}</p>
+            <p>
+              <strong>Payment Status:</strong>
+              <span class="badge" 
+                    [ngClass]="item.payment_status === 'Paid' ? 'badge-paid' : 'badge-unpaid'">
+                {{ item.payment_status }}
+              </span>
+            </p>
+          </div>
+
+          <!-- Patient Info -->
+          <div class="info-section">
+            <h6>Patient Info</h6>
+            <p><strong>Patient ID:</strong> {{ item.patientid }}</p>
+            <p><strong>History:</strong> {{ item.history || 'N/A' }}</p>
+            <p><strong>Findings:</strong> {{ item.finding || 'N/A' }}</p>
+          </div>
+
+          <!-- Appointment Info -->
+          <div class="info-section">
+            <h6>Appointment Info</h6>
+            <p><strong>Status:</strong> {{ item.status }}</p>
+            <p><strong>Doctor ID:</strong> {{ item.doctor_id }}</p>
+          </div>
+        </div>
+
+        <div class="card-footer d-flex justify-content-end gap-2">
+          <button class="btn btn-primary btn-sm" (click)="startTreatment()">Start Treatment</button>
+          <button class="btn btn-outline-primary btn-sm">More Details</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

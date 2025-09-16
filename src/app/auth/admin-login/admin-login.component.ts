@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class AdminLoginComponent implements OnInit {
   url: any
+  hidePassword: boolean = true;
   constructor(
     private fb: FormBuilder,
     private api: ApiService,
@@ -28,6 +29,8 @@ export class AdminLoginComponent implements OnInit {
     this.url = this.api.url
   }
 
+  hideUnhidePassword() {}
+
   onSubmit() {
     let data
     if (this.loginForm.value.password) {
@@ -40,6 +43,7 @@ export class AdminLoginComponent implements OnInit {
     console.warn(this.loginForm.value)
     this.http.post(this.url + '/admin-login', data).subscribe({
       next: (data: any) => {
+        localStorage.setItem('id', data.user.admin_id);
         localStorage.setItem('token', data.token);
         this.router.navigate(['/admin/dashboard']);
       },

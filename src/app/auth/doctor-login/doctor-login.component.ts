@@ -35,12 +35,12 @@ export class DoctorLoginComponent implements OnInit {
     if(this.loginForm.value.password){
        data={
         email:this.loginForm.value.username,
-        password:window.btoa(this.loginForm.value.password)
+        password:this.loginForm.value.password
       }
     }
    
     console.warn(this.loginForm.value)
-    this.http.post(this.url+'/doctor-login',data).subscribe((data:any)=>{
+    this.http.post(this.url+'/api/doctor-login',data).subscribe((data:any)=>{
       localStorage.setItem('doctor',JSON.stringify(data.user.doctor))
       localStorage.setItem('department',JSON.stringify(data.user.department))
       this.router.navigate(['/doctor/dashboard'])

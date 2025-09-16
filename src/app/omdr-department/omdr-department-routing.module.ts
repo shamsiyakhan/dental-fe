@@ -11,6 +11,7 @@ import { TestComponent } from './test/test.component';
 import { ViewTestComponent } from './view-test/view-test.component';
 import { SettingComponent } from './setting/setting.component';
 import { AllappointmentComponent } from './allappointment/allappointment.component';
+import { AssignDoctorComponent } from './assign-doctor/assign-doctor.component';
 
 const routes: Routes = [
   {
@@ -61,6 +62,10 @@ const routes: Routes = [
       {
         path:'setting',
         component:SettingComponent
+      },
+      {
+        path:"assignDoctor/:deptid/:treatmentId",
+        component:AssignDoctorComponent
       }
     ]
   }

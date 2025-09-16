@@ -1,0 +1,53 @@
+<div class="treatment-form container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      
+      <div class="form-card shadow-sm">
+        <!-- Header -->
+        <div class="card-header">
+          <h4>Treatment Form</h4>
+          <span class="text-light">Appointment ID: {{ appointment.appointment_id }}</span>
+        </div>
+
+        <!-- Body -->
+        <div class="card-body">
+
+          <!-- Treatment Info -->
+          <div class="info-section">
+            <h5>Treatment Info</h5>
+            <p><strong>Treatment Name:</strong> {{ appointment.treatment_name }}</p>
+            <p><strong>Total Charges:</strong> ₹{{ appointment.total_charges }}</p>
+            <p><strong>Issue Date:</strong> {{ appointment.issue_date | date:'mediumDate' }}</p>
+          </div>
+
+          <!-- Patient Info -->
+          <div class="info-section">
+            <h5>Patient Info</h5>
+            <p><strong>Patient ID:</strong> {{ appointment.patientid }}</p>
+            <p><strong>History:</strong> {{ appointment.history || 'N/A' }}</p>
+          </div>
+
+          <!-- Findings Input -->
+          <div class="form-group mb-3">
+            <label for="finding">Findings</label>
+            <textarea id="finding" class="form-control" [(ngModel)]="appointment.finding" rows="3" placeholder="Enter findings..."></textarea>
+          </div>
+
+          <!-- Prescription Input -->
+          <div class="form-group mb-3">
+            <label for="prescription">Prescription</label>
+            <textarea id="prescription" class="form-control" [(ngModel)]="appointment.prescription" rows="4" placeholder="Enter prescription..."></textarea>
+          </div>
+
+        </div>
+
+        <!-- Footer Actions -->
+        <div class="card-footer d-flex justify-content-between">
+          <button class="btn btn-success" (click)="markAsComplete()">Mark as Complete</button>
+          <button class="btn btn-primary" (click)="keepForNext()">Keep for Next Appointment</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

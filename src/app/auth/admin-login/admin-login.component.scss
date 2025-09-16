@@ -7,6 +7,7 @@
 .wrap{
     width: 100%;
     background-color: #F9FAFB;
+    height: 100vh;
   /*   overflow: hidden; */
 }
 
@@ -34,6 +35,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100%;
 }
 .input{
     display: flex;

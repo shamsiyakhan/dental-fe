@@ -11,31 +11,36 @@ import Swal from 'sweetalert2';
 })
 export class AssignDepartmentComponent implements OnInit {
 
-  departments:any[]=[]
-  complaintForm = this.fb.group({
-    treatment_name: ['', Validators.required],
-    issue_date: ['', Validators.required],
-    status: ['', Validators.required],
-    total_charge: [null, Validators.required],
-    finding: ['', Validators.required],
-    history: ['', Validators.required],
-    dept_id: ['', Validators.required],
-    patient_id: ['', Validators.required],
-    complaint_id: ['', Validators.required],
-    payment_status: ['', Validators.required],
-  });
+  departments: any[] = [];
+  treatments: any[] = []; // For selected department
+  complaintForm: FormGroup;
 
   constructor(
     private fb: FormBuilder,
-     private http: HttpClient,
-     private dialogRef: MatDialogRef<AssignDepartmentComponent>,
-     @Inject(MAT_DIALOG_DATA) public data: any,
-    ) {}
+    private http: HttpClient,
+    private dialogRef: MatDialogRef<AssignDepartmentComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+  ) {
+    // Initialize form
+    this.complaintForm = this.fb.group({
+      treatment_name: [{ value: '', disabled: true }, Validators.required],
+      issue_date: ['', Validators.required],
+      status: [{ value: '', disabled: true }, Validators.required],
+      total_charge: [{ value: null, disabled: true }, Validators.required],
+      finding: ['', Validators.required],
+      history: ['', Validators.required],
+      dept_id: ['', Validators.required],
+      patient_id: [{ value: '', disabled: true }, Validators.required],
+      complaint_id: [{ value: '', disabled: true }, Validators.required],
+      payment_status: ['', Validators.required],
+    });
+  }
 
   ngOnInit() {
-    // Initialize the form with validators
-    console.warn(this.data)
+    console.warn(this.data);
     const onlyDate = this.data.reporting_date.split('T')[0];
+
+    // Patch initial values
     this.complaintForm.patchValue({
       treatment_name: this.data.issue_reported,
       issue_date: onlyDate,
@@ -43,42 +48,70 @@ export class AssignDepartmentComponent implements OnInit {
       dept_id: this.data.dept_id,
       patient_id: this.data.patientid,
       complaint_id: this.data.complaint_id,
-    })
+      payment_status: "Paid"
+    });
 
-    this.getDepartment()
-   
+    this.getDepartments();
   }
 
-  // Method to handle form submission
-  onSubmit(){
+  // Fetch departments from API
+  getDepartments() {
+    this.http.get('http://localhost:3000/api/getDepartments').subscribe((data: any) => {
+      console.warn("department list")
+      this.departments = data.result || data; // support both response formats
+      console.warn(this.departments)
+    });
+  }
 
+  // Handle department selection change
+  onDepartmentChange(event: any) {
+    const deptId = event.target.value;
+    if (deptId) {
+      this.http.get(`http://localhost:3000/api/getTreatments/${deptId}`).subscribe((res: any) => {
+        this.treatments = res || [];
+         this.complaintForm.get('treatment_name')?.enable();
+      });
+    }
+  }
 
-    // Prepare the data to send to the API
-    const formData = this.complaintForm.value;
+  // Handle treatment selection change (if using dropdown)
+  onTreatmentChange(event: any) {
+    const treatmentName = event.target.value;
+    const selectedTreatment = this.treatments.find(t => t.treatment_name === treatmentName);
+    if (selectedTreatment) {
+      this.complaintForm.patchValue({
+        total_charge: selectedTreatment.total_charges
+      });
+    }
+  }
 
-    // Make the API request to save the complaint
+  // Form submission
+  onSubmit() {
+    // Prepare data by enabling disabled fields temporarily
+    const formData = {
+      ...this.complaintForm.getRawValue() // includes disabled fields
+    };
+
     this.http.post('http://localhost:3000/startTreatment', formData).subscribe(
       (response) => {
         console.log('Complaint registered successfully', response);
         Swal.fire({
-                title: 'Success!',
-                text: 'Treatment Process Initalized',
-                icon: 'success',
-                confirmButtonText: 'Ok',
-              });
-              this.dialogRef.close()
-        // Handle success (e.g., show a success message)
+          title: 'Success!',
+          text: 'Treatment Process Initialized',
+          icon: 'success',
+          confirmButtonText: 'Ok',
+        });
+        this.dialogRef.close();
       },
       (error) => {
         console.error('Error registering complaint', error);
-        // Handle error (e.g., show an error message)
+        Swal.fire({
+          title: 'Error!',
+          text: 'Failed to initialize treatment',
+          icon: 'error',
+          confirmButtonText: 'Ok',
+        });
       }
     );
-  }
-
-  getDepartment() {
-    this.http.get('http://localhost:3000/getDepartments').subscribe((data: any) => {
-      this.departments = data.result;
-    })
   }
 }

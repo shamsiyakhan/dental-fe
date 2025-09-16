@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-treatment-dialog',
@@ -15,13 +15,14 @@ export class TreatmentDialogComponent {
   constructor(
     private fb: FormBuilder,
      private http: HttpClient,
-    public dialogRef: MatDialogRef<TreatmentDialogComponent>
+    public dialogRef: MatDialogRef<TreatmentDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
     ) {
     this.treatmentForm = this.fb.group({
       treatment_name: ['', Validators.required],
       total_charges: ['', Validators.required],
       had_sub_category: [false],
-      dept_id: ['aK8JyQl9Ph'], // Fixed dept_id
+      dept_id: [''],
       subcategories: this.fb.array([])
     });
     
@@ -72,9 +73,9 @@ updateTotalCharges() {
       formValue.subcategories = [];
     }
     console.log('Payload to API:', formValue);
-
-    // API call example
-    this.http.post('http://localhost:3000/api/addTreatmentAdmin', formValue).subscribe({
+    let payload = {...formValue};
+    payload.dept_id=this.data.departmentId;
+    this.http.post('http://localhost:3000/api/addTreatmentAdmin', payload).subscribe({
       next: (res) => {
         console.log('Saved successfully', res);
         this.dialogRef.close(true);

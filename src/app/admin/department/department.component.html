@@ -1,15 +1,23 @@
-
 <h3 class="profile1">Manage Departments</h3>
 
+<div class="plus">
+  <span (click)="addDepartment()">+</span>
+</div>
 <div class="departments-container">
-   
-  
-    <div class="departments-grid">
-      <div class="dept-item" *ngFor="let department of department_list" (click)="departInfo(department.dept_id)">
-        {{ department.dept_name }}
 
+
+  <div class="departments-grid">
+    <div class="dept-item" *ngFor="let department of department_list" (click)="departInfo(department.dept_id)">
+      <span class="dept-name">{{ department.dept_name }}</span>
+
+      <div class="dept-actions">
+        <i class="bi bi-pencil-square" (click)="updateDepartmentInfo($event , department)"></i>
+       <!--  <i class="bi bi-trash" (click)="deleteDepartment($event ,department)"></i> -->
       </div>
-      <!-- <div class="dept-item" (click)="departInfo()">Prosthodontics and Crown & Bridge</div>
+    </div>
+
+
+    <!-- <div class="dept-item" (click)="departInfo()">Prosthodontics and Crown & Bridge</div>
       <div class="dept-item">Oral Medicine & Radiology</div>
       <div class="dept-item">Periodontology</div>
       <div class="dept-item">Oral Pathology & Microbiology</div>
@@ -18,6 +26,5 @@
       <div class="dept-item">Oral & Maxillofacial Surgery</div>
       <div class="dept-item">Orthodontics & Dentofacial Orthopedics</div>
       <div class="dept-item">Paedodontics & Preventive Dentistry</div> -->
-    </div>
   </div>
-  
+</div>

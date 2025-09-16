@@ -188,3 +188,123 @@
     }
   }
   
+
+  .chiefComplaint {
+  margin-top: 20px;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  overflow-y:scroll ;
+   scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE & Edge */
+
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+  }
+
+  .section-header {
+    margin-bottom: 15px;
+    h2 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #007DC6;
+      margin: 0;
+    }
+  }
+
+  .complaint-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .complaint-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f7fbff;
+    border: 1px solid #e0f0ff;
+    padding: 15px 20px;
+    border-radius: 10px;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background: #eaf6ff;
+      transform: translateY(-2px);
+    }
+
+    .complaint-info {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      .complaintName {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #333;
+      }
+
+      .complaintDate {
+        font-size: 0.9rem;
+        color: #666;
+      }
+    }
+
+    .complaint-actions {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+
+      .status {
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        text-transform: capitalize;
+      }
+
+      .status.paid {
+        background: #d4f6e1;
+        color: #1d7d46;
+      }
+
+      .status.unpaid {
+        background: #ffe5e5;
+        color: #b02a2a;
+      }
+
+      .start-btn {
+        background: #007DC6;
+        color: white;
+        padding: 10px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: 0.2s;
+
+        &:hover {
+          background: #005485;
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+
+  .noComplaintMessage {
+    text-align: center;
+    color: #777;
+    padding: 40px 20px;
+
+    i {
+      font-size: 2rem;
+      color: #007DC6;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin: 0;
+      font-size: 1rem;
+      color: #444;
+    }
+  }
+}

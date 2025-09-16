@@ -275,3 +275,109 @@
       cursor: not-allowed;
     }
   }
+
+
+  .wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+
+  .search-bar {
+    margin-bottom: 15px;
+
+    input {
+      width: 100%;
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 0.95rem;
+    }
+  }
+}
+
+.patient-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  width: 100%;
+  /* max-width: 350px; */
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+
+    .patient-info {
+      h3 {
+        font-size: 1.1rem;
+        margin: 0;
+        color: #1a1a1a;
+      }
+      p {
+        margin: 2px 0 0 0;
+        font-size: 0.9rem;
+        color: #555;
+      }
+    }
+
+    .status {
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      &.paid {
+        background-color: #d4edda;
+        color: #155724;
+      }
+      &.unpaid {
+        background-color: #f8d7da;
+        color: #721c24;
+      }
+    }
+  }
+
+  .card-body {
+    p {
+      margin: 4px 0;
+      font-size: 0.9rem;
+      color: #333;
+
+      strong {
+        color: #1a1a1a;
+      }
+    }
+  }
+
+  .card-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 12px;
+
+    .assign-btn {
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      font-size: 1rem;
+
+      &:hover {
+        background-color: #45a049;
+      }
+    }
+  }
+}

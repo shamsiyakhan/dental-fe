@@ -23,6 +23,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { AppointmentAssignComponent } from './appointment-assign/appointment-assign.component';
 import { FormsModule } from '@angular/forms';
+import { AssignDoctorComponent } from './assign-doctor/assign-doctor.component';
 @NgModule({
   declarations: [
     OmdrDepartmentComponent,
@@ -37,7 +38,8 @@ import { FormsModule } from '@angular/forms';
     SettingComponent,
     AllappointmentComponent,
     AssignDepartmentComponent,
-    AppointmentAssignComponent
+    AppointmentAssignComponent,
+    AssignDoctorComponent
   ],
   imports: [
     CommonModule,
