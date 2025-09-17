@@ -10,6 +10,7 @@ import { ConsultationComponent } from './consultation/consultation.component';
 import { InfoConsultationComponent } from './info-consultation/info-consultation.component';
 import { AppointmentListComponent } from './appointment-list/appointment-list.component';
 import { AppointmentUpdateComponent } from './appointment-update/appointment-update.component';
+import { TreatmentComponent } from './treatment/treatment.component';
 
 
 const routes: Routes = [
@@ -56,6 +57,10 @@ const routes: Routes = [
       },{
         path:"appointment-update",
         component:AppointmentUpdateComponent
+      },
+      {
+        path:"treatment",
+        component:TreatmentComponent
       }
      
     ]
