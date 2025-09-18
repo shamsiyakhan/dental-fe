@@ -5,7 +5,6 @@ import { DoctorRoutingModule } from './doctor-routing.module';
 import { OverviewComponent } from './overview/overview.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PatientTreatmentComponent } from './patient-treatment/patient-treatment.component';
-import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { DoctorComponent } from './doctor/doctor.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -35,7 +34,6 @@ import { AppointmentUpdateComponent } from './appointment-update/appointment-upd
   imports: [
     CommonModule,
     DoctorRoutingModule,
-    HttpClientModule,
     MatTableModule,
     MatTabsModule,
     ReactiveFormsModule,

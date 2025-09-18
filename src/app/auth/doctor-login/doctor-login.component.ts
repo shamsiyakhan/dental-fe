@@ -43,6 +43,7 @@ export class DoctorLoginComponent implements OnInit {
     this.http.post(this.url+'/api/doctor-login',data).subscribe((data:any)=>{
       localStorage.setItem('doctor',JSON.stringify(data.user.doctor))
       localStorage.setItem('department',JSON.stringify(data.user.department))
+      localStorage.setItem('token' ,data.token)
       this.router.navigate(['/doctor/dashboard'])
     }, (error)=>{
       console.log(error)

@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -9,31 +10,21 @@ import { Router } from '@angular/router';
 export class AppointmentListComponent implements OnInit {
   
 
-   appointments = [
-    {
-      appointment_id: "EWlcIpLPd7",
-      treatment_id: "PBwvvHraP3",
-      appointment_date: "2025-09-16T09:06:34.000Z",
-      dept_id: "18MIA4AsbJ",
-      status: "Assigned",
-      doctor_id: "yfsjeIoLO1",
-      prescription: null,
-      treatment_name: "Management of oral precancerous conditions",
-      issue_date: "2025-09-10T18:30:00.000Z",
-      total_charges: "650",
-      finding: "",
-      history: "",
-      patientid: "eFJnNywunz",
-      doctorid: null,
-      complaint_id: "mvtnpRjQwe",
-      payment_status: "Paid"
-    }
-  ];
+   appointments:any[] = [];
   constructor(
-
+    private http:HttpClient,
     private router: Router
   ) { 
+    this.getTreatments();
+  }
 
+
+  getTreatments(){
+    let docId=JSON.parse(localStorage.getItem('doctor') || '{}').doctor_id
+    this.http.get('http://localhost:3000/api/getAppointmentsOfDoctor/'+docId  ).subscribe((res:any)=>{
+      console.warn(res);
+      this.appointments=res.result
+    })
   }
 
   ngOnInit(): void {

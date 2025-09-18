@@ -1,6 +1,6 @@
 <div class="appointments-container container">
   <div class="row">
-    <div class="col-md-6" *ngFor="let item of appointments">
+    <div class="col-md-12" *ngFor="let item of appointments">
       <div class="appointment-card shadow-sm mb-4">
         
         <div class="card-header">
@@ -28,7 +28,8 @@
           <!-- Patient Info -->
           <div class="info-section">
             <h6>Patient Info</h6>
-            <p><strong>Patient ID:</strong> {{ item.patientid }}</p>
+             <p><strong>Patient Name:</strong> {{ item.fullname }}</p>
+              <p><strong>Patient Email:</strong> {{ item.email }}</p>
             <p><strong>History:</strong> {{ item.history || 'N/A' }}</p>
             <p><strong>Findings:</strong> {{ item.finding || 'N/A' }}</p>
           </div>
@@ -37,7 +38,7 @@
           <div class="info-section">
             <h6>Appointment Info</h6>
             <p><strong>Status:</strong> {{ item.status }}</p>
-            <p><strong>Doctor ID:</strong> {{ item.doctor_id }}</p>
+            <p><strong>Doctor Name:</strong> {{ item.doctor_name }}</p>
           </div>
         </div>
 
