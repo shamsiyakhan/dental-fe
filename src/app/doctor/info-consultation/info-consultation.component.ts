@@ -51,22 +51,38 @@ export class InfoConsultationComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  markAsComplete(): void {
-    const updatedFields = {
-      finding: this.appointmentForm.get('finding')?.value,
-      history: this.appointmentForm.get('history')?.value
-    };
-    console.log('Updated values:', updatedFields);
-    // You can now send PATCH request with only updatedFields
-    console.warn(this.appointmentForm.value)
-    this.http.post('http://localhost:3000/updateComplete', this.appointmentForm.value).subscribe((data:any)=>{
+markAsComplete(): void {
+  // Get all form values including disabled fields
+  const updatedFormData = this.appointmentForm.getRawValue();
+
+  // You can also select only specific fields if needed
+  const payload = {
+    ...updatedFormData,
+    finding: this.appointmentForm.get('finding')?.value,
+    history: this.appointmentForm.get('history')?.value
+  };
+
+  console.log('Payload to send:', payload);
+
+  this.http.post('http://localhost:3000/updateComplete', payload).subscribe({
+    next: (data: any) => {
       Swal.fire({
         icon: 'success',
         title: 'Completed',
         text: 'Appointment marked as complete successfully!'
-      })
-      this.router.navigate(['/doctor/dashboard'])
-    })
-  }
+      });
+      this.router.navigate(['/doctor/dashboard']);
+    },
+    error: (err) => {
+      console.error('Error updating:', err);
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Failed to update appointment.'
+      });
+    }
+  });
+}
+
 
 }

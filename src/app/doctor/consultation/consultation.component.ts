@@ -10,6 +10,7 @@ import { ConsultationSaveService } from '../consultation-save.service';
 })
 export class ConsultationComponent implements OnInit {
   todaysAppointments:any[]=[]
+  user_id:any
   constructor(
     private http:HttpClient,
     private router:Router,
@@ -17,7 +18,13 @@ export class ConsultationComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getTodaysAppointments()
+   
+    console.warn("hello")
+    var doc=localStorage.getItem('doctor')
+    this.user_id=JSON.parse(doc || '{}').doctor_id
+    console.warn(this.user_id)
+     this.getTodaysAppointments()
+ 
   }
 
   activeTab: string = 'identity';
@@ -33,9 +40,10 @@ export class ConsultationComponent implements OnInit {
 
   
   getTodaysAppointments(){
+    console.warn("get todays appointment called")
     const deptId = localStorage.getItem('department')
     const deptString = JSON.parse(deptId || '{}');
-    this.http.get('http://localhost:3000/getTodayAppointment/'+deptString.dept_id).subscribe((data:any)=>{
+    this.http.get('http://localhost:3000/getTodayAppointment/'+deptString.dept_id+'/'+this.user_id).subscribe((data:any)=>{
       console.warn(data)
       this.todaysAppointments=data.result
     })

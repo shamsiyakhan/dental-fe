@@ -1,50 +1,84 @@
-<div class="treatment-form container">
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      
-      <div class="form-card shadow-sm">
-        <!-- Header -->
-        <div class="card-header">
-          <h4>Treatment Form</h4>
-          <span class="text-light">Appointment ID: {{ appointment.appointment_id }}</span>
+<div class="treatment-layout container">
+  <div class="row">
+    
+    <!-- Sidebar Menu -->
+    <div class="col-md-3">
+      <div class="sidebar">
+        <ul>
+          <li [class.active]="activeTab === 'treatment'" (click)="activeTab = 'treatment'">
+            Treatment
+          </li>
+          <li [class.active]="activeTab === 'history'" (click)="activeTab = 'history'">
+            View Treatment History
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Content Section -->
+    <div class="col-md-9">
+      <!-- Treatment Form -->
+      <div *ngIf="activeTab === 'treatment'" class="treatment-form">
+        <div class="row justify-content-center">
+          <div class="col-md-12">
+            
+            <div class="form-card shadow-sm">
+              <!-- Header -->
+              <div class="card-header">
+                <h4>Treatment Form</h4>
+                <span class="text-light">
+                  Appointment ID: {{ appointmentDetails.appointment_id }}
+                </span>
+              </div>
+
+              <!-- Body -->
+              <div class="card-body">
+                <!-- Treatment Info -->
+                <div class="info-section">
+                  <h5>Treatment Info</h5>
+                  <p><strong>Treatment Name:</strong> {{ appointmentDetails.treatment_name }}</p>
+                  <p><strong>Total Charges:</strong> ₹{{ appointmentDetails.total_charges }}</p>
+                  <p><strong>Issue Date:</strong> {{ appointmentDetails.issue_date | date:'mediumDate' }}</p>
+                </div>
+
+                <!-- Patient Info -->
+                <div class="info-section">
+                  <h5>Patient Info</h5>
+                  <!-- <p><strong>Patient ID:</strong> {{ appointmentDetails.patientid }}</p> -->
+                  <p><strong>Patient Name:</strong> {{ appointmentDetails.fullname }}</p>
+                  <p><strong>History:</strong> {{ appointmentDetails.history || 'N/A' }}</p>
+                </div>
+
+                <!-- Findings Input -->
+                <div class="form-group mb-3">
+                  <label for="finding">Findings</label>
+                  <textarea id="finding" class="form-control" [(ngModel)]="appointmentDetails.finding" rows="3" placeholder="Enter findings..."></textarea>
+                </div>
+
+                <!-- Prescription Input -->
+                <div class="form-group mb-3">
+                  <label for="prescription">Prescription</label>
+                  <textarea id="prescription" class="form-control" [(ngModel)]="appointmentDetails.prescription" rows="4" placeholder="Enter prescription..."></textarea>
+                </div>
+              </div>
+
+              <!-- Footer Actions -->
+              <div class="card-footer d-flex justify-content-between">
+                <button class="btn btn-success" (click)="markAsComplete()">Mark as Complete</button>
+                <button class="btn btn-primary" (click)="keepForNext()">Keep for Next appointmentDetails</button>
+              </div>
+            </div>
+
+          </div>
         </div>
+      </div>
 
-        <!-- Body -->
-        <div class="card-body">
-
-          <!-- Treatment Info -->
-          <div class="info-section">
-            <h5>Treatment Info</h5>
-            <p><strong>Treatment Name:</strong> {{ appointment.treatment_name }}</p>
-            <p><strong>Total Charges:</strong> ₹{{ appointment.total_charges }}</p>
-            <p><strong>Issue Date:</strong> {{ appointment.issue_date | date:'mediumDate' }}</p>
-          </div>
-
-          <!-- Patient Info -->
-          <div class="info-section">
-            <h5>Patient Info</h5>
-            <p><strong>Patient ID:</strong> {{ appointment.patientid }}</p>
-            <p><strong>History:</strong> {{ appointment.history || 'N/A' }}</p>
-          </div>
-
-          <!-- Findings Input -->
-          <div class="form-group mb-3">
-            <label for="finding">Findings</label>
-            <textarea id="finding" class="form-control" [(ngModel)]="appointment.finding" rows="3" placeholder="Enter findings..."></textarea>
-          </div>
-
-          <!-- Prescription Input -->
-          <div class="form-group mb-3">
-            <label for="prescription">Prescription</label>
-            <textarea id="prescription" class="form-control" [(ngModel)]="appointment.prescription" rows="4" placeholder="Enter prescription..."></textarea>
-          </div>
-
-        </div>
-
-        <!-- Footer Actions -->
-        <div class="card-footer d-flex justify-content-between">
-          <button class="btn btn-success" (click)="markAsComplete()">Mark as Complete</button>
-          <button class="btn btn-primary" (click)="keepForNext()">Keep for Next Appointment</button>
+      <!-- History Section -->
+      <div *ngIf="activeTab === 'history'" class="treatment-history">
+        <div class="history-card shadow-sm p-4">
+          <h4>Treatment History</h4>
+          <p>Show past treatment records here...</p>
+          <!-- You can render history items later -->
         </div>
       </div>
 

@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-appointment-update',
@@ -6,6 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./appointment-update.component.scss']
 })
 export class AppointmentUpdateComponent implements OnInit {
+
+  appointmentId:any
+  appointmentDetails:any
+  activeTab: string = 'treatment';
+
+  constructor(
+    private route:ActivatedRoute,
+    private http:HttpClient
+  ){
+
+  }
  appointment: any = {
     appointment_id: "EWlcIpLPd7",
     treatment_name: "Management of oral precancerous conditions",
@@ -17,11 +30,24 @@ export class AppointmentUpdateComponent implements OnInit {
     prescription: ""
   };
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+     this.appointmentId = params['appointmentId'];
+      console.log("Received appointmentId:", this.appointmentId);
+      this.getAppointmentDetails()
+    });
+  }
 
   markAsComplete() {
     console.log("Marking as complete:", this.appointment);
     // call API here -> update status to Completed
+  }
+
+  getAppointmentDetails(){
+    this.http.get('http://localhost:3000/api/getSpecificAppointments/'+this.appointmentId).subscribe((res:any)=>{
+      console.warn(res);
+      this.appointmentDetails=res.result[0]
+    })
   }
 
   keepForNext() {

@@ -1,47 +1,63 @@
 <div class="main">
-    <div class="row" style="height: 99vh !important; width: 100%;">
-        <div class="col-2" style="background-color: white;">
-            <div class="icon">
-                <img class="logo" src="assets/DentalCare.png" alt="">
-            </div>
-            <div class="info">
-               <!--  <i class="fa-regular fa-hand">👋</i>  -->
-                <span class="emoji">👋</span>
-                <span>Hello!</span>
-                <span>Dr. Dave Affleck</span>
-            </div>
-            <div class="menu-container">
-                <div class="menu-item" [ngClass]="isActive('dashboard')">
-                    <span (click)="redirect('dashboard')">Dashboard</span>
-                </div>
-                <!-- <div class="menu-item" [ngClass]="isActive('patientTreatment')">
-                    <span (click)="redirect('patientTreatment')">Patients</span>
-                </div> -->
-                <div class="menu-item" [ngClass]="isActive('doctor')">
-                    <span (click)="redirect('doctor')">Doctors</span>
-                </div>
-                <div class="menu-item" [ngClass]="isActive('consultation')">
-                    <span (click)="redirect('consultation')">Consultations</span>
-                </div>
-                  <div class="menu-item" [ngClass]="isActive('appointment')">
-                    <span (click)="redirect('appointment')">Appointment
+  <div class="row g-0" style="height: 100vh; width: 100%;">
+    
+    <!-- Sidebar -->
+    <div class="sidebar" [class.hidden]="isHidden">
+      <div class="sidebar-header">
+       <!-- Sidebar <img class="logo" src="assets/DentalCare.png" alt="Dental Logo"> -->
+        DCPMS
+        <!-- Large screen toggle
+        <button class="btn toggle-btn d-none d-lg-inline" (click)="toggleSidebar()" aria-label="Toggle menu">
+          <i class="fa fa-bars"></i>
+        </button> -->
+      </div>
 
-                    </span>
-                </div>
-                <div class="menu-item" [ngClass]="isActive('profile')">
-                    <span (click)="redirect('profile')">Profile</span>
-                </div>
-                <div class="menu-item" [ngClass]="isActive('setting')">
-                    <span>Settings</span>
-                </div>
-                <div class="menu-item" [ngClass]="isActive('login')">
-                    <span (click)="logout()">Logout</span>
-                </div>
-            </div>
-        </div>
+      <div class="info text-center">
+        <span class="emoji">👋</span>
+        <span>Hello!</span>
+        <span class="doctor-name">Dr. Dave Affleck</span>
+      </div>
 
-        <div class="col-10">
-            <router-outlet></router-outlet>
+      <div class="menu-container">
+        <div class="menu-item" [ngClass]="isActive('dashboard')" (click)="redirect('dashboard')">
+          <i class="fa fa-home me-2"></i> Dashboard
         </div>
+        <div class="menu-item" [ngClass]="isActive('doctor')" (click)="redirect('doctor')">
+          <i class="fa fa-user-md me-2"></i> Doctors
+        </div>
+        <div class="menu-item" [ngClass]="isActive('consultation')" (click)="redirect('consultation')">
+          <i class="fa fa-comments me-2"></i> Consultations
+        </div>
+        <div class="menu-item" [ngClass]="isActive('appointment')" (click)="redirect('appointment')">
+          <i class="fa fa-calendar-check me-2"></i> Appointment
+        </div>
+        <div class="menu-item" [ngClass]="isActive('profile')" (click)="redirect('profile')">
+          <i class="fa fa-user me-2"></i> Profile
+        </div>
+        <div class="menu-item" [ngClass]="isActive('setting')">
+          <i class="fa fa-cog me-2"></i> Settings
+        </div>
+        <div class="menu-item" [ngClass]="isActive('login')" (click)="logout()">
+          <i class="fa fa-sign-out-alt me-2"></i> Logout
+        </div>
+      </div>
     </div>
+
+    <!-- Overlay (only for mobile when sidebar open) -->
+    <div *ngIf="!isHidden" class="overlay d-lg-none" (click)="toggleSidebar()"></div>
+
+    <!-- Main Content -->
+    <div class="content-area">
+      <div class="topbar d-flex align-items-center justify-content-between">
+        <!-- Mobile toggle -->
+        <button class="btn d-lg-none toggle-btn-lg" (click)="toggleSidebar()" aria-label="Toggle sidebar">
+          <i class="fa fa-bars"></i>
+        </button>
+
+        <!-- <div class="page-title">Overview</div> -->
+      </div>
+
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>

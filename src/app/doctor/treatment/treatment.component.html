@@ -1,0 +1,108 @@
+<div class="container py-4">
+
+  <!-- Nav Tabs -->
+  <ul class="nav nav-tabs mb-3">
+    <li class="nav-item">
+      <a class="nav-link" [class.active]="activeTab==='appointment'" (click)="activeTab='appointment'">
+        Appointment Details
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [class.active]="activeTab==='invoice'" (click)="activeTab='invoice'">
+        Invoice
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [class.active]="activeTab==='prescription'" (click)="activeTab='prescription'">
+        Prescription
+      </a>
+    </li>
+  </ul>
+
+  <!-- Tab Content -->
+  <div class="tab-content card p-3 shadow-sm">
+
+    <!-- Appointment Tab -->
+    <div *ngIf="activeTab==='appointment'">
+      <h5 class="mb-3 text-primary">Appointment Details</h5>
+      <div class="mb-3">
+        <label class="form-label">Patient Name</label>
+        <input type="text" class="form-control" [(ngModel)]="appointment.patientName">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Age</label>
+        <input type="number" class="form-control" [(ngModel)]="appointment.age">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Gender</label>
+        <select class="form-select" [(ngModel)]="appointment.gender">
+          <option value="">Select</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">History</label>
+        <textarea class="form-control" rows="2" [(ngModel)]="appointment.history"></textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Findings</label>
+        <textarea class="form-control" rows="2" [(ngModel)]="appointment.findings"></textarea>
+      </div>
+    </div>
+
+    <!-- Invoice Tab -->
+    <div *ngIf="activeTab==='invoice'">
+      <h5 class="mb-3 text-primary">Invoice Details</h5>
+      <div class="mb-3">
+        <label class="form-label">Treatment</label>
+        <input type="text" class="form-control" [(ngModel)]="invoice.treatment">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Amount</label>
+        <input type="number" class="form-control" [(ngModel)]="invoice.amount">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Status</label>
+        <select class="form-select" [(ngModel)]="invoice.status">
+          <option value="">Select</option>
+          <option>Paid</option>
+          <option>Pending</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Prescription Tab -->
+    <div *ngIf="activeTab==='prescription'">
+      <h5 class="mb-3 text-primary">Prescription</h5>
+      <div class="mb-3">
+        <label class="form-label">Medicines</label>
+        <textarea class="form-control" rows="2" [(ngModel)]="prescription.medicines"></textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Instructions</label>
+        <textarea class="form-control" rows="2" [(ngModel)]="prescription.instructions"></textarea>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer Section -->
+  <div class="card shadow-sm mt-4 p-3 d-flex flex-wrap align-items-center justify-content-between">
+    <!-- Mark as Complete -->
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" [(ngModel)]="isComplete" id="completeCheck">
+      <label class="form-check-label fw-bold text-primary" for="completeCheck">
+        Mark as Complete
+      </label>
+    </div>
+
+    <!-- Date Picker -->
+    <div>
+      <label class="form-label me-2 fw-bold text-primary">Next Appointment</label>
+      <input type="date" class="form-control d-inline-block w-auto" [(ngModel)]="nextAppointmentDate">
+    </div>
+  </div>
+
+</div>

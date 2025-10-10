@@ -16,6 +16,7 @@ import { InfoConsultationComponent } from './info-consultation/info-consultation
 import { FormsModule } from '@angular/forms';
 import { AppointmentListComponent } from './appointment-list/appointment-list.component';
 import { AppointmentUpdateComponent } from './appointment-update/appointment-update.component';
+import { TreatmentComponent } from './treatment/treatment.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AppointmentUpdateComponent } from './appointment-update/appointment-upd
     ConsultationComponent,
     InfoConsultationComponent,
     AppointmentListComponent,
-    AppointmentUpdateComponent
+    AppointmentUpdateComponent,
+    TreatmentComponent
   ],
   imports: [
     CommonModule,

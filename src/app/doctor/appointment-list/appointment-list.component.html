@@ -1,50 +1,110 @@
-<div class="appointments-container container">
+<div class="appointments-page container-fluid">
   <div class="row">
-    <div class="col-md-12" *ngFor="let item of appointments">
-      <div class="appointment-card shadow-sm mb-4">
-        
-        <div class="card-header">
-          <h5 class="treatment-name">{{ item.treatment_name }}</h5>
-          <span class="appointment-date">
-            {{ item.appointment_date | date:'medium' }}
-          </span>
+
+    <!-- Sidebar -->
+    <div class="col-md-3 col-lg-2 sidebar">
+      <ul class="menu-list">
+        <li [class.active]="activeTab === 'today'" (click)="setTab('today')">Today's</li>
+        <li [class.active]="activeTab === 'previous'" (click)="setTab('previous')">Previous</li>
+        <li [class.active]="activeTab === 'upcoming'" (click)="setTab('upcoming')">Upcoming</li>
+        <li [class.active]="activeTab === 'completed'" (click)="setTab('completed')">Completed</li>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="col-md-9 col-lg-10 appointments-container">
+      <div class="row">
+
+        <!-- Today's Appointments -->
+        <div *ngIf="activeTab === 'today'" class="col-md-12">
+          <h4 class="section-title">Today's Appointments</h4>
+          <div *ngIf="appointments.length > 0; else noToday">
+            <div class="appointment-card shadow-sm mb-4" *ngFor="let item of appointments">
+              <div class="card-header">
+                <h5 class="treatment-name">{{ item.treatment_name }}</h5>
+                <span class="appointment-date">{{ item.appointment_date | date:'medium' }}</span>
+              </div>
+              <div class="card-body">
+                <p><strong>Doctor:</strong> {{ item.doctor_name }}</p>
+                <p><strong>Status:</strong> {{ item.status }}</p>
+              </div>
+            </div>
+          </div>
+          <ng-template #noToday>
+            <div class="no-appointments">
+              <h4>No appointments for today.</h4>
+              <p>Please check back later.</p>
+            </div>
+          </ng-template>
         </div>
 
-        <div class="card-body">
-          <!-- Treatment Details -->
-          <div class="info-section">
-            <h6>Treatment Details</h6>
-            <p><strong>Issue Date:</strong> {{ item.issue_date | date:'mediumDate' }}</p>
-            <p><strong>Total Charges:</strong> ₹{{ item.total_charges }}</p>
-            <p>
-              <strong>Payment Status:</strong>
-              <span class="badge" 
-                    [ngClass]="item.payment_status === 'Paid' ? 'badge-paid' : 'badge-unpaid'">
-                {{ item.payment_status }}
-              </span>
-            </p>
+        <!-- Previous Appointments -->
+        <div *ngIf="activeTab === 'previous'" class="col-md-12">
+          <h4 class="section-title">Previous Appointments</h4>
+          <input type="date" class="date-picker" [(ngModel)]="previousDate" />
+          <div *ngIf="previousAppointments.length > 0; else noPrev">
+            <div class="appointment-card shadow-sm mb-3" *ngFor="let item of previousAppointments">
+              <div class="card-header bg-secondary text-white">
+                <h5>{{ item.treatment_name }}</h5>
+              </div>
+              <div class="card-body">
+                <p><strong>Date:</strong> {{ item.appointment_date | date:'mediumDate' }}</p>
+                <p><strong>Doctor:</strong> {{ item.doctor_name }}</p>
+              </div>
+            </div>
           </div>
-
-          <!-- Patient Info -->
-          <div class="info-section">
-            <h6>Patient Info</h6>
-             <p><strong>Patient Name:</strong> {{ item.fullname }}</p>
-              <p><strong>Patient Email:</strong> {{ item.email }}</p>
-            <p><strong>History:</strong> {{ item.history || 'N/A' }}</p>
-            <p><strong>Findings:</strong> {{ item.finding || 'N/A' }}</p>
-          </div>
-
-          <!-- Appointment Info -->
-          <div class="info-section">
-            <h6>Appointment Info</h6>
-            <p><strong>Status:</strong> {{ item.status }}</p>
-            <p><strong>Doctor Name:</strong> {{ item.doctor_name }}</p>
-          </div>
+          <ng-template #noPrev>
+            <div class="no-appointments">
+              <h4>No previous appointments found.</h4>
+              <p>Try selecting another date.</p>
+            </div>
+          </ng-template>
         </div>
 
-        <div class="card-footer d-flex justify-content-end gap-2">
-          <button class="btn btn-primary btn-sm" (click)="startTreatment()">Start Treatment</button>
-          <button class="btn btn-outline-primary btn-sm">More Details</button>
+        <!-- Upcoming Appointments -->
+        <div *ngIf="activeTab === 'upcoming'" class="col-md-12">
+          <h4 class="section-title">Upcoming Appointments</h4>
+          <input type="date" class="date-picker" [(ngModel)]="upcomingDate" />
+          <div *ngIf="upcomingAppointments.length > 0; else noUpcoming">
+            <div class="appointment-card shadow-sm mb-3" *ngFor="let item of upcomingAppointments">
+              <div class="card-header bg-success text-white">
+                <h5>{{ item.treatment_name }}</h5>
+              </div>
+              <div class="card-body">
+                <p><strong>Date:</strong> {{ item.appointment_date | date:'mediumDate' }}</p>
+                <p><strong>Doctor:</strong> {{ item.doctor_name }}</p>
+              </div>
+            </div>
+          </div>
+          <ng-template #noUpcoming>
+            <div class="no-appointments">
+              <h4>No upcoming appointments scheduled.</h4>
+              <p>Please check back later.</p>
+            </div>
+          </ng-template>
+        </div>
+
+        <!-- Completed Appointments -->
+        <div *ngIf="activeTab === 'completed'" class="col-md-12">
+          <h4 class="section-title">Completed Appointments</h4>
+          <div *ngIf="completedAppointments.length > 0; else noCompleted">
+            <div class="appointment-card shadow-sm mb-3" *ngFor="let item of completedAppointments">
+              <div class="card-header bg-dark text-white">
+                <h5>{{ item.treatment_name }}</h5>
+              </div>
+              <div class="card-body">
+                <p><strong>Date:</strong> {{ item.appointment_date | date:'mediumDate' }}</p>
+                <p><strong>Doctor:</strong> {{ item.doctor_name }}</p>
+                <p><strong>Status:</strong> Completed</p>
+              </div>
+            </div>
+          </div>
+          <ng-template #noCompleted>
+            <div class="no-appointments">
+              <h4>No completed appointments yet.</h4>
+              <p>Once you finish treatments, they will appear here.</p>
+            </div>
+          </ng-template>
         </div>
 
       </div>

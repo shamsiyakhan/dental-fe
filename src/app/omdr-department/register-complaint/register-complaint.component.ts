@@ -32,7 +32,7 @@ export class RegisterComplaintComponent implements OnInit {
     total_charge:['50'],
     payment_mode:[''],
     payment_status:['paid'],
-    tests:[['']],
+    tests:this.fb.control<any []>([]),
     referred_dept:['']
   })
 
@@ -113,6 +113,8 @@ onTestSelectionChange(event: any, testId: string) {
 
   // Calculate total (base 50 + test prices)
   let calculatedTotal = 50;
+  console.warn("selected options")
+  console.warn(selectedOptions);
   for (let id of selectedOptions) {
     const test = this.testsList.find((t) => t.treatment_id === id);
     if (test) {

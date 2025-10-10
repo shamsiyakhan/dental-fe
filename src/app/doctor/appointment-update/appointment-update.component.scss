@@ -69,3 +69,41 @@
     }
   }
 }
+
+
+.treatment-layout {
+  margin-top: 20px;
+}
+
+.sidebar {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid #e0e6f1;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  padding: 10px 15px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  color: #333;
+  transition: background 0.2s, color 0.2s;
+}
+
+.sidebar ul li:hover {
+  background: #e9f2ff;
+  color: #007bff;
+}
+
+.sidebar ul li.active {
+  background: #007bff;
+  color: white;
+}
