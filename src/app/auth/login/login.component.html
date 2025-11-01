@@ -1,18 +1,17 @@
 <div class="wrap row">
     <div class="col-7 login">
-    <form class="logincontent" action="">
-            <span class="logo">Login to <span style="color: #007DC6;">DentalCare+</span></span>
+    <form [formGroup]="loginForm" class="logincontent" (ngSubmit)="onSubmit()">
+            <span class="logo">Login<span style="color: #007DC6;">DentalCare+</span></span>
             <div class="input">
-                <label for="username">User Email</label>
-            <input class="input-text" id="username" type="text" placeholder="User Name">
+                <label for="username">Login</label>
+            <input class="input-text" id="username" type="text" placeholder=" Email" formControlName="email">
             </div>
             <div class="input">
                 <label for="password">Password</label>
-            <input class="input-text" id="password" type="password" placeholder="Password">
+            <input class="input-text" id="password" type="password" placeholder="Password" formControlName="password">
             </div>
             <div class="button1" style="margin-left: 16px;">
                 <button class="button" type="submit">Login</button>
-                <span style="margin-left: 24px;color: #007DC6;">I don’t have an account. <b style="cursor: pointer;" (click)="back()">Sign up</b></span>
             </div>
     </form>
     </div>

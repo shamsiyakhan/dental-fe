@@ -30,6 +30,7 @@ import { EditTreatmentComponent } from './edit-treatment/edit-treatment.componen
 import { AddDepartmentComponent } from './add-department/add-department.component';
 import { UpdateDepartmentComponent } from './update-department/update-department.component';
 import { A11yModule } from "@angular/cdk/a11y";
+import { DetailedReportsComponent } from './detailed-reports/detailed-reports.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { A11yModule } from "@angular/cdk/a11y";
     TreatmentDialogComponent,
     EditTreatmentComponent,
     AddDepartmentComponent,
-    UpdateDepartmentComponent
+    UpdateDepartmentComponent,
+    DetailedReportsComponent
   ],
   imports: [
     CommonModule,

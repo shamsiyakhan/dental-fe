@@ -1,0 +1,65 @@
+.treatment-wrapper {
+  background-color: #ffffff;  // White page background
+  min-height: 100vh;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+
+  .title {
+    color: #007DC6;  // Use theme blue for headings
+    font-size: 22px;
+    margin-bottom: 15px;
+    font-weight: 600;
+  }
+
+  .treatment-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .treatment-card {
+    background: #f9f9f9;
+    border-left: 5px solid #007DC6;
+    border-radius: 8px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    transition: 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.01);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+    }
+
+    .treatment-info {
+      .issue {
+        font-weight: 600;
+        font-size: 16px;
+        margin-bottom: 4px;
+        color: #333;
+      }
+
+      .date {
+        font-size: 14px;
+        color: #777;
+        margin-bottom: 6px;
+      }
+
+      .details {
+        display: flex;
+        flex-direction: column;
+        font-size: 13px;
+        color: #555;
+      }
+    }
+
+    .arrow {
+      font-size: 20px;
+      color: #007DC6;
+      font-weight: bold;
+    }
+  }
+}

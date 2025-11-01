@@ -30,10 +30,12 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['auth/signup'])
   }
   onSubmit(){
-    this.http.post(this.api.url+'/login',this.loginForm.value).subscribe((data:any)=>{
+    this.http.post('http://localhost:3000/login',this.loginForm.value).subscribe((data:any)=>{
       console.log(data)
-      if(data.user.role=='clerk'){
-        this.router.navigate(['/clerk/dashboard'])
+      if(data.user.role=='Patient'){
+        localStorage.setItem('patient',JSON.stringify(data.user))
+        localStorage.setItem('token' ,data.token)
+        this.router.navigate(['/patient/dashboard'])
       }
     },(error)=>{
       Swal.fire({

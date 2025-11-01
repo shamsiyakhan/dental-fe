@@ -17,6 +17,10 @@ import { FormsModule } from '@angular/forms';
 import { AppointmentListComponent } from './appointment-list/appointment-list.component';
 import { AppointmentUpdateComponent } from './appointment-update/appointment-update.component';
 import { TreatmentComponent } from './treatment/treatment.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -31,7 +35,9 @@ import { TreatmentComponent } from './treatment/treatment.component';
     InfoConsultationComponent,
     AppointmentListComponent,
     AppointmentUpdateComponent,
-    TreatmentComponent
+    TreatmentComponent,
+  
+
   ],
   imports: [
     CommonModule,
@@ -39,7 +45,11 @@ import { TreatmentComponent } from './treatment/treatment.component';
     MatTableModule,
     MatTabsModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatNativeDateModule
   ]
 })
 export class DoctorModule { }

@@ -41,15 +41,17 @@
         <!-- Previous Appointments -->
         <div *ngIf="activeTab === 'previous'" class="col-md-12">
           <h4 class="section-title">Previous Appointments</h4>
-          <input type="date" class="date-picker" [(ngModel)]="previousDate" />
-          <div *ngIf="previousAppointments.length > 0; else noPrev">
-            <div class="appointment-card shadow-sm mb-3" *ngFor="let item of previousAppointments">
-              <div class="card-header bg-secondary text-white">
-                <h5>{{ item.treatment_name }}</h5>
+          <input type="date" class="date-picker" [(ngModel)]="previousDate" (ngModelChange)="onDateChange($event)" [max]="TodayDate" />
+
+          <div *ngIf="previousAppointment.length > 0; else noPrev">
+            <div class="appointment-card shadow-sm mb-4" *ngFor="let item of previousAppointment">
+              <div class="card-header">
+                <h5 class="treatment-name">{{ item.treatment_name }}</h5>
+                <span class="appointment-date">{{ item.appointment_date | date:'medium' }}</span>
               </div>
               <div class="card-body">
-                <p><strong>Date:</strong> {{ item.appointment_date | date:'mediumDate' }}</p>
                 <p><strong>Doctor:</strong> {{ item.doctor_name }}</p>
+                <p><strong>Status:</strong> {{ item.status }}</p>
               </div>
             </div>
           </div>
@@ -64,15 +66,16 @@
         <!-- Upcoming Appointments -->
         <div *ngIf="activeTab === 'upcoming'" class="col-md-12">
           <h4 class="section-title">Upcoming Appointments</h4>
-          <input type="date" class="date-picker" [(ngModel)]="upcomingDate" />
+           <input type="date" class="date-picker" [(ngModel)]="previousDate" (ngModelChange)="onUpcoming($event)" [min]="TodayDate" />
           <div *ngIf="upcomingAppointments.length > 0; else noUpcoming">
-            <div class="appointment-card shadow-sm mb-3" *ngFor="let item of upcomingAppointments">
-              <div class="card-header bg-success text-white">
-                <h5>{{ item.treatment_name }}</h5>
+                 <div class="appointment-card shadow-sm mb-4" *ngFor="let item of upcomingAppointments">
+              <div class="card-header">
+                <h5 class="treatment-name">{{ item.treatment_name }}</h5>
+                <span class="appointment-date">{{ item.appointment_date | date:'medium' }}</span>
               </div>
               <div class="card-body">
-                <p><strong>Date:</strong> {{ item.appointment_date | date:'mediumDate' }}</p>
                 <p><strong>Doctor:</strong> {{ item.doctor_name }}</p>
+                <p><strong>Status:</strong> {{ item.status }}</p>
               </div>
             </div>
           </div>

@@ -12,6 +12,9 @@ export class AllappointmentComponent implements OnInit {
 
   unassignedPatients: any[] = []; // full list from API
   filteredPatients: any[] = [];   // filtered list for display
+
+    unPaidAssignedPatients: any[] = []; 
+  filteredUnPaidPatients: any[] = [];   
   searchText: string = '';
   deptId: any
   constructor(
@@ -21,12 +24,15 @@ export class AllappointmentComponent implements OnInit {
 
     this.deptId = localStorage.getItem('department_id')
     this.getUnassignedPatients()
+    this.getUnPaidAssignedPatients()
   }
   activeTab: string = 'allocation';
   upcomingAppointments: any[] = []
   inProgressAppointments: any[] = []
+  filteredInProgressAppointments: any[] = []
   unpaidAppointments: any[] = []
   completedAppointments: any[] = []
+  filteredCompletedAppointments: any[] = []
   appointments = [
     {
       image: 'assets/doc3.jpg',
@@ -113,19 +119,19 @@ export class AllappointmentComponent implements OnInit {
     })
   }
 
-  getInProrogressAppointments() {
+/*   getInProrogressAppointments() {
     const deptString = localStorage.getItem('department_id');
     this.http.get('http://localhost:3000/getInProgressAppointments/' + deptString).subscribe((data: any) => {
       this.inProgressAppointments = data.result
     })
-  }
+  } */
 
-  getcompletedAppointments() {
+/*   getcompletedAppointments() {
     const deptString = localStorage.getItem('department_id');
     this.http.get('http://localhost:3000/getcompletedAppointments/' + deptString).subscribe((data: any) => {
       this.completedAppointments = data.result
     })
-  }
+  } */
 
   complete(appt: any) {
     this.http.post('http://localhost:3000/completeAppointment', { appointment_id: appt.appointment_id, treatment_id: appt.treatment_id }).subscribe((data: any) => {
@@ -137,7 +143,7 @@ export class AllappointmentComponent implements OnInit {
       });
 
       this.getUnpaidAppointments()
-      this.getInProrogressAppointments()
+      this.getInProgress()
     })
   }
 
@@ -148,6 +154,31 @@ export class AllappointmentComponent implements OnInit {
     });
   }
 
+    getUnPaidAssignedPatients() {
+    this.http.get('http://localhost:3000/api/getUnPaidAssignedPatients/' + this.deptId).subscribe((res: any) => {
+      this.unPaidAssignedPatients = res;
+      this.filteredUnPaidPatients = res;
+    });
+  }
+
+
+    getInProgress() {
+    this.http.get('http://localhost:3000/api/getInProgressAppointments/' + this.deptId).subscribe((res: any) => {
+      this.inProgressAppointments = res;
+      this.filteredInProgressAppointments = res;
+    });
+  }
+
+  filterUnpaidPatients() {
+    if (!this.searchText) {
+      this.filteredUnPaidPatients = this.unPaidAssignedPatients;
+      return;
+    }
+    const search = this.searchText.toLowerCase();
+    this.filteredUnPaidPatients = this.unPaidAssignedPatients.filter(p =>
+      p.patient_name.toLowerCase().includes(search)
+    );
+  }
   filterPatients() {
     if (!this.searchText) {
       this.filteredPatients = this.unassignedPatients;
@@ -156,6 +187,19 @@ export class AllappointmentComponent implements OnInit {
 
     const search = this.searchText.toLowerCase();
     this.filteredPatients = this.unassignedPatients.filter(p =>
+      p.patient_name.toLowerCase().includes(search)
+    );
+  }
+
+
+    filterInProgressPatients() {
+    if (!this.searchText) {
+      this.filteredInProgressAppointments = this.inProgressAppointments;
+      return;
+    }
+
+    const search = this.searchText.toLowerCase();
+    this.filteredInProgressAppointments = this.inProgressAppointments.filter(p =>
       p.patient_name.toLowerCase().includes(search)
     );
   }
@@ -170,9 +214,59 @@ export class AllappointmentComponent implements OnInit {
       });
 
       this.getUnpaidAppointments()
-      this.getInProrogressAppointments()
+      this.getInProgress()
     })
   }
+
+  onFilterChange(selectedValue:any) {
+    console.log("Selected filter:", selectedValue.value);
+    if(selectedValue.value === 'today') {
+      this.getTodaysCompletedAppointments();
+    }else if(selectedValue.value === 'yesterday') {
+      this.getYesterdaysCompletedAppointments();
+    }
+    else if(selectedValue.value === 'thisweek') {
+      this.getLast7DaysCompletedAppointments();
+    }else if(selectedValue.value === 'all') {
+      this.getAllCompletedAppointments();
+    }
+  }
+
+  getTodaysCompletedAppointments() {
+     const deptString = localStorage.getItem('department_id');
+     console.warn("todays appointments")
+     this.http.get('http://localhost:3000/api/appointmentsCompletedToday/' + deptString).subscribe((data: any) => {
+      console.warn(data)
+       this.completedAppointments = data
+       this.filteredCompletedAppointments = data
+     })
+   }
+
+   getYesterdaysCompletedAppointments() {
+     const deptString = localStorage.getItem('department_id');
+     this.http.get('http://localhost:3000/appointmentsCompletedYesterday/' + deptString).subscribe((data: any) => {
+       this.completedAppointments = data.result
+       this.filteredCompletedAppointments = data.result
+     })
+   }
+
+   getLast7DaysCompletedAppointments() {
+      const deptString = localStorage.getItem('department_id');
+      this.http.get('http://localhost:3000/appointmentsCompletedLastWeek/' + deptString).subscribe((data: any) => {
+        this.completedAppointments = data
+        this.filteredCompletedAppointments = data
+      })
+   }
+
+   getAllCompletedAppointments() {
+      const deptString = localStorage.getItem('department_id');
+      this.http.get('http://localhost:3000/api/appointmentsCompleted/' + deptString).subscribe((data: any) => {
+        this.completedAppointments = data
+        this.filteredCompletedAppointments = data
+        console.warn(this.filteredCompletedAppointments)
+      })
+   }
+  
 
 
 
@@ -186,8 +280,9 @@ export class AllappointmentComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUnpaidAppointments()
-    this.getInProrogressAppointments()
-    this.getcompletedAppointments()
+    this.getInProgress()
+    this.getTodaysCompletedAppointments()
+   /*  this.getAllCompletedAppointments(); */
   }
 
 }

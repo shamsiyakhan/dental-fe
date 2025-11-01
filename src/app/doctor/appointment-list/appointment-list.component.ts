@@ -11,14 +11,17 @@ import { Router } from '@angular/router';
 export class AppointmentListComponent implements OnInit {
   
   activeTab: string = 'today';
+  
 
   previousAppointments:any = [];
 upcomingAppointments:any = [];
 completedAppointments:any = [];
+TodayDate: string;
 
 // Date filters
 previousDate: string = '';
 upcomingDate: string = '';
+previousAppointment:any[]=[]
    appointments:any = [
     {
       appointment_id: "EWlcIpLPd7",
@@ -44,6 +47,9 @@ upcomingDate: string = '';
     private router: Router
   ) { 
     this.getTreatments();
+        const today = new Date();
+    this.TodayDate = today.toISOString().split('T')[0];
+    
   }
 
 
@@ -54,6 +60,37 @@ upcomingDate: string = '';
       this.appointments=res.result
     })
   }
+
+  getPrevious(){
+
+  }
+
+  onDateChange(event:Event ) {
+    console.warn(event)
+        let docId=JSON.parse(localStorage.getItem('doctor') || '{}').doctor_id
+    this.http.get('http://localhost:3000/api/getAppointmentsOfDoctorSpecificDates/'+docId+'/'+event  ).subscribe((res:any)=>{
+      console.warn(res);
+      this.previousAppointment=res.result
+    })
+  }
+
+  onUpcoming(event:Event){
+     console.warn(event)
+        let docId=JSON.parse(localStorage.getItem('doctor') || '{}').doctor_id
+    this.http.get('http://localhost:3000/api/getAppointmentsOfDoctorSpecificDates/'+docId+'/'+event  ).subscribe((res:any)=>{
+      console.warn(res);
+      this.upcomingAppointments=res.result
+    })
+  }
+
+    completedAppointment(){
+        let docId=JSON.parse(localStorage.getItem('doctor') || '{}').doctor_id
+    this.http.get('http://localhost:3000/api/getCompletedAppointments/'+docId ).subscribe((res:any)=>{
+      console.warn(res);
+      this.completedAppointments=res.result
+    })
+  }
+
   setTab(tab: string) {
   this.activeTab = tab;
 
@@ -70,6 +107,7 @@ upcomingDate: string = '';
 }
 
   ngOnInit(): void {
+    this.completedAppointment()
   }
 
   startTreatment(item:any) {

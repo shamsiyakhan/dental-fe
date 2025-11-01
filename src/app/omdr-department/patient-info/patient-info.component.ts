@@ -38,6 +38,8 @@ export class PatientInfoComponent implements OnInit {
         console.warn(data)
         if(data.result!="No data found"){
           this.chiefComplaint=data.result
+          console.warn("chief complaint")
+          console.warn(this.chiefComplaint)
         }
       })
     })
@@ -74,6 +76,8 @@ export class PatientInfoComponent implements OnInit {
   }
 
   startTreatment(complaint:any){
+    console.warn("start treatment called")
+    console.warn(complaint)
     const dialogRef=this.dialog.open(AssignDepartmentComponent , {
       data:complaint,
       width:'2000px',

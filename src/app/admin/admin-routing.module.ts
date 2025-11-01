@@ -12,6 +12,7 @@ import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { ClerkComponent } from './clerk/clerk.component';
 import { TestComponent } from './test/test.component';
 import { ReportComponent } from './report/report.component';
+import { DetailedReportsComponent } from './detailed-reports/detailed-reports.component';
 
 const routes: Routes = [
   {
@@ -67,6 +68,10 @@ const routes: Routes = [
        {
         path:'report',
         component:ReportComponent
+       },
+       {
+        path:"detailed-reports",
+        component:DetailedReportsComponent
        }
     ]
   }

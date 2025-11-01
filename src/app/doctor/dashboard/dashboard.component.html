@@ -1,187 +1,68 @@
-
-<div class="maincontainer">
-    <div class="bellicon">
-        <i class="far fa-bell new"></i>
+<div class="dashboard-container">
+    <!-- Header -->
+    <div class="dashboard-header">
+        <h1>Doctor Dashboard</h1>
+        <div class="doctor-info">
+            <div class="name">{{ doctor.fullname }}</div>
+            <div class="email">{{ doctor.email }}</div>
+        </div>
     </div>
 
-    <div class="row profile">
-        <div class="col-8 profile1">
-            <span class="text1">Upcoming Appointments</span>
-            <hr class="divider">
-            <div class="infoProfile" *ngFor="let appointment of inProgressAppointments">
+    <!-- Stats Cards -->
+    <div class="stats-cards">
+        <div class="card">
+            <div class="stat-title">Today's Appointments</div>
+            <div class="stat-value">{{ todaysAppointments?.length || 0 }}</div>
+        </div>
+        <div class="card">
+            <div class="stat-title">Completed Appointments</div>
+            <div class="stat-value">{{ completedAppointments?.length || 0 }}</div>
+        </div>
+        <div class="card">
+            <div class="stat-title">Total Patients</div>
+            <div class="stat-value">{{ totalPatients || 0 }}</div>
+        </div>
+    </div>
+
+    <!-- Today's Appointments Section -->
+    <div class="appointments-section">
+        <div class="section-header">Today's Appointments</div>
+        <div *ngIf="todaysAppointments.length > 0; else noTodayAppointments">
+            <div class="appointment-card" *ngFor="let a of todaysAppointments">
                 <div class="left">
-                    <img src="assets/img3.png" alt="" class="images">
-                    <div class="details">
-                        <span class="name">{{appointment.patient_name}}</span>
-                        <span class="extra">{{appointment.treatment_name}}</span>
-                    </div>
+                    <div class="patient">{{ a.fullname || a.patientid }}</div>
+                    <div class="treatment">{{ a.treatment_name }}</div>
                 </div>
                 <div class="right">
-                    <span class="date">{{appointment.appointment_date | date:"dd-MM-yyyy"}}</span>
-                    <span class="time">{{appointment.appointment_date | date:"hh-mm"}}</span>
+                    <div class="date">{{ appointmentDate(a.appointment_date || a.issue_date || "") }}</div>
+                    <div class="status" [ngClass]="a.status?.toLowerCase()">{{ a.status }}</div>
                 </div>
             </div>
-     
         </div>
-        <div class="col-4 doctor-profile">
-            <div class="logo">
-                <img class="logo" src="assets/logo.png" alt="">
-            </div>
-            
-            <h2 class="name1">{{doctor.fullname}}</h2>
-            <p class="info">{{doctor.specialization}}</p>
-        </div>
+        <ng-template #noTodayAppointments>
+            <div class="no-data">No appointments today</div>
+        </ng-template>
     </div>
 
-<!-- bottom part -->
-    <div class="row profile">
-        <div class="col-8 profile1">
-            <div class="icon">
-                <i class="fas fa-calendar-alt calendar-icon" style="font-size: 2rem;color: #007DC6;"></i>
-                <span style="margin-right: 75%;font-size: 1.8rem;margin-left: 20px;font-family: sans-serif;font-weight: 700;white-space: nowrap;color: #007DC6;">Today’s Appointments</span>
-                <i class="fas fa-plus-circle add-icon" style="color: #ccc;font-size: 2rem;margin-left: -30px;"></i>
-            </div>
-            <hr class="divider">
-            <span style="font-size: 1.8rem;font-weight: 600;padding: 20px;">8th Mar, 2025</span>
-            <div class="appointment">
+    <!-- Completed Appointments Section -->
+    <div class="appointments-section">
+        <div class="section-header">Completed Appointments</div>
+        <div *ngIf="completedAppointments.length > 0; else noCompletedAppointments">
+            <div class="appointment-card" *ngFor="let c of completedAppointments">
                 <div class="left">
-                    <img src="assets/img1.png" alt="" class="images">
-                    <div class="details">
-                        <span class="name">Sonia Singh</span>
-                        <span class="extra">Orthodontic Consultation</span>
-                    </div>
+                    <div class="patient">{{ c.fullname || c.patientid }}</div>
+                    <div class="treatment">{{ c.treatment_name }}</div>
                 </div>
-                <div class="right2">
-                    <p class="time">10:00 am</p>
-                    <button class="reminder-btn"><i class="fas fa-stopwatch"></i> Reminder</button>
-                  </div>
-            </div>
-            <div class="appointment">
-                <div class="left">
-                    <img src="assets/img1.png" alt="" class="images">
-                    <div class="details">
-                        <span class="name">Sonia Singh</span>
-                        <span class="extra">Orthodontic Consultation</span>
-                    </div>
+
+                <div class="right">
+                    <div class="date">{{ appointmentDate(c.appointment_date || c.issue_date || '') }}</div>
+
+                    <div class="status completed">{{ c.status }}</div>
                 </div>
-                <div class="right2">
-                    <p class="time">10:00 am</p>
-                    <button class="reminder-btn"><i class="fas fa-stopwatch"></i> Reminder</button>
-                  </div>
-            </div>
-            <div class="appointment">
-                <div class="left">
-                    <img src="assets/img1.png" alt="" class="images">
-                    <div class="details">
-                        <span class="name">Sonia Singh</span>
-                        <span class="extra">Orthodontic Consultation</span>
-                    </div>
-                </div>
-                <div class="right2">
-                    <p class="time">10:00 am</p>
-                    <button class="reminder-btn"><i class="fas fa-stopwatch"></i> Reminder</button>
-                  </div>
-            </div>
-            <div class="appointment">
-                <div class="left">
-                    <img src="assets/img1.png" alt="" class="images">
-                    <div class="details">
-                        <span class="name">Sonia Singh</span>
-                        <span class="extra">Root Canal Treatment (RCT)</span>
-                    </div>
-                </div>
-                <div class="right2">
-                    <p class="time">10:00 am</p>
-                    <button class="reminder-btn"><i class="fas fa-stopwatch"></i> Reminder</button>
-                  </div>
-            </div>
-            <div class="appointment">
-                <div class="left">
-                    <img src="assets/img1.png" alt="" class="images">
-                    <div class="details">
-                        <span class="name">Sonia Singh</span>
-                        <span class="extra">Orthodontic Consultation</span>
-                    </div>
-                </div>
-                <div class="right2">
-                    <p class="time">10:00 am</p>
-                    <button class="reminder-btn"><i class="fas fa-stopwatch"></i> Reminder</button>
-                  </div>
             </div>
         </div>
-
-
-
-        
-        <div class="col-4 doctor-profile">
-            <h1>Upcoming  Meetings</h1>
-            <hr class="divider">
-<!-- chatgtp code -->
-            <div class="calendar-container">
-                <div class="month">
-                  <strong>Mar 2025</strong>
-                  <span>&lt;</span> <span>&gt;</span>
-                </div>
-              
-                <div class="days">
-                  <span>01</span><span class="active">02</span><span>03</span><span>04</span><span>05</span><span>06</span><span>07</span>
-                  <span>08</span><span>09</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span>
-                </div>
-              
-                <div class="events">
-                  <div class="event">
-                    📹 Case Review at 9:40 am
-                  </div>
-                  <div class="event">
-                    👤 Patient Follow-up at 4:40 pm
-                  </div>
-                  <div class="event">
-                    👥 Staff Briefing at 6:00 pm
-                  </div>
-                </div>
-              </div>
-              
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        </div>
-
+        <ng-template #noCompletedAppointments>
+            <div class="no-data">No completed appointments</div>
+        </ng-template>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>

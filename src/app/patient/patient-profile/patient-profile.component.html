@@ -1,0 +1,74 @@
+<div class="profile-wrapper" *ngIf="!isLoading; else loader">
+
+  <h2 class="title">Patient Profile</h2>
+
+  <form class="profile-form">
+    
+    <div class="row">
+      <div class="col">
+        <label>Full Name</label>
+        <input type="text" [(ngModel)]="patient.fullname" name="fullname" />
+      </div>
+      <div class="col">
+        <label>Gender</label>
+        <select [(ngModel)]="patient.gender" name="gender">
+          <option value="">Select Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <label>Marital Status</label>
+        <select [(ngModel)]="patient.marital_status" name="marital_status">
+          <option value="">Select Status</option>
+          <option value="Single">Single</option>
+          <option value="Married">Married</option>
+        </select>
+      </div>
+      <div class="col">
+        <label>Date of Birth</label>
+        <input type="date" [(ngModel)]="patient.dob" name="dob" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <label>Phone</label>
+        <input type="text" [(ngModel)]="patient.phone" name="phone" />
+      </div>
+      <div class="col">
+        <label>Role</label>
+        <input type="text" [(ngModel)]="patient.role" name="role" disabled />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <label>Emergency Contact</label>
+        <input type="text" [(ngModel)]="patient.emergency_contact" name="emgContact" />
+      </div>
+      <div class="col">
+        <label>Emergency Name</label>
+        <input type="text" [(ngModel)]="patient.emergency_name" name="emgName" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-full">
+        <label>Address</label>
+        <textarea [(ngModel)]="patient.address" name="address"></textarea>
+      </div>
+    </div>
+
+    <div class="btn-wrapper">
+      <button type="button" (click)="updatePatient()">Update</button>
+    </div>
+  </form>
+</div>
+
+<ng-template #loader>
+  <div class="loading">Loading profile...</div>
+</ng-template>

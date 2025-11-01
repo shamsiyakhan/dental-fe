@@ -1,0 +1,128 @@
+<div class="treatment-details-root">
+
+  <!-- LEFT: Timeline -->
+  <div class="left-panel">
+    <div class="left-card">
+      <div class="card-header">
+        <h3>Treatment Timeline</h3>
+      </div>
+
+      <div class="timeline-scroll" *ngIf="treatmentHistory && treatmentHistory.length > 0; else noHistory">
+
+        <!-- START marker -->
+        <div class="timeline-row start-row">
+          <div class="left-col">
+            <div class="dot start-dot" title="Start"></div>
+            <div class="v-line"></div>
+          </div>
+          <div class="right-col">
+            <div class="row-title">Start</div>
+          </div>
+        </div>
+
+        <!-- Each treatment -->
+        <div
+          class="timeline-row item-row"
+          *ngFor="let t of treatmentHistory; let i = index"
+          [class.active]="t.treatment_id === selectedTreatmentId"
+          (click)="getSpecificTreatment(t.treatment_id)"
+          [attr.title]="'View details of this treatment (' + (t.treatment_name || (t.issue_date | date:'dd MMM yyyy')) + ')'"
+        >
+          <div class="left-col">
+            <div
+              class="dot"
+              [ngClass]="{
+                'completed': (t.status || '').toLowerCase() === 'completed',
+                'inprogress': (t.status || '').toLowerCase() === 'in progress' || (t.status || '').toLowerCase() === 'in-progress',
+                'assigned': (t.status || '').toLowerCase() === 'assigned'
+              }"
+            ></div>
+
+            <!-- draw line except for the last element visually (we keep line to end for better look) -->
+            <div class="v-line"></div>
+          </div>
+
+          <div class="right-col">
+            <div class="date-status">
+              <div class="date">{{ t.issue_date | date:'dd MMM yyyy' }}</div>
+              <div class="status">({{ t.status }})</div>
+            </div>
+            <div class="short-title">{{ t.treatment_name }}</div>
+          </div>
+        </div>
+      </div>
+
+      <ng-template #noHistory>
+        <div class="no-history">No treatments found for this complaint.</div>
+      </ng-template>
+    </div>
+  </div>
+
+  <!-- RIGHT: Details -->
+  <div class="right-panel">
+    <div class="details-card" *ngIf="selectedTreatmentDetails; else noSelection">
+      <div class="details-header">
+        <h2>{{ selectedTreatmentDetails.treatment_name }}</h2>
+        <div class="meta">
+          <span class="status-pill" [ngClass]="{
+            'completed': (selectedTreatmentDetails.status || '').toLowerCase() === 'completed',
+            'inprogress': (selectedTreatmentDetails.status || '').toLowerCase() === 'in progress' || (selectedTreatmentDetails.status || '').toLowerCase() === 'in-progress',
+            'assigned': (selectedTreatmentDetails.status || '').toLowerCase() === 'assigned'
+          }">{{ selectedTreatmentDetails.status }}</span>
+        </div>
+      </div>
+
+      <div class="details-body">
+        <div class="row"><strong>Date:</strong> {{ selectedTreatmentDetails.issue_date | date:'dd MMM yyyy' }}</div>
+        <div class="row"><strong>Total Charges:</strong> ₹{{ selectedTreatmentDetails.total_charges || '0' }}</div>
+        <div class="row"><strong>Payment Status:</strong> {{ selectedTreatmentDetails.payment_status || 'N/A' }}</div>
+        <div class="row"><strong>Finding:</strong> {{ selectedTreatmentDetails.finding || 'N/A' }}</div>
+        <div class="row"><strong>History:</strong> {{ selectedTreatmentDetails.history || 'N/A' }}</div>
+
+        <div class="prescription-section">
+          <h4>Prescriptions</h4>
+
+          <div *ngIf="hasPrescriptions(); else noPres">
+            <div class="prescription-card" *ngFor="let p of selectedTreatmentDetails.prescriptions">
+              <div class="pres-head">
+                <div><strong>Prescription ID:</strong> {{ p.prescription_id || '-' }}</div>
+                <div><strong>Date:</strong> {{ p.prescription_date || '-' }}</div>
+              </div>
+
+              <div class="pres-notes">
+                <strong>Doctor Notes:</strong>
+                <div class="notes-text">{{ p.doctor_notes || 'N/A' }}</div>
+              </div>
+
+              <div class="meds">
+                <strong>Medications:</strong>
+                <ul>
+                  <li *ngFor="let m of p.medications">
+                    <span class="med-name">{{ m.medication_name }}</span>
+                    <span class="med-meta"> — {{ m.dosage }} • {{ m.frequency }} • {{ m.duration }} • Qty: {{ m.quantity }}</span>
+                    <div class="ins" *ngIf="m.instructions"><small>{{ m.instructions }}</small></div>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="pres-actions">
+                <button class="download-btn" (click)="downloadPrescription(p)">Download PDF</button>
+              </div>
+            </div>
+          </div>
+
+          <ng-template #noPres>
+            <div class="no-prescription">No prescriptions for this treatment.</div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #noSelection>
+      <div class="empty-right">
+        <p *ngIf="loadingHistory">Loading...</p>
+        <p *ngIf="!loadingHistory">Select a treatment on the left to see details.</p>
+      </div>
+    </ng-template>
+  </div>
+</div>

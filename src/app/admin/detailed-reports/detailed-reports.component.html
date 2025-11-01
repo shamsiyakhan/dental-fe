@@ -1,0 +1,18 @@
+<div class="main">
+    <div class="leftMenus">
+        <span (click)="selectContent('revenue')">Revenue Report</span>
+        <span (click)="selectContent('department')">Department Wise Report</span>
+    </div>
+
+    <div class="rightContainer">
+
+        <ng-container [ngSwitch]="activeContent">
+
+            <div *ngSwitchCase="'revenue'">
+                
+            </div>
+
+        </ng-container>
+
+    </div>
+</div>

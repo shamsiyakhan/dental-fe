@@ -1,59 +1,154 @@
-<div class="dashboard">
-    <div class="bellicon">
-        <i class="far fa-bell new"></i>
-    </div>
-
-    <div class="proleft">
-        <span class="text1">Upcoming Appointments</span>
-        <hr class="divider">
-        <div class="profile-list">
-            <div class="profile">
-                <img src="assets/img3.png" alt="" class="images">
-                <div class="details">
-                    <span class="name">Sonia Singh</span>
-                    <span class="extra">Cavity Filling</span>
-                </div>
-            </div>
-
-            <div class="profile">
-                <img src="assets/img2.png" alt="" class="images">
-                <div class="details">
-                    <span class="name">Carl Rogers</span>
-                    <span class="extra">Tooth Extraction</span>
-                </div>
-            </div>
-
-            <div class="profile">
-                <img src="assets/img1.png" alt="" class="images">
-                <div class="details">
-                    <span class="name">Hania Khan</span>
-                    <span class="extra">Dental Implants</span>
-                </div>
-            </div>
+<div class="dashboard-root">
+  <!-- Top stat cards -->
+  <div class="top-cards">
+    <div class="card stat-card">
+      <div class="card-left">
+        <div class="icon-wrap">
+          <i class="fa-solid fa-folder-open"></i>
         </div>
+      </div>
+      <div class="card-right">
+        <div class="small-title">Total Cases</div>
+        <div class="big-number">{{ totalCases }}</div>
+        <div class="muted">All time</div>
+      </div>
+    </div>
 
-
-        <div class="profile-list2">
-            <div class="profile1">
-                <span class="date">7th Mar, 2025</span>
-                <span class="time">9:00 am</span>
-            </div>
-            <div class="profile1">
-                <span class="date">7th Mar, 2025</span>
-                <span class="time">9:00 am</span>
-            </div>
-            <div class="profile1">
-                <span class="date">7th Mar, 2025</span>
-                <span class="time">9:00 am</span>
-            </div>
+    <div class="card stat-card">
+      <div class="card-left">
+        <div class="icon-wrap">
+          <i class="fa-solid fa-tooth"></i>
         </div>
-
+      </div>
+      <div class="card-right">
+        <div class="small-title">Total Treatments</div>
+        <div class="big-number">{{ treatments.length }}</div>
+        <div class="muted">Till date</div>
+      </div>
     </div>
 
-    <div class="doctor-profile">
-        <img class="logo" src="assets/logo.png" alt="">
-        <h2 class="name">Dr. Dave Affleck</h2>
-        <p class="info">Orthodontist</p>
+    <div class="card stat-card">
+      <div class="card-left">
+        <div class="icon-wrap">
+          <i class="fa-solid fa-vials"></i>
+        </div>
+      </div>
+      <div class="card-right">
+        <div class="small-title">Total Tests</div>
+        <div class="big-number">{{ testsCount }}</div>
+        <div class="muted">Lab & X-ray</div>
+      </div>
     </div>
 
+    <div class="card stat-card action-card" (click)="openAppointments()">
+      <div class="card-left">
+        <div class="icon-wrap">
+          <i class="fa-solid fa-calendar-plus"></i>
+        </div>
+      </div>
+      <div class="card-right">
+        <div class="small-title">Quick Appointment</div>
+        <div class="big-number">Book</div>
+        <div class="muted">Request new slot</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Middle section: Upcoming appointments + quick insights -->
+  <div class="middle-grid">
+    <!-- Upcoming appointments -->
+    <div class="panel upcoming-panel">
+      <div class="panel-head">
+        <h4>Upcoming Appointments</h4>
+        <button class="view-all" (click)="openAppointments()">View all</button>
+      </div>
+
+      <div class="panel-body">
+        <ng-container *ngIf="upcomingAppointments.length > 0; else noUpcoming">
+
+          <ul class="appointments-list">
+            <li *ngFor="let a of upcomingAppointments">
+              <div class="appt-left">
+                <div class="appt-date">{{ a.date | date:'dd MMM' }}</div>
+                <div class="appt-time">{{ a.time }}</div>
+              </div>
+              <div class="appt-mid">
+                <div class="doc">{{ a.doctor }}</div>
+                <div class="dept">{{ a.dept || 'General' }}</div>
+              </div>
+              <div class="appt-right">
+                <span class="status-pill" [ngClass]="pillClass(a.status || '')">{{ a.status }}</span>
+                <button class="btn-sm" (click)="openAppointments()">Details</button>
+              </div>
+            </li>
+          </ul>
+        </ng-container>
+
+        <ng-template #noUpcoming>
+          <div class="empty-state">
+            <div class="empty-ill">
+              <i class="fa-regular fa-calendar-xmark"></i>
+            </div>
+            <div class="empty-text">
+              <h5>No upcoming appointments</h5>
+              <p>Book your next appointment from the appointments page.</p>
+              <button class="primary" (click)="openAppointments()">Book Now</button>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+
+    <!-- Recent treatments / insights -->
+    <div class="panel treatments-panel">
+      <div class="panel-head">
+        <h4>Recent Treatments</h4>
+        <button class="view-all" (click)="openTreatments()">View all</button>
+      </div>
+
+      <div class="panel-body">
+        <ng-container *ngIf="treatments.length > 0; else noTreatments">
+          <ul class="treatment-list">
+            <li *ngFor="let t of treatments">
+              <div class="t-left">
+                <div class="title">{{ t.name }}</div>
+                <div class="meta">{{ t.date | date:'dd MMM yyyy' }}</div>
+              </div>
+              <div class="t-right">
+                <div class="amount">₹{{ t.charges }}</div>
+                <div class="status small" [ngClass]="pillClass(t.status)">{{ t.status }}</div>
+              </div>
+            </li>
+          </ul>
+        </ng-container>
+
+        <ng-template #noTreatments>
+          <div class="empty-small">
+            No treatments yet. Start your care plan with a clinic visit.
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom row: extra widgets -->
+  <div class="bottom-row">
+    <div class="widget tips-widget">
+      <div class="widget-head"><h4>Health Tips</h4></div>
+      <div class="widget-body">
+        <ul>
+          <li>Brush twice daily using fluoride toothpaste.</li>
+          <li>Avoid sugary snacks between meals.</li>
+          <li>Visit your dentist every 6 months for a check-up.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="widget notifications-widget">
+      <div class="widget-head"><h4>Notifications</h4></div>
+      <div class="widget-body">
+        <div class="note">No new notifications</div>
+      </div>
+    </div>
+  </div>
 </div>

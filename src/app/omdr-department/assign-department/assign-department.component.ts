@@ -38,7 +38,13 @@ export class AssignDepartmentComponent implements OnInit {
 
   ngOnInit() {
     console.warn(this.data);
-    const onlyDate = this.data.reporting_date.split('T')[0];
+    console.warn("date received")
+    console.warn(this.data.reporting_date);
+    const d = new Date(this.data.reporting_date);
+    const onlyDate = d.toLocaleDateString('en-CA'); // gives YYYY-MM-DD in local time (IST)
+    console.warn("after extracting date");
+    console.warn(onlyDate);
+
 
     // Patch initial values
     this.complaintForm.patchValue({
@@ -69,7 +75,7 @@ export class AssignDepartmentComponent implements OnInit {
     if (deptId) {
       this.http.get(`http://localhost:3000/api/getTreatments/${deptId}`).subscribe((res: any) => {
         this.treatments = res || [];
-         this.complaintForm.get('treatment_name')?.enable();
+        this.complaintForm.get('treatment_name')?.enable();
       });
     }
   }

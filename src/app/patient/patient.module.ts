@@ -6,6 +6,10 @@ import { PatientComponent } from './patient/patient.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegitrationComponent } from './regitration/regitration.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { TreatmentComponent } from './treatment/treatment.component';
+import { TreatmentDetailsComponent } from './treatment-details/treatment-details.component';
+import { PatientProfileComponent } from './patient-profile/patient-profile.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,11 +17,15 @@ import { RegistrationComponent } from './registration/registration.component';
     PatientComponent,
     DashboardComponent,
     RegitrationComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    TreatmentComponent,
+    TreatmentDetailsComponent,
+    PatientProfileComponent
   ],
   imports: [
     CommonModule,
-    PatientRoutingModule
+    PatientRoutingModule,
+    FormsModule
   ]
 })
 export class PatientModule { }

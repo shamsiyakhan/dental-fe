@@ -26,40 +26,37 @@
   <ng-container [ngSwitch]="activeTab">
     <div class="wrapper" *ngSwitchCase="'upcoming'">
 
-      <div class="appointments-container">
-        <div class="header">
-          <h3><i class="fa fa-calendar"></i> Upcoming Appointments</h3>
-          <!-- <select>
-                    <option>Today</option>
-                    <option>Tomorrow</option>
-                    <option>This Week</option>
-                  </select> -->
+      <div class="search-bar">
+        <input type="text" placeholder="Search patient..." [(ngModel)]="searchText" (input)="filterPatients()">
+      </div>
+
+      <div class="patient-card" *ngFor="let patient of filteredUnPaidPatients">
+        <div class="card-header">
+          <div class="patient-info">
+            <h3>{{ patient.patient_name }}</h3>
+            <p><strong>Phone:</strong> {{ patient.patient_phone }}</p>
+          </div>
+          <div class="status-info">
+            <span class="status" [ngClass]="patient.payment_status.toLowerCase()">
+              {{ patient.payment_status }}
+            </span>
+          </div>
         </div>
 
-        <div class="appointment-card" *ngFor="let appt of unpaidAppointments">
-          <div class="imgid">
-            <img src="assets/doc1.jpg" alt="User" />
-            <span>ID:{{ appt.patient_id }}</span>
-          </div>
-          <div class="info">
-            <h4>{{ appt.patient_name }}</h4>
-            <p>{{ appt.treatment_name }}</p>
-            <div class="meta">
-              <span><i class="fa fa-calendar-alt"></i> {{ appt.appointment_date | date:'dd-MM-yyyy' }}</span>
-              <span><i class="fa fa-clock"></i> {{ appt.appointment_date | date:"hh-mm" }}</span>
-            </div>
-          </div>
+        <div class="card-body">
+          <p><strong>Treatment:</strong> {{ patient.treatment_name }}</p>
+          <p><strong>Issue Date:</strong> {{ patient.issue_date | date:'mediumDate' }}</p>
+          <p><strong>Finding:</strong> {{ patient.finding || 'N/A' }}</p>
+          <p><strong>History:</strong> {{ patient.history || 'N/A' }}</p>
+        </div>
 
-          <div class="status">
-            <span class="dot red"></span> Waiting
-          </div>
-
-          <div class="actions">
-            <button class="reschedule" (click)="confirm(appt)">Confirm Schedule</button>
-            <!-- <button class="cancel">Cancel</button> -->
-          </div>
+        <div class="card-footer">
+          <button class="assign-btn" (click)="assignDoctor(patient)" disabled style="background-color: grey;">
+            Assign Doctor
+          </button>
         </div>
       </div>
+
 
     </div>
 
@@ -76,30 +73,35 @@
   <ng-container [ngSwitch]="activeTab">
     <div class="wrapper" *ngSwitchCase="'in-progress'">
 
-      <div class="appointments-container">
-        <div class="header">
-          <h3><i class="fa fa-calendar"></i>In-progress Appointments</h3>
+      <div class="search-bar">
+        <input type="text" placeholder="Search patient..." [(ngModel)]="searchText"
+          (input)="filterInProgressPatients()">
+      </div>
 
+      <div class="patient-card" *ngFor="let patient of filteredInProgressAppointments">
+        <div class="card-header">
+          <div class="patient-info">
+            <h3>{{ patient.patient_name }}</h3>
+            <p><strong>Phone:</strong> {{ patient.patient_phone }}</p>
+          </div>
+          <div class="status-info">
+            <span class="status" [ngClass]="patient.payment_status.toLowerCase()">
+              {{ patient.payment_status }}
+            </span>
+          </div>
         </div>
 
-        <div class="appointment-card" *ngFor="let prog of inProgressAppointments">
-          <div class="imgid">
-            <img src="assets/doc1.jpg" alt="User" />
-            <span>ID:{{ prog.patient_id }}</span>
-          </div>
-          <div class="info">
-            <h4>{{ prog.patient_name }}</h4>
-            <p>{{ prog.treatment_name }}</p>
-            <div class="meta">
-              <span><i class="fa fa-calendar-alt"></i> {{ prog.appointment_date | date:'dd-MM-yyyy' }}</span>
-              <span><i class="fa fa-clock"></i> {{ prog.appointment_date | date:"hh-mm" }}</span>
-            </div>
-          </div>
+        <div class="card-body">
+          <p><strong>Treatment:</strong> {{ patient.treatment_name }}</p>
+          <p><strong>Issue Date:</strong> {{ patient.issue_date | date:'mediumDate' }}</p>
+          <p><strong>Finding:</strong> {{ patient.finding || 'N/A' }}</p>
+          <p><strong>History:</strong> {{ patient.history || 'N/A' }}</p>
+        </div>
 
-          <div class="status1">
-            <span class="dot red1"></span> In-progress
-            <button class="custom-button" (click)="complete(prog)">Mark Complete</button>
-          </div>
+        <div class="card-footer">
+          <button class="assign-btn" disabled>
+            Treatment Ongoing
+          </button>
         </div>
       </div>
 
@@ -117,32 +119,49 @@
 
       <div class="appointments-container">
         <div class="header">
-          <h3><i class="fa fa-calendar"></i>Complete Appointments</h3>
-          <select>
-            <option>Today</option>
-            <option>Tomorrow</option>
-            <option>This Week</option>
+          <h3><i class="fa fa-calendar"></i>Completed Appointments</h3>
+          <select (change)="onFilterChange($event.target)">
+            <option value="today">Today</option>
+            <option value="yesterday">Yesterday</option>
+            <option value="thisWeek">This Week</option>
+            <option value="all">All</option>
           </select>
         </div>
 
-        <div class="appointment-card" *ngFor="let prog of completedAppointments">
-          <div class="imgid">
-            <img src="assets/doc1.jpg" alt="User" />
-            <span>ID:{{ prog.patient_id }}</span>
-          </div>
-          <div class="info">
-            <h4>{{ prog.patient_name }}</h4>
-            <p>{{ prog.treatment_name }}</p>
-            <div class="meta">
-              <span><i class="fa fa-calendar-alt"></i> {{ prog.appointment_date | date:'dd-MM-yyyy' }}</span>
-              <span><i class="fa fa-clock"></i> {{ prog.appointment_date | date:"hh-mm" }}</span>
+        <div class="search-bar">
+          <input type="text" placeholder="Search patient..." [(ngModel)]="searchText"
+            (input)="filterInProgressPatients()">
+        </div>
+
+        <div class="patient-card" *ngFor="let patient of filteredCompletedAppointments">
+          <div class="card-header">
+            <div class="patient-info">
+              <h3>{{ patient.patient_name }}</h3>
+              <p><strong>Phone:</strong> {{ patient.patient_phone }}</p>
+            </div>
+            <div class="status-info">
+              <span class="status" [ngClass]="patient.status.toLowerCase()">
+                {{ patient.status }}
+              </span>
             </div>
           </div>
 
-          <div class="status1">
-            <span class="dot red2"></span>Completed
+          <div class="card-body">
+            <p><strong>Treatment:</strong> {{ patient.treatment_name }}</p>
+            <!--  <p><strong>Issue Date:</strong> {{ patient.issue_date | date:'mediumDate' }}</p> -->
+            <p><strong>Finding:</strong> {{ patient.finding || 'N/A' }}</p>
+            <p><strong>History:</strong> {{ patient.history || 'N/A' }}</p>
+            <p><strong>Treatment Status:</strong> {{ patient.history || 'N/A' }}</p>
+          </div>
+
+          <div class="card-footer">
+            <button class="assign-btn" disabled>
+             Appointment Completed
+            </button>
           </div>
         </div>
+
+
       </div>
 
     </div>

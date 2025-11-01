@@ -14,10 +14,10 @@
                 <div class="menu-item" [ngClass]="isActive('appointment')">
                     <span (click)="redirect('appointment')">Appointments</span>
                 </div>
-                <div class="menu-item" [ngClass]="isActive('test')">
+                <div class="menu-item" [ngClass]="isActive('test')" *ngIf="showOptions()">
                     <span (click)="redirect('test')">Test</span>
                 </div>
-                <div class="menu-item" [ngClass]="isActive('report')">
+                <div class="menu-item" [ngClass]="isActive('report')" *ngIf="showOptions()">
                     <span (click)="redirect('report')">Report</span>
                 </div>
                 <div class="menu-item" [ngClass]="isActive('setting')">

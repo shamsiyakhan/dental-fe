@@ -1,46 +1,130 @@
 <div class="appointment-form" *ngIf="appointment">
-    <!-- Readonly Essentials -->
-     <form [formGroup]="appointmentForm">
+  <form [formGroup]="appointmentForm" (ngSubmit)="markAsComplete()">
 
-   
-    <div class="form-group">
-      <label>Treatment Name</label>
-      <input type="text" [value]="appointment.treatment_name" readonly />
+    <div class="grid">
+      <!-- LEFT: readonly essentials -->
+      <div class="card read-card">
+        <h3>Essentials</h3>
+
+        <div class="form-row">
+          <label>Treatment</label>
+          <!-- keep readonly display from appointment object (formatted) -->
+          <input type="text" [value]="appointment.treatment_name" readonly />
+        </div>
+
+        <div class="form-row">
+          <label>Appointment Date</label>
+          <input type="text" [value]="appointment.appointment_date | date:'dd-MM-yyyy'" readonly />
+        </div>
+
+        <div class="form-row">
+          <label>Time</label>
+          <input type="text" [value]="appointment.appointment_date | date:'hh:mm a'" readonly />
+        </div>
+
+        <div class="form-row">
+          <label>Department</label>
+          <input type="text" formControlName="dept_name" readonly />
+        </div>
+
+        <div class="form-row">
+          <label>Patient</label>
+          <input type="text" formControlName="patient_name" readonly />
+        </div>
+
+        <div class="meta-row">
+          <div class="meta-item">
+            <div class="meta-label">Total Charges</div>
+            <div class="meta-value">₹ {{ appointment.total_charges || appointmentForm.getRawValue().total_charges }}
+            </div>
+          </div>
+
+          <div class="meta-item">
+            <div class="meta-label">Status</div>
+            <div class="meta-value">{{ appointment.appointment_status ||
+              appointmentForm.getRawValue().appointment_status }}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: editable + prescription -->
+      <div class="card edit-card">
+        <h3>Consultation Details</h3>
+
+        <div class="form-row">
+          <label>Finding</label>
+          <textarea formControlName="finding" placeholder="Enter findings..."></textarea>
+        </div>
+
+        <div class="form-row">
+          <label>History</label>
+          <textarea formControlName="history" placeholder="Enter history..."></textarea>
+        </div>
+
+        <!-- Prescription header -->
+        <div class="prescription-header">
+          <div>
+            <label>Prescription Date</label>
+            <input type="date" formControlName="prescription_date" />
+          </div>
+
+          <div class="notes">
+            <label>Doctor Notes</label>
+            <textarea formControlName="doctor_notes" placeholder="Enter doctor notes..."></textarea>
+          </div>
+        </div>
+
+        <!-- Medications -->
+        <div class="prescription-list">
+          <div class="pres-title">
+            <h4>Medications</h4>
+            <div>
+              <button type="button" class="add-btn" (click)="addMedication()">+ Add Medicine</button>
+            </div>
+          </div>
+
+          <div class="med-rows" formArrayName="medications">
+            <div class="med-row" *ngFor="let med of medications.controls; let i = index" [formGroupName]="i">
+              <div class="med-left">
+                <input type="text" formControlName="medication_name" placeholder="Medicine name *" />
+                <input type="text" formControlName="dosage" placeholder="Dosage (e.g., 500mg)" />
+              </div>
+
+              <div class="med-mid">
+                <input type="text" formControlName="quantity" placeholder="Qty" />
+                <input type="text" formControlName="frequency" placeholder="Frequency" />
+                <input type="text" formControlName="duration" placeholder="Duration" />
+              </div>
+
+              <div class="med-right">
+                <textarea formControlName="instructions" placeholder="Instructions"></textarea>
+                <div class="med-actions">
+                  <button type="button" class="remove" (click)="removeMedication(i)">Remove</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="medications.length === 0" class="no-meds">
+            <p>No medications added. Click <strong>+ Add Medicine</strong> to add.</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Reschedule Appointment</label><span style="color: red;">&nbsp;When rescheduled Use Reschedule button</span>
+          <input type="date" class="reschedule-input" [(ngModel)]="rescheduleDate" [min]="minDate"
+            placeholder="Select new date" />
+        </div>
+
+        <!-- actions -->
+        <div class="actions">
+          <button type="button" class="complete-btn" (click)="markAsPartialComplete()"  [disabled]="loading">
+            Reschedule
+          </button>
+          <button type="button" class="complete-btn" (click)="markAsComplete()" [disabled]="loading">
+            Mark as Complete
+          </button>
+        </div>
+      </div>
     </div>
-  
-    <div class="form-group">
-      <label>Appointment Date</label>
-      <input type="text" [value]="appointment.appointment_date | date:'dd-MM-yyyy'" readonly />
-    </div>
-  
-    <div class="form-group">
-      <label>Time</label>
-      <input type="text" [value]="appointment.appointment_date | date:'hh:mm a'" readonly />
-    </div>
-  
-    <div class="form-group">
-      <label>Department</label>
-      <input type="text" [value]="appointment.dept_name" readonly />
-    </div>
-  
-    <div class="form-group">
-      <label>Patient Name</label>
-      <input type="text" [value]="appointment.patient_name" readonly />
-    </div>
-  
-    <!-- Editable Fields -->
-    <div class="form-group">
-      <label>Finding</label>
-      <textarea [value]="appointment.finding" placeholder="Enter findings..."></textarea>
-    </div>
-  
-    <div class="form-group">
-      <label>History</label>
-      <textarea [value]="appointment.history" placeholder="Enter history..."></textarea>
-    </div>
-  
-    <!-- Action Button -->
-    <button class="complete-btn" (click)="markAsComplete()">Mark as Complete</button>
-</form>
-  </div>
-  
+  </form>
+</div>

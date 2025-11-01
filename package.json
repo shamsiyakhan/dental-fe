@@ -29,6 +29,7 @@
     "ajv": "^8.17.1",
     "bootstrap": "^5.3.3",
     "chart.js": "^3.9.1",
+    "jspdf": "^3.0.3",
     "material": "^0.9.23",
     "ng2-charts": "^3.0.1",
     "postcss-selector-parser": "^6.1.2",

@@ -22,6 +22,10 @@ constructor(
        return 'inactiveClass'
      }
    }
+
+   showOptions(){
+    return localStorage.getItem('department_id')=='18MIA4AsbJ' ? true:false
+   }
  
    redirect(route:any){
      this.router.navigate([`/omdr/${route}`])
