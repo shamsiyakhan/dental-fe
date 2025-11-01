@@ -1,0 +1,198 @@
+.dashboard-container {
+  font-family: 'Inter', sans-serif;
+  background: #f9fafb;
+  color: #222;
+  padding: 1rem 2rem;
+  min-height: 100vh;
+}
+
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 15px 25px;
+  border-bottom: 1px solid #e5e7eb;
+
+  .search-bar {
+    width: 40%;
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+  }
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .user-details {
+      text-align: right;
+
+      h4 {
+        margin: 0;
+        font-size: 14px;
+      }
+
+      p {
+        margin: 0;
+        font-size: 12px;
+        color: #666;
+      }
+    }
+
+    .avatar {
+      background-color: #007bff;
+      color: #fff;
+      font-weight: 600;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-details h4 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.user-details span {
+  color: gray;
+  font-size: 13px;
+}
+
+.user-avatar {
+  background: #e3e8ef;
+  color: #333;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: 600;
+}
+
+.dashboard-content h2 {
+  margin-top: 1.5rem;
+  font-size: 22px;
+}
+
+.dashboard-content p {
+  color: gray;
+  margin-bottom: 1.5rem;
+}
+
+.stats-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.icon {
+  font-size: 20px;
+  color: #fff;
+  padding: 0.8rem;
+  border-radius: 10px;
+}
+
+.green {
+  background: #00c853;
+}
+
+.orange {
+  background: #ff9100;
+}
+
+.blue {
+  background: #2962ff;
+}
+
+.purple {
+  background: #aa00ff;
+}
+
+.billing-section {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-top: 2rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.billing-section h3 {
+  margin-bottom: 1rem;
+}
+
+.billing-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.billing-table th,
+.billing-table td {
+  text-align: left;
+  padding: 12px 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.status {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.paid {
+  background: #d7f8e3;
+  color: #1b8a3a;
+}
+
+.pending {
+  background: #fff2cc;
+  color: #d17c00;
+}
+
+.overdue {
+  background: #fbdcdc;
+  color: #b30000;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dashboard-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .stats-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .billing-table th,
+  .billing-table td {
+    font-size: 14px;
+  }
+}

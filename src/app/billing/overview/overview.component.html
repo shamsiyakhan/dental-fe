@@ -1,0 +1,41 @@
+<div class="billing-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="logo">
+            <i class="fa-solid fa-tooth"></i>
+            <div>
+                <h2>DentalCare</h2>
+                <p>Billing System</p>
+            </div>
+        </div>
+
+        <nav class="menu">
+            <a routerLink="/dashboard" class="menu-item">
+                <i class="fa-solid fa-house"></i>
+                <span (click)="redirect('dashboard')">Dashboard</span>
+            </a>
+            <a routerLink="/pending-bills" class="menu-item">
+                <i class="fa-solid fa-file-invoice"></i>
+                <span (click)="redirect('pending')">Pending Bills</span>
+            </a>
+            <a routerLink="/patients" class="menu-item">
+                <i class="fa-solid fa-user-group"></i>
+                <span (click)="redirect('pateintList')">Patient List</span>
+            </a>
+            <a routerLink="/payments" class="menu-item">
+                <i class="fa-solid fa-credit-card"></i>
+                <span (click)="redirect('payment')">Payment</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Section -->
+    <main class="main-content">
+       
+
+
+
+        <router-outlet></router-outlet>
+
+    </main>
+</div>
