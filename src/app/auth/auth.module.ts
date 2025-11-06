@@ -13,6 +13,7 @@ import { DepartmentLoginComponent } from './department-login/department-login.co
 import { ClerkLoginComponent } from './clerk-login/clerk-login.component';
 import { DoctorLoginComponent } from './doctor-login/doctor-login.component';
 import { DoctorOnboardingComponent } from './doctor-onboarding/doctor-onboarding.component';
+import { AccountsLoginComponent } from './accounts-login/accounts-login.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { DoctorOnboardingComponent } from './doctor-onboarding/doctor-onboarding
     DepartmentLoginComponent,
     ClerkLoginComponent,
     DoctorLoginComponent,
-    DoctorOnboardingComponent
+    DoctorOnboardingComponent,
+    AccountsLoginComponent
   ],
   imports: [
     CommonModule,

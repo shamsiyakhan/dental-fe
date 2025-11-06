@@ -13,6 +13,7 @@ import { ClerkComponent } from './clerk/clerk.component';
 import { TestComponent } from './test/test.component';
 import { ReportComponent } from './report/report.component';
 import { DetailedReportsComponent } from './detailed-reports/detailed-reports.component';
+import { AccountantComponent } from './accountant/accountant.component';
 
 const routes: Routes = [
   {
@@ -72,6 +73,10 @@ const routes: Routes = [
        {
         path:"detailed-reports",
         component:DetailedReportsComponent
+       },
+        {
+        path:"accountant",
+        component:AccountantComponent
        }
     ]
   }

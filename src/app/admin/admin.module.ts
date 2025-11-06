@@ -31,6 +31,7 @@ import { AddDepartmentComponent } from './add-department/add-department.componen
 import { UpdateDepartmentComponent } from './update-department/update-department.component';
 import { A11yModule } from "@angular/cdk/a11y";
 import { DetailedReportsComponent } from './detailed-reports/detailed-reports.component';
+import { AccountantComponent } from './accountant/accountant.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { DetailedReportsComponent } from './detailed-reports/detailed-reports.co
     EditTreatmentComponent,
     AddDepartmentComponent,
     UpdateDepartmentComponent,
-    DetailedReportsComponent
+    DetailedReportsComponent,
+    AccountantComponent
   ],
   imports: [
     CommonModule,

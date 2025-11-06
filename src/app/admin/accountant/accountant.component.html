@@ -1,0 +1,52 @@
+<div class="accountant-container">
+  <h2>Accountant Management</h2>
+
+  <!-- Add Button -->
+  <button class="add-btn" (click)="toggleForm()">
+    {{ showForm ? 'Close' : 'Add Accountant' }}
+  </button>
+
+  <!-- Add Accountant Form -->
+  <div *ngIf="showForm" class="form-box">
+    <h3>Add New Accountant</h3>
+    <form (ngSubmit)="addAccountant()">
+      <div class="form-row">
+        <input type="text" [(ngModel)]="accountant.fullname" name="fullname" placeholder="Full Name" required />
+        <input type="email" [(ngModel)]="accountant.email" name="email" placeholder="Email" required />
+      </div>
+      <div class="form-row">
+        <input type="password" [(ngModel)]="accountant.password" name="password" placeholder="Password" required />
+        <input type="text" [(ngModel)]="accountant.address" name="address" placeholder="Address" />
+      </div>
+      <div class="form-row">
+        <input type="text" [(ngModel)]="accountant.gender" name="gender" placeholder="Gender" />
+        <input type="text" [(ngModel)]="accountant.marital_status" name="marital_status" placeholder="Marital Status" />
+      </div>
+      <div class="form-row">
+        <input type="date" [(ngModel)]="accountant.dob" name="dob" placeholder="Date of Birth" />
+        <input type="text" [(ngModel)]="accountant.phone" name="phone" placeholder="Phone" />
+      </div>
+      <div class="form-row">
+        <input type="text" [(ngModel)]="accountant.emergency_name" name="emergency_name" placeholder="Emergency Contact Name" />
+        <input type="text" [(ngModel)]="accountant.emergency_contact" name="emergency_contact" placeholder="Emergency Contact Number" />
+      </div>
+      <button type="submit" class="submit-btn">Add Accountant</button>
+    </form>
+  </div>
+
+  <!-- Accountant List -->
+  <div *ngIf="accountants.length > 0; else noAccountant" class="accountant-list">
+    <div class="card" *ngFor="let a of accountants">
+      <h4>{{ a.fullname }}</h4>
+      <p><strong>Email:</strong> {{ a.email }}</p>
+      <p><strong>Phone:</strong> {{ a.phone }}</p>
+      <p><strong>Address:</strong> {{ a.address }}</p>
+      <p><strong>Gender:</strong> {{ a.gender }}</p>
+    </div>
+  </div>
+
+  <!-- No Accountant Template -->
+  <ng-template #noAccountant>
+    <p class="no-data">No Accountant Found</p>
+  </ng-template>
+</div>
