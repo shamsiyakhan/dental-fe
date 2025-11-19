@@ -7,6 +7,9 @@ import { OverviewComponent } from './overview/overview.component';
 import { PendingComponent } from './pending/pending.component';
 import { PatientListComponent } from './patient-list/patient-list.component';
 import { PaymentComponent } from './payment/payment.component';
+import { PatientDetailsComponent } from './patient-details/patient-details.component';
+import { QrPaymentComponent } from './qr-payment/qr-payment.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,11 +18,16 @@ import { PaymentComponent } from './payment/payment.component';
     OverviewComponent,
     PendingComponent,
     PatientListComponent,
-    PaymentComponent
+    PaymentComponent,
+    PatientDetailsComponent,
+    QrPaymentComponent,
+    
   ],
   imports: [
     CommonModule,
-    BillingRoutingModule
+    BillingRoutingModule,
+    FormsModule
+    
   ]
 })
 export class BillingModule { }

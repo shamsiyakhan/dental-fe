@@ -1,8 +1,8 @@
 <div class="patient-list-container">
+
   <!-- Header -->
   <header class="dashboard-header">
-    <input type="text" placeholder="Search patients, bills, or invoices..." class="search-bar" />
-
+    <input type="text" placeholder="Search patients..." class="search-bar" />
     <div class="user-info">
       <div class="user-details">
         <h4>Dr. Sarah Johnson</h4>
@@ -18,8 +18,10 @@
       <h2>Patient List</h2>
       <p>View patient billing information</p>
 
-      <div class="table-container">
-        <h4>All Patients (8)</h4>
+      <div *ngIf="loading" class="text-blue-600 py-6">Loading data...</div>
+
+      <div class="table-container" *ngIf="!loading && patients.length > 0">
+        <h4>All Patients ({{ patients.length }})</h4>
 
         <table class="patient-table">
           <thead>
@@ -28,51 +30,28 @@
               <th>Name</th>
               <th>Phone</th>
               <th>Outstanding</th>
-              <th>Status</th>
+              <th>Unpaid Treatments</th>
               <th>Actions</th>
             </tr>
           </thead>
+
           <tbody>
-            <tr>
-              <td>P001</td>
-              <td>Emma Thompson</td>
-              <td>(555) 123-4567</td>
-              <td>$1,450</td>
-              <td><span class="status active">Active</span></td>
-              <td><button class="view-btn">View</button></td>
-            </tr>
-            <tr>
-              <td>P002</td>
-              <td>Robert Martinez</td>
-              <td>(555) 234-5678</td>
-              <td>$3,200</td>
-              <td><span class="status overdue">Overdue</span></td>
-              <td><button class="view-btn">View</button></td>
-            </tr>
-            <tr>
-              <td>P003</td>
-              <td>Lisa Anderson</td>
-              <td>(555) 345-6789</td>
-              <td>$450</td>
-              <td><span class="status active">Active</span></td>
-              <td><button class="view-btn">View</button></td>
-            </tr>
-            <tr>
-              <td>P004</td>
-              <td>James Wilson</td>
-              <td>(555) 456-7890</td>
-              <td>$2,100</td>
-              <td><span class="status overdue">Overdue</span></td>
-              <td><button class="view-btn">View</button></td>
+            <tr *ngFor="let p of patients">
+              <td>{{ p.userid }}</td>
+              <td>{{ p.fullname }}</td>
+              <td>{{ p.phone }}</td>
+              <td>₹{{ p.total_unpaid_amount | number:'1.2-2' }}</td>
+              <td>{{ p.unpaid_treatments }}</td>
+              <td>
+                <button class="view-btn" (click)="viewPatient(p.userid)">View</button>
+              </td>
             </tr>
           </tbody>
         </table>
       </div>
-    </div>
 
-    <div class="right-section">
-      <div class="detail-box">
-        <p>Select a patient to view details</p>
+      <div *ngIf="!loading && patients.length === 0" class="text-center py-8 text-gray-500">
+        No patients with unpaid bills found 🎉
       </div>
     </div>
   </div>
