@@ -61,9 +61,15 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+<<<<<<< HEAD
   viewPatient(patient: any) {
     this.route.navigate([`/billing/${patient.userid}`]);
   }
+=======
+  register(){
+
+    this.route.navigate(['/dashboard/'])
+>>>>>>> 2de6d0b6e79cb1da64325162b3b07fa8631a23b8
 
   register() {
     this.route.navigate(['/billing/']);
