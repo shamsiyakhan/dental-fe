@@ -1,10 +1,10 @@
 <div class="billing-container">
- 
+
   <!-- Main Section -->
   <main class="main-content">
     <!-- Header -->
     <header class="header">
-      <input type="text" placeholder="Search patients, bills, or invoices..." class="search-bar" />
+      <input type="text" placeholder="Search treatments, patients..." class="search-bar" />
       <div class="user-info">
         <div class="user-details">
           <h4>Dr. Sarah Johnson</h4>
@@ -17,87 +17,67 @@
     <!-- Content -->
     <section class="content">
       <h2>Pending Bills</h2>
-      <p class="subtitle">Outstanding invoices awaiting payment</p>
+      <p class="subtitle">Outstanding treatments awaiting payment</p>
 
-      <div class="cards">
-        <div class="card">
-          <h3>Total Pending Amount</h3>
-          <p class="amount">$11,880</p>
-          <span>6 invoices</span>
-        </div>
-        <div class="card alert">
-          <h3>Overdue Bills</h3>
-          <p class="overdue">3</p>
-          <span class="urgent">Need immediate attention</span>
-        </div>
-      </div>
+      <div *ngIf="loading" class="text-center py-6 text-blue-600">Loading data...</div>
 
-      <!-- Table -->
-      <div class="table-container">
-        <h3>Outstanding Invoices</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Invoice ID</th>
-              <th>Patient</th>
-              <th>Service</th>
-              <th>Amount</th>
-              <th>Due Date</th>
-              <th>Status</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>INV-1001</td>
-              <td>Emma Thompson</td>
-              <td>Root Canal Treatment</td>
-              <td>$1,450</td>
-              <td>2025-11-05</td>
-              <td><span class="status pending">Pending</span></td>
-              <td class="actions">
-                <i class="fa-solid fa-eye"></i>
-                <i class="fa-solid fa-paper-plane"></i>
-              </td>
-            </tr>
-            <tr>
-              <td>INV-1002</td>
-              <td>Robert Martinez</td>
-              <td>Dental Implant</td>
-              <td>$3,200</td>
-              <td>2025-10-25</td>
-              <td><span class="status overdue">Overdue</span></td>
-              <td class="actions">
-                <i class="fa-solid fa-eye"></i>
-                <i class="fa-solid fa-paper-plane"></i>
-              </td>
-            </tr>
-            <tr>
-              <td>INV-1003</td>
-              <td>Lisa Anderson</td>
-              <td>Teeth Whitening</td>
-              <td>$450</td>
-              <td>2025-11-08</td>
-              <td><span class="status pending">Pending</span></td>
-              <td class="actions">
-                <i class="fa-solid fa-eye"></i>
-                <i class="fa-solid fa-paper-plane"></i>
-              </td>
-            </tr>
-            <tr>
-              <td>INV-1004</td>
-              <td>James Wilson</td>
-              <td>Crown & Bridge</td>
-              <td>$2,100</td>
-              <td>2025-10-20</td>
-              <td><span class="status overdue">Overdue</span></td>
-              <td class="actions">
-                <i class="fa-solid fa-eye"></i>
-                <i class="fa-solid fa-paper-plane"></i>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div *ngIf="!loading">
+        <div class="cards">
+          <!-- Total Pending Amount -->
+          <div class="card">
+            <h3>Total Pending Amount</h3>
+            <p class="amount">₹{{ totalUnpaidAmount | number:'1.2-2' }}</p>
+            <span>{{ unpaidCount }} pending bills</span>
+          </div>
+
+          <!-- Static Example (Can later link to overdue logic) -->
+          <div class="card alert">
+            <h3>Overdue Bills</h3>
+            <p class="overdue">{{ unpaidList.length > 3 ? 3 : unpaidList.length }}</p>
+            <span class="urgent">Need immediate attention</span>
+          </div>
+        </div>
+
+        <!-- Table -->
+        <div class="table-container" *ngIf="unpaidList.length > 0; else noUnpaid">
+          <h3>Outstanding Treatments</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Treatment ID</th>
+                <th>Treatment Name</th>
+                <th>Doctor ID</th>
+                <th>Patient Name</th>
+                <th>Department Name</th>
+                <th>Issue Date</th>
+                <th>Total Charges</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let t of unpaidList">
+                <td>{{ t.treatment_id }}</td>
+                <td>{{ t.treatment_name }}</td>
+                <td>{{ t.doctorid }}</td>
+                <td>{{ t.patient_name }}</td>
+                <td>{{ t.department_name }}</td>
+                <td>{{ t.issue_date | date:'mediumDate' }}</td>
+                <td>₹{{ t.total_charges | number:'1.2-2' }}</td>
+                <td>
+                  <span class="status pending">UnPaid</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- No unpaid data -->
+        <ng-template #noUnpaid>
+          <div class="no-data">
+            <h4>No unpaid treatments found 🎉</h4>
+            <p>All bills are cleared for now.</p>
+          </div>
+        </ng-template>
       </div>
     </section>
   </main>

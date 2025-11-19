@@ -1,0 +1,28 @@
+<div class="payment-page">
+
+  <h2>Pay via UPI</h2>
+  <p>Scan the QR code below to complete your payment.</p>
+
+  <div class="amount-input">
+    <label>Enter Amount (₹)</label>
+    <input type="number" [(ngModel)]="amount" (change)="updateAmount()" />
+  </div>
+
+  <div *ngIf="qrImage && !paymentDone && !loading">
+    <img [src]="qrImage" alt="UPI QR" width="220" height="220" />
+    <p>
+      or <a [href]="razorpayLink + '?amount=' + amount" target="_blank" class="pay-link">click here</a> to pay directly.
+    </p>
+  </div>
+
+  <div *ngIf="loading" class="loader">Verifying payment...</div>
+
+  <div *ngIf="paymentDone" class="success-box">
+    <h3>✅ Payment Received</h3>
+    <p>Thank you for your payment!</p>
+  </div>
+
+  <div class="actions" *ngIf="!paymentDone && !loading">
+    <button (click)="markPaymentDone()">Mark as Paid</button>
+  </div>
+</div>

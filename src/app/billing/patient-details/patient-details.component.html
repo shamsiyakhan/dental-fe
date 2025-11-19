@@ -1,0 +1,42 @@
+<div class="patient-details-container">
+  <h2>Patient Treatments</h2>
+
+  <div *ngIf="loading" class="text-blue-600 py-6">Loading...</div>
+
+  <div *ngIf="!loading && treatments.length > 0">
+    <table class="treatment-table">
+      <thead>
+        <tr>
+          <th>Treatment ID</th>
+          <th>Treatment Name</th>
+          <th>Department</th>
+          <th>Doctor</th>
+          <th>Total Charges</th>
+          <th>Status</th>
+          <th>Payment</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let t of treatments">
+          <td>{{ t.treatment_id }}</td>
+          <td>{{ t.treatment_name }}</td>
+          <td>{{ t.department_name }}</td>
+          <td>{{ t.doctor_name }}</td>
+          <td>₹{{ t.total_charges | number:'1.2-2' }}</td>
+          <td>{{ t.status }}</td>
+          <td>
+            <span class="status" [class.unpaid]="t.payment_status === 'UnPaid'" [class.paid]="t.payment_status === 'Success'">
+              {{ t.payment_status }}
+            </span>
+          </td>
+          <td>{{ t.issue_date | date:'mediumDate' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="!loading && treatments.length === 0" class="no-data">
+    No treatments found for this patient.
+  </div>
+</div>

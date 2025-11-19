@@ -1,18 +1,92 @@
-<div class="main">
-    <div class="leftMenus">
-        <span (click)="selectContent('revenue')">Revenue Report</span>
-        <span (click)="selectContent('department')">Department Wise Report</span>
+<div class="p-6 space-y-6 w-full">
+
+  <!-- Header -->
+  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+    <h2 class="text-2xl font-bold text-blue-700">Admin Reports Dashboard</h2>
+  </div>
+
+  <!-- Filters Section -->
+  <div class="flex flex-wrap gap-4 items-end">
+
+    <!-- Report Dropdown -->
+    <div>
+      <label class="text-xs font-semibold text-blue-700">Select Report</label>
+      <select [(ngModel)]="selectedReport" (change)="onReportChange()"
+        class="border rounded px-3 py-2 min-w-[260px]">
+        <option *ngFor="let r of reports" [value]="r.id">{{ r.name }}</option>
+      </select>
     </div>
 
-    <div class="rightContainer">
-
-        <ng-container [ngSwitch]="activeContent">
-
-            <div *ngSwitchCase="'revenue'">
-                
-            </div>
-
-        </ng-container>
-
+    <!-- From Date -->
+    <div>
+      <label class="text-xs font-semibold text-blue-700">From Date</label>
+      <input type="date" [(ngModel)]="fromDate" (change)="loadReport()"
+        class="border rounded px-3 py-2" />
     </div>
+
+    <!-- To Date -->
+    <div>
+      <label class="text-xs font-semibold text-blue-700">To Date</label>
+      <input type="date" [(ngModel)]="toDate" (change)="loadReport()"
+        class="border rounded px-3 py-2" />
+    </div>
+
+    <!-- Buttons -->
+    <div class="flex gap-2">
+      <button (click)="downloadPDF()"
+        class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Download PDF</button>
+
+      <button (click)="downloadCSV()"
+        class="bg-white border border-blue-600 text-blue-700 px-4 py-2 rounded hover:bg-blue-50">
+        Download CSV
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Report Card (Export Section) -->
+  <div id="reportContent" class="bg-white rounded-xl border border-blue-100 p-5 shadow">
+
+    <!-- Report Title -->
+    <h3 class="text-lg font-semibold text-blue-700 mb-4">
+     {{ activeReportName }}
+    </h3>
+
+    <!-- Chart -->
+    <div class="border rounded p-4 bg-white">
+      <canvas #chartCanvas height="120"></canvas>
+    </div>
+
+    <!-- Table -->
+    <div class="mt-6 overflow-auto">
+      <table class="w-full border border-gray-200 text-sm">
+        <thead class="bg-blue-600 text-white">
+          <tr>
+            <th *ngFor="let c of tableColumns" class="px-3 py-2 text-left border border-blue-300">
+              {{ c }}
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let row of tableData" class="hover:bg-blue-50">
+            <td *ngFor="let c of tableColumns" class="px-3 py-2 border">
+              {{ row[c] }}
+            </td>
+          </tr>
+
+          <tr *ngIf="!tableData.length">
+            <td [attr.colspan]="tableColumns.length"
+              class="py-6 text-center text-gray-500">
+              No Data Available
+            </td>
+          </tr>
+
+        </tbody>
+
+      </table>
+    </div>
+
+  </div>
+
 </div>

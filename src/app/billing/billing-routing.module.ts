@@ -7,39 +7,43 @@ import { OverviewComponent } from './overview/overview.component';
 import { PendingComponent } from './pending/pending.component';
 import { PatientListComponent } from './patient-list/patient-list.component';
 import { PaymentComponent } from './payment/payment.component';
+import { PatientDetailsComponent } from './patient-details/patient-details.component';
+import { QrPaymentComponent } from './qr-payment/qr-payment.component';
 
 const routes: Routes = [
 
   {
-    path:"",
-    component:OverviewComponent,
-    children:[
-
+    path: '',
+    component: OverviewComponent,
+    children: [
       {
-        path:"",
-        redirectTo:"dashboard",
-        pathMatch:"full"
+        path: 'dashboard',
+        component: DashboardComponent
       },
       {
-        path:'dashboard',
-        component:DashboardComponent
+        path: 'pending',
+        component: PendingComponent
       },
       {
-        path:'pending',
-        component:PendingComponent
-      },
-      {
-        path:'pateintList',
-        component:PatientListComponent
+        path: 'pateintList',
+        component: PatientListComponent
 
       },
       {
-        path:'payment',
-        component:PaymentComponent
+        path: 'payment',
+        component: PaymentComponent
+      },
+      {
+        path: 'patients/:patientid',
+        component: PatientDetailsComponent
+      },
+      {
+        path:'qr',
+        component:QrPaymentComponent
       }
     ]
   }
-  
+
 
 
 ];
