@@ -11,9 +11,15 @@ import { PaymentComponent } from './payment/payment.component';
 const routes: Routes = [
 
   {
-    path:'',
+    path:"",
     component:OverviewComponent,
     children:[
+
+      {
+        path:"",
+        redirectTo:"dashboard",
+        pathMatch:"full"
+      },
       {
         path:'dashboard',
         component:DashboardComponent

@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
 
   register(){
 
-    this.route.navigate(['/billing/'])
+    this.route.navigate(['/dashboard/'])
 
   }
 
