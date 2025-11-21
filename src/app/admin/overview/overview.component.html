@@ -1,55 +1,77 @@
 <div class="main">
-    <div class="row" style="height: 99vh !important; width: 100%;">
-        <div class="col-2" style="background-color: white;">
-            <div class="icon">
-                <img class="logo" src="assets/DentalCare.png" alt="">
-            </div>
-            <div class="menu-container">
-                <div class="menu-item" [ngClass]="isActive('dashboard')">
-                    <span (click)="redirect('dashboard')">Dashboard</span>
-                </div>
-                <div class="menu-item" [ngClass]="isActive('profile')">
-                    <span (click)="redirect('profile')">Profile</span>
-                </div>
+  <div class="row g-0" style="height: 100vh; width: 100%;">
 
-                <div class="menu-item" [ngClass]="isActive('patient')">
-                    <span (click)="redirect('patient')">Patients</span>
-                </div>
+    <!-- SIDEBAR -->
+    <div class="sidebar" [class.hidden]="isHidden">
 
-                <div class="menu-item" [ngClass]="isActive('department')">
-                    <span (click)="redirect('department')">Department</span>
-                </div>
-                
+      <div class="sidebar-header">
+        <img class="logo" src="assets/DentalCare.png" alt="">
+      </div>
 
-                  <div class="menu-item" [ngClass]="isActive('accountant')">
-                    <span (click)="redirect('accountant')">Accountant</span>
-                </div>
-                
-             <!--    <div class="menu-item" [ngClass]="isActive('doctor')">
-                    <span>Doctors</span>
-                </div> -->
-                <div class="menu-item" [ngClass]="isActive('clerk')">
-                    <span (click)="redirect('clerk')">Clerk</span>
-                </div>
-                <div class="menu-item" [ngClass]="isActive('test')">
-                    <span (click)="redirect('test')">Test</span>
-                </div>
-                <div class="menu-item" [ngClass]="isActive('report')">
-                    <span (click)="redirect('report')">Report</span>
-                </div>
-                
-                  <div class="menu-item" [ngClass]="isActive('detailed-reports')">
-                    <span (click)="redirect('detailed-reports')">Detailed Reports</span>
-                </div>
+      <div class="info text-center">
+        <span class="emoji">👋</span>
+        <span>Hello!</span>
+        <span class="doctor-name">Admin Panel</span>
+      </div>
 
-                <div class="menu-item" [ngClass]="isActive('report')">
-                    <span (click)="logout()">Log Out</span>
-                </div>
-            </div>
+      <div class="menu-container">
+
+        <div class="menu-item" [ngClass]="isActive('dashboard')" (click)="redirect('dashboard')">
+          <i class="fa fa-home me-2"></i> Dashboard
         </div>
 
-        <div class="col-10">
-            <router-outlet></router-outlet>
+        <div class="menu-item" [ngClass]="isActive('profile')" (click)="redirect('profile')">
+          <i class="fa fa-user me-2"></i> Profile
         </div>
+
+        <div class="menu-item" [ngClass]="isActive('patient')" (click)="redirect('patient')">
+          <i class="fa fa-users me-2"></i> Patients
+        </div>
+
+        <div class="menu-item" [ngClass]="isActive('department')" (click)="redirect('department')">
+          <i class="fa fa-building me-2"></i> Department
+        </div>
+
+        <div class="menu-item" [ngClass]="isActive('accountant')" (click)="redirect('accountant')">
+          <i class="fa fa-file-invoice-dollar me-2"></i> Accountant
+        </div>
+
+        <div class="menu-item" [ngClass]="isActive('clerk')" (click)="redirect('clerk')">
+          <i class="fa fa-id-badge me-2"></i> Clerk
+        </div>
+
+        <div class="menu-item" [ngClass]="isActive('test')" (click)="redirect('test')">
+          <i class="fa fa-vial me-2"></i> Test
+        </div>
+
+        <div class="menu-item" [ngClass]="isActive('report')" (click)="redirect('report')">
+          <i class="fa fa-file-medical me-2"></i> Report
+        </div>
+
+        <div class="menu-item" [ngClass]="isActive('detailed-reports')" (click)="redirect('detailed-reports')">
+          <i class="fa fa-chart-line me-2"></i> Detailed Reports
+        </div>
+
+        <div class="menu-item" (click)="logout()">
+          <i class="fa fa-sign-out-alt me-2"></i> Logout
+        </div>
+
+      </div>
     </div>
+
+    <!-- OVERLAY -->
+    <div *ngIf="!isHidden" class="overlay d-lg-none" (click)="toggleSidebar()"></div>
+
+    <!-- CONTENT AREA -->
+    <div class="content-area">
+      <div class="topbar d-flex align-items-center justify-content-between">
+        <button class="btn d-lg-none toggle-btn-lg" (click)="toggleSidebar()">
+          <i class="fa fa-bars"></i>
+        </button>
+      </div>
+
+      <router-outlet></router-outlet>
+    </div>
+
+  </div>
 </div>

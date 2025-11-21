@@ -1,42 +1,69 @@
 <div class="main">
-    <div class="row" style="height: 99vh !important; width: 100%;">
-        <div class="col-2" style="background-color: white;">
-            <div class="icon">
-                <img class="logo" src="assets/DentalCare.png" alt="">
-            </div>
-            <div class="menu-container">
-                <div class="menu-item" [ngClass]="isActive('dashboard')">
-                    <span (click)="redirect('dashboard')">Dashboard</span>
-                </div>
-                <div class="menu-item" [ngClass]="isActive('patient')">
-                    <span (click)="redirect('patient')">Patients</span>
-                </div>
-                <div class="menu-item" [ngClass]="isActive('appointment')">
-                    <span (click)="redirect('appointment')">Appointments</span>
-                </div>
-                <div class="menu-item" [ngClass]="isActive('test')" *ngIf="showOptions()">
-                    <span (click)="redirect('test')">Test</span>
-                </div>
-                <div class="menu-item" [ngClass]="isActive('report')" *ngIf="showOptions()">
-                    <span (click)="redirect('report')">Report</span>
-                </div>
-                <div class="menu-item" [ngClass]="isActive('setting')">
-                    <span (click)="redirect('setting')"> Settings</span>
-                </div>
-            </div>
-            <div class="bottom-section">
-                <button class="logout-btn" (click)="logout()">Log out</button>
-                <div class="department">
-                  <i class="fa fa-bell"></i>
-                  <span>OMDR department</span>
-                </div>
-              </div>
+  <div class="row g-0" style="height: 100vh; width: 100%;">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar" [class.hidden]="isHidden">
+      <div class="sidebar-header">
+        <img class="logo" src="assets/DentalCare.png" alt="">
+      </div>
+
+      <div class="info text-center">
+        <span class="emoji">👋</span>
+        <span>Hello!</span>
+        <span class="doctor-name">DentalCare Panel</span>
+      </div>
+
+      <div class="menu-container">
+
+        <div class="menu-item" [ngClass]="isActive('dashboard')" (click)="redirect('dashboard')">
+          <i class="fa fa-home me-2"></i> Dashboard
         </div>
 
-
-        
-        <div class="col-10">
-            <router-outlet></router-outlet>
+        <div class="menu-item" [ngClass]="isActive('patient')" (click)="redirect('patient')">
+          <i class="fa fa-users me-2"></i> Patients
         </div>
+
+        <div class="menu-item" [ngClass]="isActive('appointment')" (click)="redirect('appointment')">
+          <i class="fa fa-calendar-check me-2"></i> Appointments
+        </div>
+
+        <div class="menu-item" [ngClass]="isActive('test')" *ngIf="showOptions()" (click)="redirect('test')">
+          <i class="fa fa-vial me-2"></i> Test
+        </div>
+
+        <div class="menu-item" [ngClass]="isActive('report')" *ngIf="showOptions()" (click)="redirect('report')">
+          <i class="fa fa-file-medical me-2"></i> Report
+        </div>
+
+        <div class="menu-item" [ngClass]="isActive('setting')" (click)="redirect('setting')">
+          <i class="fa fa-cog me-2"></i> Settings
+        </div>
+
+        <div class="menu-item" (click)="logout()">
+          <i class="fa fa-sign-out-alt me-2"></i> Logout
+        </div>
+
+      </div>
+
+      <div class="department" style="text-align:center; padding: 10px;">
+        <i class="fa fa-bell me-2"></i>
+        <span>OMDR department</span>
+      </div>
     </div>
+
+    <!-- OVERLAY -->
+    <div *ngIf="!isHidden" class="overlay d-lg-none" (click)="toggleSidebar()"></div>
+
+    <!-- CONTENT AREA -->
+    <div class="content-area">
+      <div class="topbar d-flex align-items-center justify-content-between">
+        <button class="btn d-lg-none toggle-btn-lg" (click)="toggleSidebar()">
+          <i class="fa fa-bars"></i>
+        </button>
+      </div>
+
+      <router-outlet></router-outlet>
+    </div>
+
+  </div>
 </div>

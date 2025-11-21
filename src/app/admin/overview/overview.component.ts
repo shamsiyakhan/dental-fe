@@ -8,12 +8,28 @@ import { Router } from '@angular/router';
 })
 export class OverviewComponent implements OnInit {
 
+  isHidden = false;
+private breakpoint = 992;
+resizeListener: any;
   constructor(
     private router:Router
   ) { }
 
   ngOnInit(): void {
+     this.isHidden = window.innerWidth < this.breakpoint ? true : false;
+
+  this.resizeListener = () => {
+    if (window.innerWidth >= this.breakpoint) {
+      this.isHidden = false;
+    }
+  };
+
+  window.addEventListener('resize', this.resizeListener);
   }
+
+  toggleSidebar() {
+  this.isHidden = !this.isHidden;
+}
 
   isActive(route:any){
     if(this.router.url.includes(route)){

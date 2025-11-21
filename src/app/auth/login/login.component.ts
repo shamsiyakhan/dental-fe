@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
   onSubmit(){
     this.http.post('http://localhost:3000/login',this.loginForm.value).subscribe((data:any)=>{
       console.log(data)
-      if(data.user.role=='Patient'){
+      if(data.user.role=='patient'){
         localStorage.setItem('patient',JSON.stringify(data.user))
         localStorage.setItem('token' ,data.token)
         this.router.navigate(['/patient/dashboard'])
